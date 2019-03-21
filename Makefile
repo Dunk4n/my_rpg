@@ -44,7 +44,7 @@ NAME	=	my_rpg
 CFLAGS	=	-W -Wall -Wextra -I$(D_INC)
 
 LDFLAGS	=	-L$(D_LIB) -lmy -l csfml-graphics -l csfml-system  -l csfml-window -lm
-
+LDFLAGS_WAGNER += -L $(D_LIB) -lmy -lm -lc_graph_prog
 BUILD_DIR = build
 
 all:	$(NAME)
@@ -74,6 +74,9 @@ libmy:
 $(NAME): libmy options $(OBJ)
 	@echo "  BUILD    $@"
 	@$(CC) $(CFLAGS) -o $@ $(OBJ) $(LDFLAGS)
+
+wagner: libmy options $(OBJ)
+	gcc -o $(NAME) $(OBJ) $(LDFLAGS_WAGNER)
 
 re:
 	@$(MAKE) fclean --no-print-directory

@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "world.h"
 
-const char *name_obj[] = {"doc/cube_tx.obj", "doc/mount.obj"};
+const char *name_obj[] = {"doc/cube_tx.obj", "doc/mount.obj", "doc/dice.obj"};
 
 void    free_tab_obj(obj_t **obj, int nb)
 {
@@ -30,7 +30,7 @@ int     charge_obj(my_game_t *game)
 {
     int i = 0;
 
-    game->obj = 2;
+    game->obj = 3;
     if (!(game->map->obj = malloc(sizeof(obj_t*) * game->obj)))
         return (0);
     while (i < game->obj) {
