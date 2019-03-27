@@ -81,7 +81,6 @@ typedef struct  triangle_s
     int         texture;
     int         indice_point[3];
     int         indice_texture[3];
-    void        *square_part;
 }               triangle_t;
 
 typedef struct  my_window_s
@@ -135,19 +134,34 @@ typedef struct  map_s
     obj_t       **obj;
 }               map_t;
 
+typedef struct  room_s
+{
+    obj_t       **fix_obj;
+    char        ***room;
+    int         x_max;
+    int         y_max;
+    int         z_max;
+    int         nb_obj;
+}               room_t;
+
 typedef struct  my_game_s
 {
+    room_t          **room;
     my_window_t     *win;
     map_t           *map;
     sfImage         **img;
     camera_t        *camera;
+    sfClock         *clock;
+    sfInt64         time_fg;
     int             obj;
+    int             nb_room;
+    int             actual_room;
     int             nb_img;
     int             nb_col_max;
 }               my_game_t;
 
 int     window(void);
-int     init_all_game(my_game_t *game);
+int     init_all_3d(my_game_t *game);
 void    put_pixel(my_framebuff_t *framebuff, int x, int y, sfColor color);
 void    put_pixel3d(my_game_t *game, sfVector3f cord, sfColor color);
 void    square(my_framebuff_t *buff, sfVector2f pos, sfVector2i size,
@@ -158,8 +172,7 @@ void    clear_t_buff(triangle_t **t_buff);
 void    transform_move(my_game_t *game, obj_t *obj);
 void    transform_lower(my_game_t *game, obj_t *obj);
 void    rotation(map_t *map, obj_t *obj);
-void    to_2d(my_game_t *game);
-void    display(my_game_t *game);
+void    display(my_game_t *game, obj_t *obj);
 my_game_t        *set_game(void);
 void    update(my_game_t *game);
 void    check(my_game_t *game);
@@ -194,10 +207,25 @@ void    move_up(my_game_t *game, float coef);
 void    rotation_roll(my_game_t *game, float coef);
 void    rotation_yaw(my_game_t *game, float coef);
 void    rotation_pitch(my_game_t *game, float coef);
-void    transform_move_camera(my_game_t *game);
-void    transform_rotation_camera(my_game_t *game);
-void    transform_camera(my_game_t *game);
 void    rotate_camera(my_game_t *game, float roll, float yaw, float pitch);
+void    make_time(my_game_t *game);
+int     init_game(my_game_t *game);
+room_t  **charge_room(my_game_t *game);
+void    transform_camera(my_game_t *game, room_t *room);
+void    to_2d(my_game_t *game, room_t *room);
+void    display_room(my_game_t *game);
+void    movement(my_game_t *game, double x, double y, double z);
+void    copy_obj(obj_t *obj, obj_t *to_copy);
+void    move_obj_to(obj_t *obj, int y, int z, int x);
+void    set_all_obj_in_room(my_game_t *game, room_t *room);
+int     set_obj_in_room(my_game_t *game, room_t *room);
+int     set_tab_and_obj(my_game_t *game, room_t *room, int fd);
+int     get_nb_of_obj(room_t *room);
+obj_t   *get_obj_of_char(my_game_t *game, char c);
+void    copy_adresse_face(obj_t *obj, int i);
+void    copy_face(obj_t *obj, obj_t *to_copy);
+void    copy_info_of_obj(obj_t *obj, obj_t *to_copy);
+int     set_each_line(room_t *room, char **tab, int fd);
 
 #define WM 1920
 #define HM 1080

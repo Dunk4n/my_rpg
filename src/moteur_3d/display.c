@@ -21,15 +21,15 @@ sfVector3f      normal_vec(sfVector3f a, sfVector3f b, sfVector3f c)
 
 int     is_drawable(triangle_t *tri)
 {
-    if (tri->point_2d[0]->z < 0 || tri->point_2d[0]->y < 0 ||
+    /*if (tri->point_2d[0]->z <= 0 || tri->point_2d[0]->y < 0 ||
 tri->point_2d[0]->y >= HM || tri->point_2d[0]->x < 0 || tri->point_2d[0]->x >=
-WM || tri->point_2d[1]->z < 0 || tri->point_2d[1]->y < 0 || tri->point_2d[1]->y
+WM || tri->point_2d[1]->z <= 0 || tri->point_2d[1]->y < 0 || tri->point_2d[1]->y
 >= HM || tri->point_2d[1]->x < 0 || tri->point_2d[1]->x >= WM ||
-tri->point_2d[2]->z < 0 || tri->point_2d[2]->y < 0 || tri->point_2d[2]->y >= HM
+tri->point_2d[2]->z <= 0 || tri->point_2d[2]->y < 0 || tri->point_2d[2]->y >= HM
 || tri->point_2d[2]->x < 0 || tri->point_2d[2]->x >= WM)
-        return (0);
-    /*if (tri->point_2d[0]->z < 0 || tri->point_2d[1]->z < 0 ||
-tri->point_2d[2]->z < 0)
+        return (0);*/
+    if (tri->point_2d[0]->z <= 0 || tri->point_2d[1]->z <= 0 ||
+tri->point_2d[2]->z <= 0)
         return (0);
     if (((tri->point_2d[0]->x < 0) && (tri->point_2d[1]->x < 0) &&
 (tri->point_2d[2]->x < 0)) || ((tri->point_2d[0]->y < 0) &&
@@ -39,7 +39,6 @@ tri->point_2d[2]->z < 0)
 (tri->point_2d[2]->x >= WM)) || ((tri->point_2d[0]->y >= HM) &&
 (tri->point_2d[1]->y >= HM) && (tri->point_2d[2]->y >= HM)))
         return (0);
-        */
     return (1);
 }
 
@@ -55,7 +54,7 @@ static void     display_triangle_in_map(my_game_t *game, triangle_t *tri)
     res = normal.z;
     if (res < 0)
         res *= -1;
-    game->map->lum = res;
+    game->map->lum = 1;//res;
     game->map->ptr_tri = tri;
     if (tri->point_tx[0] == NULL || tri->point_tx[1] == NULL ||
 tri->point_tx[2] == NULL)
@@ -67,19 +66,13 @@ tri->point_tx[2] == NULL)
     draw_poly(game, tri);
 }
 
-void    display(my_game_t *game)
+void    display(my_game_t *game, obj_t *obj)
 {
-    int n = 0;
     int i = 0;
 
-    while (n < game->obj) {
-        i = 0;
-        while (i < game->map->obj[n]->nb_tr) {
-            if (is_drawable(&(game->map->obj[n]->triangle[i])))
-                display_triangle_in_map(game,
-&(game->map->obj[n]->triangle[i]));
-            i++;
-        }
-        n++;
+    while (i < obj->nb_tr) {
+        if (is_drawable(&(obj->triangle[i])))
+            display_triangle_in_map(game, &(obj->triangle[i]));
+        i++;
     }
 }

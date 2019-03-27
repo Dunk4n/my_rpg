@@ -8,64 +8,66 @@
 #include <math.h>
 #include "world.h"
 
-void    transform_move_camera(my_game_t *game)
+void    transform_move_camera(my_game_t *game, room_t *room)
 {
     int i = 0;
     int j;
 
-    while (i < game->obj) {
+    while (i < room->nb_obj) {
         j = 0;
-        while (j < game->map->obj[i]->nb_point) {
-            game->map->obj[i]->point_camera[j].x =
-game->map->obj[i]->point_3d[j].x - game->camera->move.x;
-            game->map->obj[i]->point_camera[j].y =
-game->map->obj[i]->point_3d[j].y - game->camera->move.y;
-            game->map->obj[i]->point_camera[j].z =
-game->map->obj[i]->point_3d[j].z - game->camera->move.z;
+        while (j < room->fix_obj[i]->nb_point) {
+            room->fix_obj[i]->point_camera[j].x =
+room->fix_obj[i]->point_3d[j].x - game->camera->move.x;
+            room->fix_obj[i]->point_camera[j].y =
+room->fix_obj[i]->point_3d[j].y - game->camera->move.y;
+            room->fix_obj[i]->point_camera[j].z =
+room->fix_obj[i]->point_3d[j].z - game->camera->move.z;
             j++;
         }
         i++;
     }
 }
 
-void    transform_rotation_camera(my_game_t *game)
+void    make_rotation(room_t *room, float *tab, int i, int j)
 {
-    int i = 0;
-    int j = 0;
-    float sr = sin(-game->camera->roll * M_PI / 180);
-    float cr = cos(-game->camera->roll * M_PI / 180);
-    float sy = sin(-game->camera->yaw * M_PI / 180);
-    float cy = cos(-game->camera->yaw * M_PI / 180);
-    float sp = sin(-game->camera->pitch * M_PI / 180);
-    float cp = cos(-game->camera->pitch * M_PI / 180);
     double tmp;
 
-    while (i < game->obj) {
-        j = 0;
-        while (j < game->map->obj[i]->nb_point) {
-            tmp = game->map->obj[i]->point_camera[j].z;
-            game->map->obj[i]->point_camera[j].z =
-(sr * game->map->obj[i]->point_camera[j].y) + (cr * tmp);
-            game->map->obj[i]->point_camera[j].y =
-(cr * game->map->obj[i]->point_camera[j].y) - (sr * tmp);
-            tmp = game->map->obj[i]->point_camera[j].x;
-            game->map->obj[i]->point_camera[j].x =
-(cy * tmp) + (sy * game->map->obj[i]->point_camera[j].z);
-            game->map->obj[i]->point_camera[j].z =
--(sy * tmp) + (cy * game->map->obj[i]->point_camera[j].z);
-            tmp = game->map->obj[i]->point_camera[j].x;
-            game->map->obj[i]->point_camera[j].x =
-(cp * tmp) - (sp * game->map->obj[i]->point_camera[j].y);
-            game->map->obj[i]->point_camera[j].y =
-(sp * tmp) + (cp * game->map->obj[i]->point_camera[j].y);
-            j++;
+    tmp = room->fix_obj[i]->point_camera[j].z;
+    room->fix_obj[i]->point_camera[j].z =
+(tab[0] * room->fix_obj[i]->point_camera[j].y) + (tab[1] * tmp);
+    room->fix_obj[i]->point_camera[j].y =
+(tab[1] * room->fix_obj[i]->point_camera[j].y) - (tab[0] * tmp);
+    tmp = room->fix_obj[i]->point_camera[j].x;
+    room->fix_obj[i]->point_camera[j].x =
+(tab[3] * tmp) + (tab[2] * room->fix_obj[i]->point_camera[j].z);
+    room->fix_obj[i]->point_camera[j].z =
+-(tab[2] * tmp) + (tab[3] * room->fix_obj[i]->point_camera[j].z);
+    tmp = room->fix_obj[i]->point_camera[j].x;
+    room->fix_obj[i]->point_camera[j].x =
+(tab[5] * tmp) - (tab[4] * room->fix_obj[i]->point_camera[j].y);
+    room->fix_obj[i]->point_camera[j].y =
+(tab[4] * tmp) + (tab[5] * room->fix_obj[i]->point_camera[j].y);
+}
+
+void    transform_rotation_camera(my_game_t *game, room_t *room)
+{
+    int i = -1;
+    int j;
+    float tab[6] = {sin(-game->camera->roll * M_PI / 180),
+cos(-game->camera->roll * M_PI / 180), sin(-game->camera->yaw * M_PI / 180),
+cos(-game->camera->yaw * M_PI / 180), sin(-game->camera->pitch * M_PI / 180),
+cos(-game->camera->pitch * M_PI / 180)};
+
+    while (++i < room->nb_obj) {
+        j = -1;
+        while (++j < room->fix_obj[i]->nb_point) {
+            make_rotation(room, tab, i, j);
         }
-        i++;
     }
 }
 
-void    transform_camera(my_game_t *game)
+void    transform_camera(my_game_t *game, room_t *room)
 {
-    transform_move_camera(game);
-    transform_rotation_camera(game);
+    transform_move_camera(game, room);
+    transform_rotation_camera(game, room);
 }

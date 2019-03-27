@@ -44,7 +44,7 @@ void    rotation(map_t *map, obj_t *obj)
     rotation_cond(map, obj);
 }
 
-void    to_2d(my_game_t *game)
+void    to_2d(my_game_t *game, room_t *room)
 {
     int     n = -1;
     int     i;
@@ -53,18 +53,18 @@ void    to_2d(my_game_t *game)
     double  height_width = (double)HM / (double)WM;
     float   prospect;
 
-    transform_camera(game);
-    while (++n < game->obj) {
+    transform_camera(game, room);
+    while (++n < room->nb_obj) {
         i = -1;
-        while (++i < game->map->obj[n]->nb_point) {
-            prospect = (game->map->obj[n]->point_camera[i].z == 0)
-? 1 : 1.0 / (game->map->obj[n]->point_camera[i].z);
-            game->map->obj[n]->point_2d[i].x = (game->map->obj[n]->
+        while (++i < room->fix_obj[n]->nb_point) {
+            prospect = (room->fix_obj[n]->point_camera[i].z == 0)
+? 1 : 1.0 / (room->fix_obj[n]->point_camera[i].z);
+            room->fix_obj[n]->point_2d[i].x = (room->fix_obj[n]->
 point_camera[i].x * prospect) * (width_d2) * (height_width) + (width_d2);
-            game->map->obj[n]->point_2d[i].y =
-(-(game->map->obj[n]->point_camera[i].y) * prospect + 1) * (height_d2);
-            game->map->obj[n]->point_2d[i].z =
-game->map->obj[n]->point_camera[i].z;
+            room->fix_obj[n]->point_2d[i].y =
+(-(room->fix_obj[n]->point_camera[i].y) * prospect + 1) * (height_d2);
+            room->fix_obj[n]->point_2d[i].z =
+room->fix_obj[n]->point_camera[i].z;
         }
     }
 }

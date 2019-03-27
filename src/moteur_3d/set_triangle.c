@@ -82,5 +82,4 @@ array[k + ((k > 1) ? nb : 0)][i] != '/')
         k++;
     }
     set_triangle_texture(obj, array, nb);
-    obj->triangle[obj->nb_tr].square_part = NULL;
 }

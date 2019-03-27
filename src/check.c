@@ -25,9 +25,9 @@ sfKeyboard_isKeyPressed(sfKeyEscape))
         if (sfKeyboard_isKeyPressed(sfKeyA))
             move_right(game, -0.05);
         if (sfKeyboard_isKeyPressed(sfKeyE))
-            move_up(game, 0.05);
+            move_up(game, 0.5);
         if (sfKeyboard_isKeyPressed(sfKeyQ))
-            move_up(game, -0.05);
+            move_up(game, -0.5);
         if (sfKeyboard_isKeyPressed(sfKeyJ))
             rotate_camera(game, 1, 0, 0);
         if (sfKeyboard_isKeyPressed(sfKeyU))
@@ -40,5 +40,8 @@ sfKeyboard_isKeyPressed(sfKeyEscape))
             rotate_camera(game, 0, 0, 1);
         if (sfKeyboard_isKeyPressed(sfKeyO))
             rotate_camera(game, 0, 0, -1);
+        if (sfKeyboard_isKeyPressed(sfKeyB))
+            printf("x= %f, y= %f, z= %f\n",
+game->camera->move.x, game->camera->move.y, game->camera->move.z);
     }
 }

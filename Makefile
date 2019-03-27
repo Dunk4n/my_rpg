@@ -13,11 +13,18 @@ D_LIB	=	./lib/my/
 
 SRC	=	$(D_SRC)main.c					\
 		$(D_SRC)check.c					\
-		$(D_SRC)moteur_3d/draw.c			\
 		$(D_SRC)init.c					\
-		$(D_SRC)moteur_3d/line.c			\
+		$(D_SRC)init_game.c				\
 		$(D_SRC)update.c				\
 		$(D_SRC)window.c				\
+		$(D_SRC)time.c					\
+		$(D_SRC)charge_room.c				\
+		$(D_SRC)set_obj_in_room.c			\
+		$(D_SRC)copy_room.c				\
+		$(D_SRC)display_room.c				\
+		$(D_SRC)movement.c				\
+		$(D_SRC)moteur_3d/draw.c			\
+		$(D_SRC)moteur_3d/line.c			\
 		$(D_SRC)moteur_3d/iso.c				\
 		$(D_SRC)moteur_3d/triangle.c			\
 		$(D_SRC)moteur_3d/z_buff.c			\

@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "world.h"
 
-const char *name_obj[] = {"doc/cube_tx.obj", "doc/mount.obj"};
+const char *name_obj[] = {"doc/dalle.obj", "doc/wall.obj"};
 
 void    free_tab_obj(obj_t **obj, int nb)
 {
@@ -16,11 +16,11 @@ void    free_tab_obj(obj_t **obj, int nb)
 
     if (!obj)
         return ;
-    while (i <= nb) {
-        (obj[i]->point_3d) ? free(obj[i]->point_3d) : 0;
-        (obj[i]->point_2d) ? free(obj[i]->point_2d) : 0;
-        (obj[i]->point_tx) ? free(obj[i]->point_tx) : 0;
-        (obj[i]->triangle) ? free(obj[i]->triangle) : 0;
+    while (i < nb) {
+        free(obj[i]->point_3d);
+        free(obj[i]->point_2d);
+        free(obj[i]->point_tx);
+        free(obj[i]->triangle);
         i++;
     }
     free(obj);
