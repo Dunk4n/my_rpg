@@ -66,6 +66,7 @@ void    movement(my_game_t *game, double x, double y, double z)
 {
     char around[11] = {'\0'};
 
+    game->map->update = 1;
     set_around(game, around);
     if (x != 0)
         check_x(game, around, &x);

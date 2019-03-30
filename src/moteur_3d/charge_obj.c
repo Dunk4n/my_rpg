@@ -30,7 +30,7 @@ int     charge_obj(my_game_t *game)
 {
     int i = 0;
 
-    game->obj = 3;
+    game->obj = 2;
     if (!(game->map->obj = malloc(sizeof(obj_t*) * game->obj)))
         return (0);
     while (i < game->obj) {

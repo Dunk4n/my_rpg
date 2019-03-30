@@ -7,11 +7,13 @@
 
 #include "world.h"
 
-void    clear_buff(my_framebuff_t *buff)
+void    clear_buff(my_framebuff_t *buff, double *z_buff)
 {
     int i = 0;
+    int len = WM * HM;
 
-    while (i < WM * HM) {
+    while (i < len) {
+        z_buff[i] = -1;
         buff->pixels[i * 4] = 0;
         buff->pixels[i * 4 + 1] = 0;
         buff->pixels[i * 4 + 2] = 0;

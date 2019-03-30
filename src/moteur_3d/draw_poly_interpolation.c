@@ -27,6 +27,13 @@ arg_interpolation_t *arg, double *tab)
     tab[4] = arg->iza + tab[3] * arg->dizdx;
     tab[5] = arg->uiza + tab[3] * arg->duizdx;
     tab[6] = arg->viza + tab[3] * arg->dvizdx;
+    if (x12[0] < 0) {
+        tab[4] += arg->dizdx * -x12[0];
+        tab[5] += arg->duizdx * -x12[0];
+        tab[6] += arg->dvizdx * -x12[0];
+        x12[0] = 0;
+    }
+    (x12[1] > WM) ? x12[1] = WM : 0;
     while (x12[0]++ < x12[1]) {
         tab[0] = 1 / tab[4];
         tab[1] = tab[5] * tab[0];
@@ -35,7 +42,8 @@ arg_interpolation_t *arg, double *tab)
         cord.y = arg->y1;
         cord.z = tab[0];
         put_pixel3d(game, cord, sfImage_getPixel(game->img[tri->texture],
-(int)(tab[1]) % lim.x, (int)(tab[2]) % lim.y));
+(int)((tab[1] >= lim.x || tab[1] < 0) ? lim.x - 1 : tab[1]),
+(int)((tab[2] >= lim.y || tab[2] < 0) ? lim.y - 1 : tab[2])));
         tab[4] += arg->dizdx;
         tab[5] += arg->duizdx;
         tab[6] += arg->dvizdx;
@@ -46,9 +54,22 @@ void    draw_poly_interpolation(my_game_t *game, triangle_t *tri,
 arg_interpolation_t *arg)
 {
     double tab[7];
+    int tmp;
 
+    if (arg->y1 < 0) {
+        tmp = (arg->y2 < 0) ? arg->y2 - arg->y1 : -arg->y1;
+        arg->xa += arg->dxdya * tmp;
+        arg->xb += arg->dxdyb * tmp;
+        arg->iza += arg->dizdya * tmp;
+        arg->uiza += arg->duizdya * tmp;
+        arg->viza += arg->dvizdya * tmp;
+        arg->y1 = 0;
+    }
+    (arg->y2 > HM) ? arg->y2 = HM : 0;
+    (arg->y2 <= 0) ? arg->y2 = 0 : 0;
     while (arg->y1 < arg->y2) {
-        poly_horizontal_line(game, tri, arg, tab);
+        if (arg->y1 >= 0)
+            poly_horizontal_line(game, tri, arg, tab);
         arg->xa += arg->dxdya;
         arg->xb += arg->dxdyb;
         arg->iza += arg->dizdya;

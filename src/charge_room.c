@@ -88,6 +88,7 @@ room_t  **charge_room(my_game_t *game)
     int         i = 0;
 
     game->nb_room = 1;
+    game->actual_room = 0;
     if (!(room = malloc(sizeof(room_t*) * (game->nb_room))))
         return (NULL);
     while (i < game->nb_room) {

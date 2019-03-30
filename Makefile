@@ -50,7 +50,7 @@ NAME	=	my_rpg
 
 CFLAGS	=	-W -Wall -Wextra -I$(D_INC)
 
-LDFLAGS	=	-L$(D_LIB) -lmy -l csfml-graphics -l csfml-system  -l csfml-window -lm
+LDFLAGS	=	-L$(D_LIB) -lmy -l csfml-graphics -l csfml-system  -l csfml-window -lm -g
 LDFLAGS_WAGNER += -L $(D_LIB) -lmy -lm -lc_graph_prog
 BUILD_DIR = build
 

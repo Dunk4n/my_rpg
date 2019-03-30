@@ -11,14 +11,14 @@
 void    cond_if_not_side(my_game_t *game, triangle_t *tri, double *tab,
 arg_interpolation_t *arg)
 {
-    if (arg->y1i < arg->y2i) {
+    if (arg->y1i < ((arg->y2i >= HM) ? HM - 1 : arg->y2i)) {
         arg->xb = tab[0] + tab[22] * tab[19];
         arg->dxdyb = tab[19];
         arg->y1 = arg->y1i;
         arg->y2 = arg->y2i;
         draw_poly_interpolation(game, tri, arg);
     }
-    if (arg->y2i < arg->y3i) {
+    if (arg->y2i < ((arg->y3i >= HM) ? HM - 1 : arg->y3i)) {
         arg->xb = tab[2] + (1 - (tab[3] - arg->y2i)) * tab[21];
         arg->dxdyb = tab[21];
         arg->y1 = arg->y2i;
@@ -45,7 +45,7 @@ arg_interpolation_t *arg)
 void    cond_if_side(my_game_t *game, triangle_t *tri, double *tab,
 arg_interpolation_t *arg)
 {
-    if (arg->y2i < arg->y3i) {
+    if (arg->y2i < ((arg->y3i >= HM) ? HM - 1 : arg->y3i)) {
         arg->dxdya = tab[21];
         arg->dizdya = tab[21] * arg->dizdx + tab[16];
         arg->duizdya = tab[21] * arg->duizdx + tab[17];
@@ -67,7 +67,7 @@ arg_interpolation_t *arg)
     arg->dxdyb = tab[20];
     tab[22] = 1 - (tab[1] - arg->y1i);
     arg->xb = tab[0] + tab[22] * arg->dxdyb;
-    if (arg->y1i < arg->y2i) {
+    if (arg->y1i < ((arg->y2i >= HM) ? HM - 1 : arg->y2i)) {
         arg->dxdya = tab[19];
         arg->dizdya = tab[19] * arg->dizdx + tab[16];
         arg->duizdya = tab[19] * arg->duizdx + tab[17];

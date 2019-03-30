@@ -166,7 +166,7 @@ void    put_pixel(my_framebuff_t *framebuff, int x, int y, sfColor color);
 void    put_pixel3d(my_game_t *game, sfVector3f cord, sfColor color);
 void    square(my_framebuff_t *buff, sfVector2f pos, sfVector2i size,
 sfColor color);
-void    clear_buff(my_framebuff_t *buff);
+void    clear_buff(my_framebuff_t *buff, double *z_buff);
 void    clear_z_buff(double *z_buff);
 void    clear_t_buff(triangle_t **t_buff);
 void    transform_move(my_game_t *game, obj_t *obj);
@@ -227,7 +227,11 @@ void    copy_face(obj_t *obj, obj_t *to_copy);
 void    copy_info_of_obj(obj_t *obj, obj_t *to_copy);
 int     set_each_line(room_t *room, char **tab, int fd);
 
-#define WM 1920
-#define HM 1080
+#define WM 480
+//#define WM 1920
+//1920  1280  960  480
+#define HM 270
+//#define HM 1080
+//1080  720   540  270
 
 #endif

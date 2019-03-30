@@ -41,7 +41,7 @@ my_window_t     *set_window(my_window_t *win)
     win->window = sfRenderWindow_create(video_mode, "my_world",
 sfFullscreen, NULL);
     sfSprite_setTexture(win->sprite, win->texture, sfTrue);
-    sfRenderWindow_setFramerateLimit(win->window, 10);
+    sfRenderWindow_setFramerateLimit(win->window, 60);
     if ((win->framebuff = my_framebuff_create(WM, HM)) == NULL)
         return (NULL);
     win->z_buff = malloc(sizeof(double) * WM * HM);

@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 #include "world.h"
 
 sfVector3f      normal_vec(sfVector3f a, sfVector3f b, sfVector3f c)
