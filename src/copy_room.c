@@ -10,7 +10,7 @@
 #include "world.h"
 #include "my.h"
 
-const char char_obj[] = "xO";
+const char char_obj[] = "xOv";
 
 int     get_nb_of_obj(room_t *room)
 {

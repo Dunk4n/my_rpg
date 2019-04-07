@@ -15,7 +15,9 @@ void    move_forward(my_game_t *game, float coef)
         return ;
     nor = normal_vec(game->camera->point[0], game->camera->point[1],
 game->camera->point[2]);
-    movement(game, nor.x * coef, 0, nor.z * coef);
+    game->player->accel.x += nor.x * coef;
+    game->player->accel.z += nor.z * coef;
+    //movement(game, nor.x * coef, 0, nor.z * coef);
 }
 
 void    move_right(my_game_t *game, float coef)
@@ -27,7 +29,9 @@ void    move_right(my_game_t *game, float coef)
     nor = (sfVector3f){game->camera->point[1].x - game->camera->point[0].x,
 game->camera->point[1].y - game->camera->point[0].y,
 game->camera->point[1].z - game->camera->point[0].z};
-    movement(game, nor.x * coef, nor.y * coef, nor.z * coef);
+    game->player->accel.x += nor.x * coef;
+    game->player->accel.z += nor.z * coef;
+    //movement(game, nor.x * coef, 0, nor.z * coef);
 }
 
 void    move_up(my_game_t *game, float coef)
@@ -39,5 +43,8 @@ void    move_up(my_game_t *game, float coef)
     nor = (sfVector3f){game->camera->point[2].x - game->camera->point[0].x,
 game->camera->point[2].y - game->camera->point[0].y,
 game->camera->point[2].z - game->camera->point[0].z};
-    movement(game, nor.x * coef, nor.y * coef, nor.z * coef);
+    game->player->accel.x += nor.x * coef;
+    game->player->accel.y += nor.y * coef;
+    game->player->accel.z += nor.z * coef;
+    //movement(game, nor.x * coef, nor.y * coef, nor.z * coef);
 }

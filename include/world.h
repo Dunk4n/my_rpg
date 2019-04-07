@@ -93,6 +93,8 @@ typedef struct  my_window_s
     double              *z_buff;
     triangle_t          **t_buff;
     sfVector2u          pos;
+    sfVector2i          mouse;
+    sfVector2f          ang_per_pixel;
 }               my_window_t;
 
 typedef struct  obj_s
@@ -111,10 +113,19 @@ typedef struct  camera_s
 {
     sfVector3f  move;
     sfVector3f  point[3];
+    float       rot[9];
     float       roll;
     float       yaw;
     float       pitch;
+    float       roll_cam;
 }               camera_t;
+
+typedef struct  player_s
+{
+    int         vie;
+    sfVector3f  speed;
+    sfVector3f  accel;
+}               player_t;
 
 typedef struct  map_s
 {
@@ -150,6 +161,7 @@ typedef struct  my_game_s
     my_window_t     *win;
     map_t           *map;
     sfImage         **img;
+    player_t        *player;
     camera_t        *camera;
     sfClock         *clock;
     sfInt64         time_fg;
@@ -158,6 +170,7 @@ typedef struct  my_game_s
     int             actual_room;
     int             nb_img;
     int             nb_col_max;
+    int             in_game;
 }               my_game_t;
 
 int     window(void);
@@ -226,6 +239,10 @@ void    copy_adresse_face(obj_t *obj, int i);
 void    copy_face(obj_t *obj, obj_t *to_copy);
 void    copy_info_of_obj(obj_t *obj, obj_t *to_copy);
 int     set_each_line(room_t *room, char **tab, int fd);
+void    rotate_camera_up(my_game_t *game, float roll);
+sfVector3f      put_rotate_on_point(float *rot, sfVector3f point);
+void    rotate_up(my_game_t *game, float weight);
+void    rotate_right(my_game_t *game, float weight);
 
 #define WM 480
 //#define WM 1920

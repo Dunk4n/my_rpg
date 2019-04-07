@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include <math.h>
 #include "world.h"
 
 void            delete_framebuff(my_framebuff_t *framebuff)
@@ -31,14 +32,9 @@ my_framebuff_t  *my_framebuff_create(int width, int height)
 
 my_window_t     *set_window(my_window_t *win)
 {
-    sfVideoMode     video_mode;
-
     win->texture = sfTexture_create(WM, HM);
     win->sprite = sfSprite_create();
-    video_mode.width = WM;
-    video_mode.height = HM;
-    video_mode.bitsPerPixel = 32;
-    win->window = sfRenderWindow_create(video_mode, "my_world",
+    win->window = sfRenderWindow_create((sfVideoMode){WM, HM, 32}, "my_rpg",
 sfFullscreen, NULL);
     sfSprite_setTexture(win->sprite, win->texture, sfTrue);
     sfRenderWindow_setFramerateLimit(win->window, 60);
@@ -46,6 +42,12 @@ sfFullscreen, NULL);
         return (NULL);
     win->z_buff = malloc(sizeof(double) * WM * HM);
     win->t_buff = malloc(sizeof(triangle_t*) * WM * HM);
+    win->mouse.x = WM / 2;
+    win->mouse.y = HM / 2;
+    sfMouse_setPositionRenderWindow(win->mouse, win->window);
+    win->ang_per_pixel.x = M_PI / 2 / WM;
+    win->ang_per_pixel.y = M_PI / 2 / HM;
+    sfRenderWindow_setMouseCursorVisible(win->window, sfFalse);
     return (win);
 }
 
@@ -80,6 +82,7 @@ my_game_t        *set_game(void)
         (game) ? free(game) : 0;
         return (NULL);
     }
+    game->in_game = 0;
     set_map(&(game->map));
     if (!game->map) {
         (game->win) ? free(game->win) : 0;

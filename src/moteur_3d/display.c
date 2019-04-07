@@ -16,8 +16,8 @@ sfVector3f      normal_vec(sfVector3f a, sfVector3f b, sfVector3f c)
     sfVector3f ac = {c.x - a.x, c.y - a.y, c.z - a.z};
 
     return ((sfVector3f){ab.y * ac.z - ab.z * ac.y,
-            ab.z * ac.x - ab.x * ac.z,
-            ab.x * ac.y - ab.y * ac.x});
+                         ab.z * ac.x - ab.x * ac.z,
+                         ab.x * ac.y - ab.y * ac.x});
 }
 
 int     is_drawable(triangle_t *tri)

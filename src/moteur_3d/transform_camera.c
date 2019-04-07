@@ -27,7 +27,7 @@ room->fix_obj[i]->point_3d[j].z - game->camera->move.z;
         i++;
     }
 }
-
+/*
 void    make_rotation(room_t *room, float *tab, int i, int j)
 {
     double tmp;
@@ -48,21 +48,25 @@ void    make_rotation(room_t *room, float *tab, int i, int j)
     room->fix_obj[i]->point_camera[j].y =
 (tab[4] * tmp) + (tab[5] * room->fix_obj[i]->point_camera[j].y);
 }
-
+*/
 void    transform_rotation_camera(my_game_t *game, room_t *room)
 {
-    int i = -1;
+    int i = 0;
     int j;
-    float tab[6] = {sin(-game->camera->roll * M_PI / 180),
+/*    float tab[6] = {sin(-game->camera->roll * M_PI / 180),
 cos(-game->camera->roll * M_PI / 180), sin(-game->camera->yaw * M_PI / 180),
 cos(-game->camera->yaw * M_PI / 180), sin(-game->camera->pitch * M_PI / 180),
 cos(-game->camera->pitch * M_PI / 180)};
-
-    while (++i < room->nb_obj) {
-        j = -1;
-        while (++j < room->fix_obj[i]->nb_point) {
-            make_rotation(room, tab, i, j);
+*/
+    while (i < room->nb_obj) {
+        j = 0;
+        while (j < room->fix_obj[i]->nb_point) {
+            //make_rotation(room, tab, i, j);
+            room->fix_obj[i]->point_camera[j] =
+put_rotate_on_point(game->camera->rot, room->fix_obj[i]->point_camera[j]);
+            j++;
         }
+        i++;
     }
 }
 
