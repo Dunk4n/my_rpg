@@ -8,8 +8,11 @@
 #ifndef MY_H
 #define MY_H
 
-# include <unistd.h>
+#include <unistd.h>
 #include <stdarg.h>
+#include "world.h"
+#include "define.h"
+#include "struct.h"
 
 # define cmp(x, y, z) my_strncmp(x, y, z)
 # define ABS(x) (((x) < 0) ? -(x) : (x))
@@ -92,5 +95,16 @@ int     my_putchare(char c);
 int     my_put_nbre(int nb);
 int     my_putstre(char *str);
 void    put_color(char cd, int bold, int sortie);
+
+//Wagner function
+
+void init_w(win_t *win);
+int clic_menu(win_t *win);
+void init_menu(menu_t *menu);
+int menu_window(win_t *win, my_game_t *game);
+void display_menu(menu_t *menu);
+void event_function(win_t *win);
+void print_all_menu(win_t *win);
+void ft_game(my_game_t *game);
 
 #endif

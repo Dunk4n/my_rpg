@@ -20,9 +20,13 @@ SRC	=	$(D_SRC)main.c					\
 		$(D_SRC)time.c					\
 		$(D_SRC)charge_room.c				\
 		$(D_SRC)set_obj_in_room.c			\
+		$(D_SRC)window_init.c				\
 		$(D_SRC)copy_room.c				\
 		$(D_SRC)display_room.c				\
 		$(D_SRC)movement.c				\
+		$(D_SRC)menu/button_font.c			\
+		$(D_SRC)menu/menu.c				\
+		$(D_SRC)menu/menu_ft.c				\
 		$(D_SRC)moteur_3d/draw.c			\
 		$(D_SRC)moteur_3d/line.c			\
 		$(D_SRC)moteur_3d/iso.c				\
