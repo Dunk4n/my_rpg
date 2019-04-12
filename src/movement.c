@@ -9,6 +9,8 @@
 #include "my.h"
 #include "world.h"
 
+const double    y_level[3][2] = {{-1, 0}, {-1.1, 0.1}, {-1, 0.5}};
+
 void    set_around(my_game_t *game, char *around)
 {
     double cord[11][3] = {{0, -1, 0}, {0, -1.1, 0}, {0, 1, 0}, {1, 0, 0},
@@ -66,49 +68,12 @@ void    check_z(my_game_t *game, char *around, double *z)
         *z = (int)game->camera->move.z - 1 -(game->camera->move.z - 1);
 }
 
-void    make_friction(my_game_t *game, char *around)
-{
-    if (around[0] != '.' || around[1] != '.') {
-        game->player->accel.y = 0;
-        game->player->speed.y = 0;
-        if (game->player->speed.x != 0) {
-            if (ABS(game->player->speed.x) < 0.1)
-                game->player->speed.x = 0;
-            else
-                game->player->speed.x += (game->player->speed.x < 0) ?
-0.1 : -0.1;
-        }
-        if (game->player->accel.x != 0) {
-            if (ABS(game->player->accel.x) < 0.1)
-                game->player->accel.x = 0;
-            else
-                game->player->accel.x += (game->player->accel.x < 0) ?
-0.1 : -0.1;
-        }
-        if (game->player->speed.z != 0) {
-            if (ABS(game->player->speed.z) < 0.1)
-                game->player->speed.z = 0;
-            else
-                game->player->speed.z += (game->player->speed.z < 0) ?
-0.1 : -0.1;
-        }
-        if (game->player->accel.z != 0) {
-            if (ABS(game->player->accel.z) < 0.1)
-                game->player->accel.z = 0;
-            else
-                game->player->accel.z += (game->player->accel.z < 0) ?
-0.1 : -0.1;
-        }
-    }
-}
-
 void    movement(my_game_t *game, double x, double y, double z)
 {
     char around[11] = {'\0'};
 
     game->map->update = 1;
     set_around(game, around);
-    make_friction(game, around);
     if (x != 0)
         check_x(game, around, &x);
     if (y != 0)

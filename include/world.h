@@ -18,6 +18,10 @@
 const char      *img_name[13];
 const char      *img_button[13];
 const sfColor   color[10];
+const char      char_obj[2];
+const char      *name[21];
+const char      type_enemy[3];
+const int       pnj[4];
 
 typedef struct  arg_interpolation_s
 {
@@ -123,9 +127,22 @@ typedef struct  camera_s
 typedef struct  player_s
 {
     int         vie;
-    sfVector3f  speed;
-    sfVector3f  accel;
+    int         value_hit;
 }               player_t;
+
+typedef struct  enemy_s
+{
+    int         vie;
+    int         degat;
+    int         type;
+    int         pnj;
+    int         dialog;
+    size_t      nb_dialog;
+    int         name;
+    float       yaw;
+    sfVector3f  pos;
+    obj_t       *obj;
+}               enemy_t;
 
 typedef struct  map_s
 {
@@ -148,7 +165,9 @@ typedef struct  map_s
 typedef struct  room_s
 {
     obj_t       **fix_obj;
+    enemy_t     *enemy;
     char        ***room;
+    int         nb_enemy;
     int         x_max;
     int         y_max;
     int         z_max;
@@ -165,12 +184,14 @@ typedef struct  my_game_s
     camera_t        *camera;
     sfClock         *clock;
     sfInt64         time_fg;
+    sfInt64         time_enemy_fg;
     int             obj;
     int             nb_room;
     int             actual_room;
     int             nb_img;
     int             nb_col_max;
     int             in_game;
+    int             my_turn;
 }               my_game_t;
 
 int     window(void);
@@ -184,7 +205,7 @@ void    clear_z_buff(double *z_buff);
 void    clear_t_buff(triangle_t **t_buff);
 void    transform_move(my_game_t *game, obj_t *obj);
 void    transform_lower(my_game_t *game, obj_t *obj);
-void    rotation(map_t *map, obj_t *obj);
+void    rotation(obj_t *obj, float yaw);
 void    display(my_game_t *game, obj_t *obj);
 my_game_t        *set_game(void);
 void    update(my_game_t *game);
@@ -214,21 +235,19 @@ sfColor color);
 void    draw_line(my_framebuff_t *buff, sfVector2f *pos, int r, sfColor color);
 int     charge_obj(my_game_t *game);
 sfVector3f      normal_vec(sfVector3f a, sfVector3f b, sfVector3f c);
-void    move_forward(my_game_t *game, float coef);
-void    move_right(my_game_t *game, float coef);
-void    move_up(my_game_t *game, float coef);
+int     move_forward(my_game_t *game, int dir);
+int     move_right(my_game_t *game, int dir);
 void    rotation_roll(my_game_t *game, float coef);
 void    rotation_yaw(my_game_t *game, float coef);
 void    rotation_pitch(my_game_t *game, float coef);
 void    rotate_camera(my_game_t *game, float roll, float yaw, float pitch);
-void    make_time(my_game_t *game);
 int     init_game(my_game_t *game);
 room_t  **charge_room(my_game_t *game);
 void    transform_camera(my_game_t *game, room_t *room);
 void    to_2d(my_game_t *game, room_t *room);
 void    display_room(my_game_t *game);
 void    movement(my_game_t *game, double x, double y, double z);
-void    copy_obj(obj_t *obj, obj_t *to_copy);
+void    copy_obj(obj_t **obj, obj_t *to_copy);
 void    move_obj_to(obj_t *obj, int y, int z, int x);
 void    set_all_obj_in_room(my_game_t *game, room_t *room);
 int     set_obj_in_room(my_game_t *game, room_t *room);
@@ -243,6 +262,16 @@ void    rotate_camera_up(my_game_t *game, float roll);
 sfVector3f      put_rotate_on_point(float *rot, sfVector3f point);
 void    rotate_up(my_game_t *game, float weight);
 void    rotate_right(my_game_t *game, float weight);
+int     on_ground(my_game_t *game);
+int     init_enemy(my_game_t *game);
+void    to_2d_enemy(room_t *room);
+float   round_angle(float angle);
+void    enemy_turn(my_game_t *game);
+int     beat(my_game_t *game);
+int     talk_pnj(my_game_t *game, enemy_t *cible);
+size_t  nb_monster_in_room(room_t *room);
+int     kill_all_monster(my_game_t *game, int nb_room, int nb);
+int     vie_superior_of(my_game_t *game, int nb_room, int nb);
 
 #define WM 480
 //#define WM 1920

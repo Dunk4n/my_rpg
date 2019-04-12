@@ -10,21 +10,21 @@
 #include "world.h"
 #include "my.h"
 
-void    copy_obj(obj_t *obj, obj_t *to_copy)
+void    copy_obj(obj_t **obj, obj_t *to_copy)
 {
-    if (!to_copy) {
-        obj = NULL;
+    if (!to_copy || !to_copy) {
+        *obj = NULL;
         return ;
     }
-    obj->nb_point = to_copy->nb_point;
-    obj->nb_tr = to_copy->nb_tr;
-    obj->nb_tx = to_copy->nb_tx;
-    obj->point_3d = malloc(sizeof(sfVector3f) * obj->nb_point);
-    obj->point_camera = malloc(sizeof(sfVector3f) * obj->nb_point);
-    obj->point_2d = malloc(sizeof(sfVector3f) * obj->nb_point);
-    obj->point_tx = malloc(sizeof(sfVector3f) * obj->nb_tx);
-    obj->triangle = malloc(sizeof(triangle_t) * obj->nb_tr);
-    copy_info_of_obj(obj, to_copy);
+    (*obj)->nb_point = to_copy->nb_point;
+    (*obj)->nb_tr = to_copy->nb_tr;
+    (*obj)->nb_tx = to_copy->nb_tx;
+    (*obj)->point_3d = malloc(sizeof(sfVector3f) * (*obj)->nb_point);
+    (*obj)->point_camera = malloc(sizeof(sfVector3f) * (*obj)->nb_point);
+    (*obj)->point_2d = malloc(sizeof(sfVector3f) * (*obj)->nb_point);
+    (*obj)->point_tx = malloc(sizeof(sfVector3f) * (*obj)->nb_tx);
+    (*obj)->triangle = malloc(sizeof(triangle_t) * (*obj)->nb_tr);
+    copy_info_of_obj(*obj, to_copy);
 }
 
 void    move_obj_to(obj_t *obj, int y, int z, int x)
@@ -35,7 +35,7 @@ void    move_obj_to(obj_t *obj, int y, int z, int x)
         return ;
     while (i < obj->nb_point) {
         obj->point_3d[i].x += x + 0.5;
-        obj->point_3d[i].y += y + 0.5 + 0.01;
+        obj->point_3d[i].y += y + 0.5;
         obj->point_3d[i].z += z + 0.5;
         i++;
     }
@@ -53,9 +53,9 @@ void    set_all_obj_in_room(my_game_t *game, room_t *room)
         while (j < room->z_max) {
             k = 0;
             while (k < room->x_max) {
-                (room->room[i][j][k] != '.') ?
-copy_obj(room->fix_obj[nb], get_obj_of_char(game, room->room[i][j][k])) : 0;
-                (room->room[i][j][k] != '.') ?
+                (room->room[i][j][k] != '.' && room->room[i][j][k] < 'a') ?
+copy_obj(&(room->fix_obj[nb]), get_obj_of_char(game, room->room[i][j][k])) : 0;
+                (room->room[i][j][k] != '.' && room->room[i][j][k] < 'a') ?
 move_obj_to(room->fix_obj[nb++], i, j, k) : 0;
                 k++;
             }

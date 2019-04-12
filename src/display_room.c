@@ -13,18 +13,27 @@ int global = 0;
 void    display_room(my_game_t *game)
 {
     int i = 0;
-    sfInt64 time;
+    //sfInt64 time;
 
-    time = sfClock_getElapsedTime(game->clock).microseconds;
+    //time = sfClock_getElapsedTime(game->clock).microseconds;
     clear_buff(game->win->framebuff, game->win->z_buff);
     to_2d(game, game->room[game->actual_room]);
     while (i < game->room[game->actual_room]->nb_obj) {
-        display(game, game->room[game->actual_room]->fix_obj[i]);
+        if (game->room[game->actual_room]->fix_obj[i])
+            display(game, game->room[game->actual_room]->fix_obj[i]);
+        i++;
+    }
+    i = 0;
+    while (i < game->room[game->actual_room]->nb_enemy) {
+        if (game->room[game->actual_room]->enemy[i].obj &&
+game->room[game->actual_room]->enemy[i].vie > 0)
+            display(game, game->room[game->actual_room]->enemy[i].obj);
         i++;
     }
     /*if (global < 400)
         printf("%d\n",
 (int)(1000 / ((double)(sfClock_getElapsedTime(game->clock).microseconds - time)
 / 1000) + 0.5));
-    global++;*/
+    global++;
+    */
 }

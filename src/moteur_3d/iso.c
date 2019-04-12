@@ -10,15 +10,15 @@
 #include "world.h"
 #include "my.h"
 
-static void    rotation_cond(map_t *map, obj_t *obj)
+static void    rotation_cond(obj_t *obj, float yaw)
 {
     int i = 0;
-    float sr = sin(map->roll_fg * M_PI / 180);
-    float cr = cos(map->roll_fg * M_PI / 180);
-    float sy = sin(map->yaw_fg * M_PI / 180);
-    float cy = cos(map->yaw_fg * M_PI / 180);
-    float sp = sin(map->pitch_fg * M_PI / 180);
-    float cp = cos(map->pitch_fg * M_PI / 180);
+    float sr = sin(0);
+    float cr = cos(0);
+    float sy = sin(yaw * M_PI / 180);
+    float cy = cos(yaw * M_PI / 180);
+    float sp = sin(0);
+    float cp = cos(0);
     double tmp;
 
     while (i < obj->nb_point) {
@@ -35,13 +35,35 @@ static void    rotation_cond(map_t *map, obj_t *obj)
     }
 }
 
-void    rotation(map_t *map, obj_t *obj)
+void    rotation(obj_t *obj, float yaw)
 {
-    if (!obj)
+    if (!obj || !yaw)
         return ;
-    if (map->roll_fg == 0 && map->yaw_fg == 0 && map->pitch_fg == 0)
-        return ;
-    rotation_cond(map, obj);
+    rotation_cond(obj, yaw);
+}
+
+void    to_2d_enemy(room_t *room)
+{
+    int     n = -1;
+    int     i;
+    double  width_d2 = WM / 2;
+    double  height_d2 = HM / 2;
+    double  height_width = (double)HM / (double)WM;
+    float   prospect;
+
+    while (++n < room->nb_enemy) {
+        i = -1;
+        while (room->enemy[n].obj && ++i < room->enemy[n].obj->nb_point) {
+            prospect = (room->enemy[n].obj->point_camera[i].z == 0)
+? 1 : 1.0 / (room->enemy[n].obj->point_camera[i].z);
+            room->enemy[n].obj->point_2d[i].x = (room->enemy[n].obj->
+point_camera[i].x * prospect) * (width_d2) * (height_width) + (width_d2);
+            room->enemy[n].obj->point_2d[i].y =
+(-(room->enemy[n].obj->point_camera[i].y) * prospect + 1) * (height_d2);
+            room->enemy[n].obj->point_2d[i].z =
+room->enemy[n].obj->point_camera[i].z;
+        }
+    }
 }
 
 void    to_2d(my_game_t *game, room_t *room)
@@ -56,7 +78,7 @@ void    to_2d(my_game_t *game, room_t *room)
     transform_camera(game, room);
     while (++n < room->nb_obj) {
         i = -1;
-        while (++i < room->fix_obj[n]->nb_point) {
+        while (room->fix_obj[n] && ++i < room->fix_obj[n]->nb_point) {
             prospect = (room->fix_obj[n]->point_camera[i].z == 0)
 ? 1 : 1.0 / (room->fix_obj[n]->point_camera[i].z);
             room->fix_obj[n]->point_2d[i].x = (room->fix_obj[n]->

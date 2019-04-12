@@ -5,6 +5,8 @@
 ** M-x doctor
 */
 
+#include <time.h>
+#include <stdlib.h>
 #include "world.h"
 #include "my.h"
 
@@ -20,5 +22,6 @@ int     main(int ac, char **av)
         return (display_usage());
     if (ac > 1)
         return (84);
+    srand(time(NULL));
     return (window());
 }

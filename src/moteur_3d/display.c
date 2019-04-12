@@ -45,16 +45,17 @@ tri->point_2d[2]->z <= 0)
 
 static void     display_triangle_in_map(my_game_t *game, triangle_t *tri)
 {
-    double res;
+//    double res;
     sfVector3f pos[] = {*(tri->point_2d[0]), *(tri->point_2d[1]),
 *(tri->point_2d[2]), *(tri->point_2d[0]), *(tri->point_2d[0]),
 *(tri->point_2d[0])};
-    sfVector3f normal = normal_vec(*(tri->point_camera[0]),
+/*    sfVector3f normal = normal_vec(*(tri->point_camera[0]),
 *(tri->point_camera[1]), *(tri->point_camera[2]));
 
     res = normal.z;
     if (res < 0)
         res *= -1;
+*/
     game->map->lum = 1;//res;
     game->map->ptr_tri = tri;
     if (tri->point_tx[0] == NULL || tri->point_tx[1] == NULL ||

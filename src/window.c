@@ -16,20 +16,19 @@ int     window(void)
 
     if (!(game = set_game()))
         return (84);
-    game->camera->move.x = 5;
-    game->camera->move.y = 1;
-    game->camera->move.z = 5;
+    game->camera->move.x = 5.5;
+    game->camera->move.y = 1.8;
+    game->camera->move.z = 5.5;
     game->clock = sfClock_create();
     game->time_fg = sfClock_getElapsedTime(game->clock).microseconds;
+    game->time_enemy_fg = sfClock_getElapsedTime(game->clock).microseconds;
     game->in_game = 1;
     while (sfRenderWindow_isOpen(game->win->window)) {
-        make_time(game);
-        //if (game->obj && game->map->update == 1) {
-        game->map->update = 0;
         display_room(game);
-        //}
         update(game);
         check(game);
+        if (!game->my_turn)
+            enemy_turn(game);
     }
     return (0);
 }
