@@ -82,7 +82,7 @@ my_game_t        *set_game(void)
         (game) ? free(game) : 0;
         return (NULL);
     }
-    game->in_game = 0;
+    game->in_game = 1;
     set_map(&(game->map));
     if (!game->map) {
         (game->win) ? free(game->win) : 0;
