@@ -35,8 +35,8 @@ int     window(void)
     my_game_t    *game = NULL;
     win_t win;
 
-    ft_game(game);
-//    init_w(&win);
-//    menu_window(&win, game);
+//    ft_game(game);
+    init_w(&win);
+    menu_window(game);
     return (0);
 }

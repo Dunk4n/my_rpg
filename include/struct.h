@@ -20,4 +20,5 @@ typedef struct menu_interface_s {
     sfSprite *s_menu;
     sfTexture *t_menu;
     sfMusic *music;
+    sfEvent event;
 }menu_t;

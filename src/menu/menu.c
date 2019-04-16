@@ -12,28 +12,27 @@
 #include "my.h"
 #include "struct.h"
 
-static void option(win_t *win)
+static void option(menu_t *menu)
 {
     return ;
 }
 
-static void credit(win_t *win)
+static void credit(menu_t *menu)
 {
     sfTexture *t_credit = sfTexture_createFromFile(CREDIT, NULL);
     sfSprite *s_credit = sfSprite_create();
     sfText *texte = sfText_create();
     sfFont *font = sfFont_createFromFile(RUNES);
-    char const *string = "Credit:\n this game is a epitech project create by :\
-\nVictor Rouxel\nNicolas Duchesne\nAlexandre Wagner\n";
+    char const *string = "Credit:\n";
 
-    while (sfRenderWindow_isOpen(win->window)) {
+    while (sfRenderWindow_isOpen(menu->window)) {
         sfSprite_setTexture(s_credit, t_credit, sfTrue);
         sfText_setFont(texte, font);
         sfText_setPosition(texte, (sfVector2f){100, 100});
         sfText_setCharacterSize(texte, 40);
         sfText_setColor(texte, sfWhite);
         sfText_setString(texte, string);
-        sfRenderWindow_drawText(win->window, texte, NULL);
+        sfRenderWindow_drawText(menu->window, texte, NULL);
         sfText_destroy(texte);
         sfFont_destroy(font);
         if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
@@ -41,44 +40,46 @@ static void credit(win_t *win)
     }
 }
 
-static void echap(win_t *win)
+static void echap(menu_t *menu)
 {
-    while (sfRenderWindow_pollEvent(win->window, &win->event)) {
-        (win->event.type == sfEvtClosed) ?
-sfRenderWindow_close(win->window) : 0;
+    while (sfRenderWindow_pollEvent(menu->window, &menu->event)) {
+        (menu->event.type == sfEvtClosed) ?
+sfRenderWindow_close(menu->window) : 0;
         (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue) ?
-sfRenderWindow_close(win->window) : 0;
+sfRenderWindow_close(menu->window) : 0;
     }
 }
 
-static void menu_opt_clic(win_t *win, my_game_t *game)
+static void menu_opt_clic(menu_t *menu, my_game_t *game)
 {
-    int clic_x = win->event.mouseButton.x;
-    int clic_y = win->event.mouseButton.y;
+    int clic_x = menu->event.mouseButton.x;
+    int clic_y = menu->event.mouseButton.y;
 
-    if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 480 && clic_y <= 570)
+    if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 480 && clic_y <= 570) {
+        sfRenderWindow_close(menu->window);
         ft_game(game);
+    }
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 600 && clic_y <= 690)
-        option(win);
+        option(menu);
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 723 && clic_y <= 808)
-        credit(win);
+        credit(menu);
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 845 && clic_y <= 930)
-        sfRenderWindow_close(win->window);
+        sfRenderWindow_close(menu->window);
 }
 
-int menu_window(win_t *win, my_game_t *game)
+int menu_window(my_game_t *game)
 {
     menu_t *menu = malloc(sizeof(menu_t) + 1);
 
     init_menu(menu);
-    while (sfRenderWindow_isOpen(win->window)) {
-        echap(win);
-        sfRenderWindow_setFramerateLimit(win->window, 60);
-        sfRenderWindow_drawSprite(win->window, menu->s_menu, NULL);
+    while (sfRenderWindow_isOpen(menu->window)) {
+        echap(menu);
+        sfRenderWindow_setFramerateLimit(menu->window, 60);
+        sfRenderWindow_drawSprite(menu->window, menu->s_menu, NULL);
         display_menu(menu);
-        print_all_menu(win);
-        menu_opt_clic(win, game);
-        sfRenderWindow_display(win->window);
+        print_all_menu(menu);
+        menu_opt_clic(menu, game);
+        sfRenderWindow_display(menu->window);
     }
     return (1);
 }

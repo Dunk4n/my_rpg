@@ -99,12 +99,12 @@ void    put_color(char cd, int bold, int sortie);
 //Wagner function
 
 void init_w(win_t *win);
-int clic_menu(win_t *win);
+int clic_menu(menu_t *menu);
 void init_menu(menu_t *menu);
-int menu_window(win_t *win, my_game_t *game);
+int menu_window(my_game_t *game);
 void display_menu(menu_t *menu);
-void event_function(win_t *win);
-void print_all_menu(win_t *win);
+void event_function(menu_t *menu);
+void print_all_menu(menu_t *menu);
 void ft_game(my_game_t *game);
 
 #endif
