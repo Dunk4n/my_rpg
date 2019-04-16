@@ -8,8 +8,8 @@
 #include <stdlib.h>
 #include "world.h"
 
-const char *name_obj[] = {"doc/wall.obj", "doc/slab.obj", "doc/Bat.obj",
-"doc/Skeleton.obj", "doc/sapin.obj"};
+const char *name_obj[] = {"doc/wall.obj", "doc/slab.obj",
+"doc/Bat.obj", "doc/Skeleton.obj", "doc/sapin.obj", "doc/door.obj"};
 
 void    free_tab_obj(obj_t **obj, int nb)
 {
@@ -31,11 +31,11 @@ int     charge_obj(my_game_t *game)
 {
     int i = 0;
 
-    game->obj = 5;
+    game->obj = 6;
     if (!(game->map->obj = malloc(sizeof(obj_t*) * game->obj)))
         return (0);
     while (i < game->obj) {
-        if (!(game->map->obj[i] = open_file_obj(name_obj[i]))) {
+        if (!(game->map->obj[i] = open_file_obj(game, name_obj[i]))) {
             free_tab_obj(game->map->obj, i);
             return (0);
         }

@@ -19,8 +19,9 @@ void    display_room(my_game_t *game)
     clear_buff(game->win->framebuff, game->win->z_buff);
     to_2d(game, game->room[game->actual_room]);
     while (i < game->room[game->actual_room]->nb_obj) {
-        if (game->room[game->actual_room]->fix_obj[i])
+        if (game->room[game->actual_room]->fix_obj[i]) {
             display(game, game->room[game->actual_room]->fix_obj[i]);
+        }
         i++;
     }
     i = 0;

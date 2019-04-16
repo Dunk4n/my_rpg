@@ -28,6 +28,7 @@ SRC	=	$(D_SRC)main.c					\
 		$(D_SRC)turn.c					\
 		$(D_SRC)talk.c					\
 		$(D_SRC)condition.c				\
+		$(D_SRC)reward.c				\
 		$(D_SRC)menu/button_font.c			\
 		$(D_SRC)menu/menu.c				\
 		$(D_SRC)menu/menu_ft.c				\
@@ -59,7 +60,7 @@ NAME	=	my_rpg
 
 CFLAGS	=	-W -Wall -Wextra -I$(D_INC)
 
-LDFLAGS	=	-L$(D_LIB) -lmy -l csfml-graphics -l csfml-system  -l csfml-window -lm -g
+LDFLAGS	=	-L$(D_LIB) -lmy -l csfml-graphics -l csfml-system  -l csfml-window -l csfml-audio -lm -g
 LDFLAGS_WAGNER += -L $(D_LIB) -lmy -lm -lc_graph_prog
 BUILD_DIR = build
 

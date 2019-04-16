@@ -10,7 +10,7 @@
 #include "world.h"
 #include "my.h"
 
-const char char_obj[2] = "OV";
+const char char_obj[3] = "OVD";
 
 int     get_nb_of_obj(room_t *room)
 {
@@ -40,8 +40,9 @@ obj_t   *get_obj_of_char(my_game_t *game, char c)
     int i = 0;
 
     while (char_obj[i]) {
-        if (c == char_obj[i])
+        if (c == char_obj[i]) {
             return (game->map->obj[i]);
+        }
         i++;
     }
     return (NULL);

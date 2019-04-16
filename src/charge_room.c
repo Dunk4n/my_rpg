@@ -10,7 +10,7 @@
 #include "world.h"
 #include "my.h"
 
-const char *name_room[1] = {"room/room1"};
+const char *name_room[2] = {"room/room1", "room/room2"};
 
 int     set_dimension(room_t *room, char *line)
 {
@@ -87,7 +87,7 @@ room_t  **charge_room(my_game_t *game)
     room_t      **room;
     int         i = 0;
 
-    game->nb_room = 1;
+    game->nb_room = 2;
     game->actual_room = 0;
     if (!(room = malloc(sizeof(room_t*) * (game->nb_room))))
         return (NULL);

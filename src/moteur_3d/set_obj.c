@@ -27,7 +27,7 @@ static void     set_triangle_camera(obj_t *obj, char **array, int i)
     &(obj->point_camera[my_getnbr(array[3 + i]) - 1]);
 }
 
-static void     set_triangle(obj_t *obj, char **array, int i)
+static void     set_triangle(my_game_t *game, obj_t *obj, char **array, int i)
 {
     obj->triangle[obj->nb_tr].obj = obj;
     obj->triangle[obj->nb_tr].point_3d[0] =
@@ -45,12 +45,12 @@ static void     set_triangle(obj_t *obj, char **array, int i)
     obj->triangle[obj->nb_tr].indice_point[2] = my_getnbr(array[3 + i]);
     obj->triangle[obj->nb_tr].point_2d[2] =
     &(obj->point_2d[my_getnbr(array[3 + i]) - 1]);
-    set_triangle_tx(obj, array, i);
+    set_triangle_tx(game, obj, array, i);
     set_triangle_camera(obj, array, i);
     obj->nb_tr++;
 }
 
-static void     set_face(obj_t *obj, char **array)
+static void     set_face(my_game_t *game, obj_t *obj, char **array)
 {
     int i = 0;
 
@@ -58,16 +58,16 @@ static void     set_face(obj_t *obj, char **array)
         i++;
     if (i < 4)
         return ;
-    set_triangle(obj, array, 0);
+    set_triangle(game, obj, array, 0);
     if (i > 4 && array[4][0] != '#')
-        set_triangle(obj, array, 1);
+        set_triangle(game, obj, array, 1);
 }
 
-static void    set_arg_obj(obj_t *obj, char *line)
+static void    set_arg_obj(my_game_t *game, obj_t *obj, char *line)
 {
     char        *ref[3] = {"v", "vt", "f"};
-    void        (*tab[])(obj_t *obj, char **array) = {set_point, set_point_tx,
-set_face};
+    void        (*tab[])(my_game_t *game, obj_t *obj, char **array) =
+{set_point, set_point_tx, set_face};
     char        **array = my_str_to_word_array(line, " \t");
     int         i = 0;
 
@@ -77,13 +77,13 @@ set_face};
     }
     while (i < 3) {
         if (!my_strcmp(ref[i], array[0]))
-            tab[i](obj, array);
+            tab[i](game, obj, array);
         i++;
     }
     free_array(array);
 }
 
-int     set_obj(obj_t *obj, char *name)
+int     set_obj(my_game_t *game, obj_t *obj, char *name)
 {
     int     fd = open(name, O_RDONLY);
     char    *line;
@@ -95,7 +95,7 @@ int     set_obj(obj_t *obj, char *name)
     obj->nb_tx = 0;
     line = get_next_line(fd);
     while (line) {
-        set_arg_obj(obj, line);
+        set_arg_obj(game, obj, line);
         free(line);
         line = get_next_line(fd);
     }

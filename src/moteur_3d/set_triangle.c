@@ -9,10 +9,11 @@
 #include "world.h"
 #include "my.h"
 
-void    set_point(obj_t *obj, char **array)
+void    set_point(my_game_t *game, obj_t *obj, char **array)
 {
     int i = 0;
 
+    (void)game;
     while (array[i])
         i++;
     if (i < 4)
@@ -39,7 +40,8 @@ static sfColor  indice_color(char *str)
     return (sfWhite);
 }
 
-static void     set_triangle_texture(obj_t *obj, char **array, int nb)
+static void     set_triangle_texture(my_game_t *game, obj_t *obj, char **array,
+int nb)
 {
     int i = 0;
 
@@ -55,14 +57,15 @@ static void     set_triangle_texture(obj_t *obj, char **array, int nb)
     if (!my_strcmp(array[5 + nb], "#"))
         obj->triangle[obj->nb_tr].color = indice_color(array[6 + nb]);
     if (!my_strcmp(array[4 + nb], "#T") &&
-my_getnbr(array[5 + nb]) > 0 && my_getnbr(array[5 + nb]) <= 13)
+my_getnbr(array[5 + nb]) > 0 && my_getnbr(array[5 + nb]) <= game->nb_img) {
         obj->triangle[obj->nb_tr].texture = my_getnbr(array[5 + nb]) - 1;
+    }
     if (!my_strcmp(array[5 + nb], "#T") &&
-my_getnbr(array[6 + nb]) > 0 && my_getnbr(array[6 + nb]) <= 13)
+my_getnbr(array[6 + nb]) > 0 && my_getnbr(array[6 + nb]) <= game->nb_img)
         obj->triangle[obj->nb_tr].texture = my_getnbr(array[6 + nb]) - 1;
 }
 
-void    set_triangle_tx(obj_t *obj, char **array, int nb)
+void    set_triangle_tx(my_game_t *game, obj_t *obj, char **array, int nb)
 {
     int i = 0;
     int k = 1;
@@ -81,5 +84,5 @@ array[k + ((k > 1) ? nb : 0)][i] != '/')
         }
         k++;
     }
-    set_triangle_texture(obj, array, nb);
+    set_triangle_texture(game, obj, array, nb);
 }

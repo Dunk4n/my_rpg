@@ -56,6 +56,7 @@ static void     display_triangle_in_map(my_game_t *game, triangle_t *tri)
     if (res < 0)
         res *= -1;
 */
+
     game->map->lum = 1;//res;
     game->map->ptr_tri = tri;
     if (tri->point_tx[0] == NULL || tri->point_tx[1] == NULL ||

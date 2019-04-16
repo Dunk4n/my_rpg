@@ -8,11 +8,12 @@
 #include <stdlib.h>
 #include "world.h"
 
-const char      type_enemy[] = "abc";
-const int       pnj[] = {0, 0, 0, 1};
-const int       enemy_vie[] = {50, 50, 100, 100};
-const int       enemy_deg[] = {25, 25, 50, 100};
-const int       to_copy[] = {2, 2, 3, 4};
+const char      type_enemy[4] = "abcd";
+const int       pnj[5] = {0, 0, 0, 1, 1};
+const int       enemy_vie[] = {50, 50, 100, 100, 100};
+const int       enemy_deg[] = {25, 25, 50, 100, 0};
+const int       to_copy[] = {2, 2, 3, 4, 5};
+const int       start_dialog[] = {-1, -1, -1, 0, 4};
 const char      *name[21] = {"Balin", "Bifur", "Bofur", "Borin", "Dori",
 "Dwalin", "Dain", "Farin", "Floi", "Frar", "Gloin", "Gror", "Kili", "Ibum",
 "Mim", "Nain", "Nori", "Oin", "Telchar", "Thrain", "Thror"};
@@ -57,7 +58,7 @@ void    set_enemy(my_game_t *game, enemy_t *enemy, char type, int *tab)
     enemy->pnj = pnj[enemy->type];
     enemy->vie = enemy_vie[enemy->type];
     enemy->degat = enemy_deg[enemy->type];
-    enemy->dialog = 0;
+    enemy->dialog = start_dialog[enemy->type];
     enemy->nb_dialog = 0;
     enemy->name = rand() % 21;
     enemy->pos.y = tab[0] + 0.5;

@@ -10,10 +10,11 @@
 #include "world.h"
 #include "my.h"
 
-void    set_point_tx(obj_t *obj, char **array)
+void    set_point_tx(my_game_t *game, obj_t *obj, char **array)
 {
     int i = 0;
 
+    (void)game;
     while (array[i])
         i++;
     if (i < 3)
@@ -63,7 +64,7 @@ int     alloc_obj(obj_t *obj)
     return (more_alloc(obj));
 }
 
-obj_t   *open_file_obj(const char *name)
+obj_t   *open_file_obj(my_game_t *game, const char *name)
 {
     obj_t *obj;
 
@@ -77,7 +78,7 @@ obj_t   *open_file_obj(const char *name)
         free(obj);
         return (NULL);
     }
-    if (!set_obj(obj, (char*)name)) {
+    if (!set_obj(game, obj, (char*)name)) {
         free(obj->point_3d);
         free(obj->point_2d);
         free(obj->triangle);

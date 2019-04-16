@@ -18,15 +18,17 @@ float   round_angle(float angle)
 
 int     move_to_slab(my_game_t *game, char ***room, int z, int x)
 {
-    if ((int)game->camera->move.y + 1 < game->room[game->actual_room]->y_max &&
-room[(int)game->camera->move.y][z][x] == 'V' && room[(int)game->camera->move.y +
-1][z][x] == '.') {
+    int y = (int)game->camera->move.y;
+
+    if (y + 1 < game->room[game->actual_room]->y_max && room[y + 1][(int)game->
+camera->move.z][(int)game->camera->move.x] == '.' && room[y][z][x] == 'V' && 
+room[y + 1][z][x] == '.') {
         game->camera->move.y += 0.5;
         return (1);
     }
-    if ((int)game->camera->move.y - 2 >= 0 && room[(int)game->camera->move.y][z]
-[x] == '.' && room[(int)game->camera->move.y - 1][z][x] == '.' &&
-room[(int)game->camera->move.y - 2][z][x] == 'O') {
+    if (y - 2 >= 0 && room[y - 1][(int)game->camera->move.z][(int)game->camera->
+move.x] == 'V' && room[y][z][x] == '.' && room[y - 1][z][x] == '.' && room[y -
+2][z][x] != '.' && room[y - 2][z][x] != 'V') {
         game->camera->move.y -= 0.5;
         return (1);
     }
@@ -36,19 +38,19 @@ room[(int)game->camera->move.y - 2][z][x] == 'O') {
 int     move_to(my_game_t *game, int z, int x)
 {
     char ***room = game->room[game->actual_room]->room;
+    int y = (int)game->camera->move.y;
 
     if (z < 0 || z >= game->room[game->actual_room]->z_max ||
-x < 0 || x >= game->room[game->actual_room]->x_max || (int)game->camera->move.y
+x < 0 || x >= game->room[game->actual_room]->x_max || y
 >= game->room[game->actual_room]->y_max)
         return (0);
-    if ((int)game->camera->move.y - 1 >= 0 && room[(int)game->camera->move.y][z]
-[x] == '.') {
-        if (room[(int)game->camera->move.y - 1][z][x] == 'O') {
-            (room[(int)game->camera->move.y - 1][(int)game->camera->move.z]
-[(int)game->camera->move.x] == 'V') ? game->camera->move.y += 0.5 : 0;
+    if (y - 1 >= 0 && room[y][z][x] == '.') {
+        if (room[y - 1][z][x] != '.' && room[y - 1][z][x] != 'V') {
+            (room[y - 1][(int)game->camera->move.z][(int)game->camera->move.x]
+== 'V') ? game->camera->move.y += 0.5 : 0;
             return (1);
         }
-        if (room[(int)game->camera->move.y - 1][z][x] == 'V') {
+        if (room[y - 1][z][x] == 'V') {
             game->camera->move.y -= 0.5;
             return (1);
         }

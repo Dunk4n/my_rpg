@@ -15,13 +15,13 @@
 #include <SFML/System/Time.h>
 #include <SFML/System/Types.h>
 
-const char      *img_name[13];
+const char      *img_name[14];
 const char      *img_button[13];
 const sfColor   color[10];
-const char      char_obj[2];
+const char      char_obj[3];
 const char      *name[21];
-const char      type_enemy[3];
-const int       pnj[4];
+const char      type_enemy[4];
+const int       pnj[5];
 
 typedef struct  arg_interpolation_s
 {
@@ -219,16 +219,16 @@ void    init_draw_poly(my_game_t *game, triangle_t *tri, double *tab);
 double  my_getfloat(char *str);
 obj_t   *init_obj(void);
 int     get_nbr_arg(obj_t *obj, char *name);
-int     set_obj(obj_t *obj, char *name);
-void    set_triangle_tx(obj_t *obj, char **array, int nb);
-void    set_point(obj_t *obj, char **array);
-void    set_point_tx(obj_t *obj, char **array);
+int     set_obj(my_game_t *game, obj_t *obj, char *name);
+void    set_triangle_tx(my_game_t *game, obj_t *obj, char **array, int nb);
+void    set_point(my_game_t *game, obj_t *obj, char **array);
+void    set_point_tx(my_game_t *game, obj_t *obj, char **array);
 void    free_array(char **array);
 int     cond_inter(double *tab, int y1i, int y2i, int y3i);
 void    init_arg(arg_interpolation_t *arg, double *tab);
 int     calc_side(double *tab);
 void    set_value_game(my_game_t *game);
-obj_t   *open_file_obj(const char *name);
+obj_t   *open_file_obj(my_game_t *game, const char *name);
 void    set_img(my_game_t *game);
 void    draw_circle(my_framebuff_t *buff, sfVector2i cnt, int *tab,
 sfColor color);
@@ -272,6 +272,10 @@ int     talk_pnj(my_game_t *game, enemy_t *cible);
 size_t  nb_monster_in_room(room_t *room);
 int     kill_all_monster(my_game_t *game, int nb_room, int nb);
 int     vie_superior_of(my_game_t *game, int nb_room, int nb);
+void    small_door(my_game_t *game, enemy_t *cible, int value,
+sfVector3f new_pos);
+void    big_door(my_game_t *game, enemy_t *cible, int value,
+sfVector3f new_pos);
 
 #define WM 480
 //#define WM 1920
