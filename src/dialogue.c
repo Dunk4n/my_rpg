@@ -20,7 +20,7 @@ char *discuttion)
     sfSprite_setTexture(chatbox, chatbox_t, sfTrue);
     sfSprite_setTexture(sprite, Texture, sfTrue);
     sfText_setFont(texte, font);
-    sfText_setCharacterSize(texte, 40);
+    sfText_setCharacterSize(texte, 24);
     sfText_setColor(texte, sfBlack);
     sfText_setString(texte, discuttion);
     sfSprite_setPosition(chatbox, (sfVector2f){650, 440});
