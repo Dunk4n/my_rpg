@@ -277,10 +277,12 @@ sfVector3f new_pos);
 void    big_door(my_game_t *game, enemy_t *cible, int value,
 sfVector3f new_pos);
 
-#define WM 480
+//#define WM 480
+#define WM 960
 //#define WM 1920
 //1920  1280  960  480
-#define HM 270
+//#define HM 270
+#define HM 540
 //#define HM 1080
 //1080  720   540  270
 

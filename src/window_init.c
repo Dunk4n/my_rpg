@@ -13,5 +13,5 @@ void init_w(win_t *win)
     sfVideoMode video = {1080, 1920, 60};
     char const *name = "my_RPG";
 
-    win->window = sfRenderWindow_create(video, name, sfDefaultStyle/*sfFullscreen*/, NULL);
+    win->window = sfRenderWindow_create(video, name, sfDefaultStyle, NULL);
 }

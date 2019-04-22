@@ -12,74 +12,100 @@
 #include "my.h"
 #include "struct.h"
 
-static void option(menu_t *menu)
+static void move_menu(menu_t *menu, size_t opt)
 {
-    return ;
-}
-
-static void credit(menu_t *menu)
-{
-    sfTexture *t_credit = sfTexture_createFromFile(CREDIT, NULL);
-    sfSprite *s_credit = sfSprite_create();
-    sfText *texte = sfText_create();
-    sfFont *font = sfFont_createFromFile(RUNES);
-    char const *string = "Credit:\n";
-
-    while (sfRenderWindow_isOpen(menu->window)) {
-        sfSprite_setTexture(s_credit, t_credit, sfTrue);
-        sfText_setFont(texte, font);
-        sfText_setPosition(texte, (sfVector2f){100, 100});
-        sfText_setCharacterSize(texte, 40);
-        sfText_setColor(texte, sfWhite);
-        sfText_setString(texte, string);
-        sfRenderWindow_drawText(menu->window, texte, NULL);
-        sfText_destroy(texte);
-        sfFont_destroy(font);
-        if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
-            return ;
+    (opt == 0) ? menu->opt++ : 0;
+    (opt == 1) ? menu->opt-- : 0;
+    (menu->opt < 1) ? menu->opt = 1 : 0;
+    if (menu->opt == 1) {
+        menu->p_select.y = 420;
+        menu->p_anim.y = menu->p_select.y + 50;
     }
-}
-
-static void echap(menu_t *menu)
-{
-    while (sfRenderWindow_pollEvent(menu->window, &menu->event)) {
-        (menu->event.type == sfEvtClosed) ?
-sfRenderWindow_close(menu->window) : 0;
-        (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue) ?
-sfRenderWindow_close(menu->window) : 0;
+    if (menu->opt == 2) {
+        menu->p_select.y = 540;
+        menu->p_anim.y = menu->p_select.y + 50;
     }
+    if (menu->opt == 3) {
+        menu->p_select.y = 670;
+        menu->p_anim.y = menu->p_select.y + 50;
+    }
+    if (menu->opt == 4) {
+        menu->p_select.y = 790;
+        menu->p_anim.y = menu->p_select.y + 50;
+    }
+    (menu->opt > 4) ? menu->opt = 4 : 0;
+    sfSprite_setPosition(menu->s_sel, menu->p_select);
+    sfSprite_setPosition(menu->s_anim, menu->p_anim);
 }
 
-static void menu_opt_clic(menu_t *menu, my_game_t *game)
+static void rectchoose(menu_t *menu, opt_t *opt, my_game_t *game)
+{
+    if (menu->opt == 1) {
+        sfRenderWindow_close(menu->window);
+        sfMusic_destroy(opt->music);
+        ft_game(game);
+    }
+    if (menu->opt == 2)
+        return;
+    if (menu->opt == 3)
+        credit(menu);
+    if (menu->opt == 4)
+        sfRenderWindow_close(menu->window);
+}
+
+static void click(menu_t *menu, my_game_t *game, opt_t *opt)
 {
     int clic_x = menu->event.mouseButton.x;
     int clic_y = menu->event.mouseButton.y;
 
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 480 && clic_y <= 570) {
         sfRenderWindow_close(menu->window);
+        sfMusic_destroy(opt->music);
         ft_game(game);
     }
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 600 && clic_y <= 690)
-        option(menu);
+        return;
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 723 && clic_y <= 808)
         credit(menu);
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 845 && clic_y <= 930)
         sfRenderWindow_close(menu->window);
 }
 
+static void menu_opt_clic(menu_t *menu, my_game_t *game, opt_t *opt)
+{
+    static size_t button = 0;
+
+    click(menu, game, opt);
+    if (button == 0 && menu->event.type == sfEvtKeyPressed) {
+        button = 1;
+        (menu->event.key.code == sfKeyUp) ?  move_menu(menu, 1): 0;
+        (menu->event.key.code == sfKeyDown) ? move_menu(menu, 0) : 0;
+    }
+    else if (menu->event.type == sfEvtKeyReleased)
+        button = 0;
+    (sfKeyboard_isKeyPressed(sfKeyReturn)) ? rectchoose(menu, opt, game) : 0;
+}
+
 int menu_window(my_game_t *game)
 {
-    menu_t *menu = malloc(sizeof(menu_t) + 1);
+    menu_t menu;
+    opt_t opt;
 
-    init_menu(menu);
-    while (sfRenderWindow_isOpen(menu->window)) {
-        echap(menu);
-        sfRenderWindow_setFramerateLimit(menu->window, 60);
-        sfRenderWindow_drawSprite(menu->window, menu->s_menu, NULL);
-        display_menu(menu);
-        print_all_menu(menu);
-        menu_opt_clic(menu, game);
-        sfRenderWindow_display(menu->window);
+    init_default_option(&opt);
+    init_menu(&menu, &opt);
+    sfRenderWindow_setFramerateLimit(menu.window, 60);
+    while (sfRenderWindow_isOpen(menu.window)) {
+        while (sfRenderWindow_pollEvent(menu.window, &menu.event)) {
+            (menu.event.type == sfEvtClosed) ?
+sfRenderWindow_close(menu.window) : 0;
+            (menu.event.type == sfEvtKeyPressed &&
+menu.event.key.code == sfKeyEscape) ?
+sfRenderWindow_close(menu.window) : 0;
+        }
+        display_menu(&menu);
+        print_all_menu(&menu);
+        menu_opt_clic(&menu, game, &opt);
+        sfRenderWindow_display(menu.window);
     }
     return (1);
 }
