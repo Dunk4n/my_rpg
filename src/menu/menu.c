@@ -46,7 +46,7 @@ static void rectchoose(menu_t *menu, opt_t *opt, my_game_t *game)
         ft_game(game);
     }
     if (menu->opt == 2)
-        return;
+        option(menu);
     if (menu->opt == 3)
         credit(menu);
     if (menu->opt == 4)
@@ -64,7 +64,7 @@ static void click(menu_t *menu, my_game_t *game, opt_t *opt)
         ft_game(game);
     }
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 600 && clic_y <= 690)
-        return;
+        option(menu);
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 723 && clic_y <= 808)
         credit(menu);
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 845 && clic_y <= 930)

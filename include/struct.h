@@ -38,4 +38,7 @@ typedef struct credit_s {
 
 typedef struct option_s {
     sfMusic *music;
+    sfEvent event;
+    sfSprite *s_opt;
+    sfTexture *t_opt;
 }opt_t;

@@ -32,6 +32,7 @@ SRC	=	$(D_SRC)main.c					\
 		$(D_SRC)move_rect.c				\
 		$(D_SRC)reward.c				\
 		$(D_SRC)credit/credit.c				\
+		$(D_SRC)menu/option.c				\
 		$(D_SRC)menu/button_font.c			\
 		$(D_SRC)menu/menu.c				\
 		$(D_SRC)menu/menu_ft.c				\
