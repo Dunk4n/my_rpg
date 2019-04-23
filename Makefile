@@ -27,8 +27,12 @@ SRC	=	$(D_SRC)main.c					\
 		$(D_SRC)beat.c					\
 		$(D_SRC)turn.c					\
 		$(D_SRC)talk.c					\
+		$(D_SRC)dialogue.c				\
 		$(D_SRC)condition.c				\
+		$(D_SRC)move_rect.c				\
 		$(D_SRC)reward.c				\
+		$(D_SRC)credit/credit.c				\
+		$(D_SRC)menu/option.c				\
 		$(D_SRC)menu/button_font.c			\
 		$(D_SRC)menu/menu.c				\
 		$(D_SRC)menu/menu_ft.c				\
@@ -59,9 +63,9 @@ OBJ	=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 
 NAME	=	my_rpg
 
-CFLAGS	=	-W -Wall -Wextra -I$(D_INC)
+CFLAGS	=	-W -Wall -Wextra -I$(D_INC) -g
 
-LDFLAGS	=	-L$(D_LIB) -lmy -l csfml-graphics -l csfml-system  -l csfml-window -l csfml-audio -lm -g
+LDFLAGS	=	-L$(D_LIB) -lmy -l csfml-graphics -l csfml-system  -l csfml-window -l csfml-audio -lm
 LDFLAGS_WAGNER += -L $(D_LIB) -lmy -lm -lc_graph_prog
 BUILD_DIR = build
 

@@ -100,11 +100,16 @@ void    put_color(char cd, int bold, int sortie);
 
 void init_w(win_t *win);
 int clic_menu(menu_t *menu);
-void init_menu(menu_t *menu);
+void init_menu(menu_t *menu, opt_t *opt);
 int menu_window(my_game_t *game);
 void display_menu(menu_t *menu);
 void event_function(menu_t *menu);
 void print_all_menu(menu_t *menu);
 void ft_game(my_game_t *game);
+void credit(menu_t *menu);
+void dialogue(sfSprite *sprite, sfTexture *Texture, sfRenderWindow *window, char *discuttion);
+void init_default_option(opt_t *opt);
+void move_rect(sfIntRect *rect, int offset, int max_value);
+void option(menu_t *menu);
 
 #endif

@@ -7,7 +7,15 @@
 
 #pragma once
 
-#define MENU "./img/interface/menu.png"
 #define MENU_MUSIC "./music/music_menu.ogg"
+
+#define MENU "./img/interface/menu.png"
+#define SELECT "./img/interface/Select.png"
+#define ANIM "./img/interface/menu_animate.png"
+
+#define CHATBOX "./img/interface/speakbox.png"
+
 #define RUNES "./fonts/dwarf.ttf"
-#define CREDIT "./img/interface/Credit.png"
+#define GOT "./fonts/gothicum.ttf"
+
+#define CREDIT "./img/interface/credit.png"

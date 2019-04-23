@@ -36,7 +36,7 @@ int     window(void)
     win_t win;
 
 //    ft_game(game);
-    init_w(&win);
+//    init_w(&win);
     menu_window(game);
     return (0);
 }
