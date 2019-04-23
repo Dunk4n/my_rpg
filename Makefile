@@ -53,6 +53,7 @@ SRC	=	$(D_SRC)main.c					\
 		$(D_SRC)moteur_3d/rotation_camera.c		\
 		$(D_SRC)moteur_3d/rotation_camera_process.c	\
 		$(D_SRC)moteur_3d/transform_camera.c		\
+		$(D_SRC)moteur_3d/shader.c			\
 
 OBJ	=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 

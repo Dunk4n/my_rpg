@@ -14,7 +14,7 @@ void    rotate_up(my_game_t *game, float weight)
     float roll;
 
     if (game->camera->roll_cam + weight > 70 &&
-game->camera->roll_cam + weight < 290)
+game->camera->roll_cam + weight < 300)
         return;
     game->camera->roll_cam += weight;
     if (game->camera->roll_cam < 0)

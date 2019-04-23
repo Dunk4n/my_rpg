@@ -157,7 +157,7 @@ typedef struct  map_s
     double      move_point_y;
     double      move_point_z;
     double      enlargement;
-    double      lum;
+    float       lum;
     triangle_t  *ptr_tri;
     obj_t       **obj;
 }               map_t;
@@ -276,12 +276,13 @@ void    small_door(my_game_t *game, enemy_t *cible, int value,
 sfVector3f new_pos);
 void    big_door(my_game_t *game, enemy_t *cible, int value,
 sfVector3f new_pos);
+float   get_intencity_of_face(sfVector3f a, sfVector3f b, sfVector3f c);
 
-#define WM 480
-//#define WM 1920
+#define WM 480.0
+//#define WM 1920.0
 //1920  1280  960  480
-#define HM 270
-//#define HM 1080
+#define HM 270.0
+//#define HM 1080.0
 //1080  720   540  270
 
 #endif

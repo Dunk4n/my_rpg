@@ -12,8 +12,11 @@
 sfColor get_real_z(my_game_t *game, sfVector3f cord, sfColor color)
 {
     double res = game->map->lum;
+    double x = ((cord.x - WM / 2) / (HM / WM)) / (WM / 2);
+    double y = (cord.y - HM / 2) / (HM / 2);
+    double dis = sqrt(pow(x, 2) + pow(y, 2) + pow(cord.z, 2));
 
-    res *= (100.0 / cord.z);
+    res *= (1.6 / ((-0.8 * -0.8) * dis + 0 * dis + 1.0));
     if (res > 1)
         res = 1;
     color.r *= res;
@@ -30,8 +33,7 @@ cord.y >= game->win->framebuff->height || cord.y < 0)
     if ((cord.z >= (game->win->z_buff)[(int)(WM * cord.y + cord.x)] &&
 (game->win->z_buff)[(int)(WM * cord.y + cord.x)] != -1) || cord.z < 0)
         return ;
-    //color = get_real_z(game, cord, color);
-    //game->win->t_buff[(int)(WM * cord.y + cord.x)] = game->map->ptr_tri;
+    color = get_real_z(game, cord, color);
     game->win->z_buff[(int)(game->win->framebuff->width * cord.y + cord.x)] =
 cord.z;
     game->win->framebuff->pixels[(int)((game->win->framebuff->width *
