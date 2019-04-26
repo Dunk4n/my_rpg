@@ -67,15 +67,6 @@ void    inv_matrix(float *res, float *rot)
     }
 }
 
-void    put_rotate_camera_point(my_game_t *game, float *rot)
-{
-    float res[9] = {0};
-
-    inv_matrix(res, rot);
-    game->camera->point[1] = put_rotate_on_point(res, (sfVector3f){1, 0, 0});
-    game->camera->point[2] = put_rotate_on_point(res, (sfVector3f){0, 1, 0});
-}
-
 void    rotate_camera(my_game_t *game, float roll, float yaw, float pitch)
 {
     float   sr = sin(roll * M_PI / 180);

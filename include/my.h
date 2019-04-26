@@ -107,7 +107,8 @@ void event_function(menu_t *menu);
 void print_all_menu(menu_t *menu);
 void ft_game(my_game_t *game);
 void credit(menu_t *menu);
-void dialogue(sfSprite *sprite, sfTexture *Texture, sfRenderWindow *window, char *discuttion);
+void dialogue(sfSprite *sprite, sfTexture *Texture, sfRenderWindow *window,
+char *discuttion);
 void init_default_option(opt_t *opt);
 void move_rect(sfIntRect *rect, int offset, int max_value);
 void option(menu_t *menu);

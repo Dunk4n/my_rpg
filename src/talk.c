@@ -9,8 +9,8 @@
 #include "world.h"
 #include "my.h"
 
-const char      *dialog[6] = {"Hello.", "To complete your training you must kill\
- all shadow on the lower floor.", "Well you finish your task.\nYou are now a\
+const char      *dialog[6] = {"Hello.", "To complete your training you must kil\
+l all shadow on the lower floor.", "Well you finish your task.\nYou are now a\
  true warrior and you can leave the fortress.", "Goodbye.", "small door",
 "You go to room ONE!!!!"};
 const int       d_cond_room[6] = {-1, 0, -1, -1, -1, -1};

@@ -277,6 +277,7 @@ sfVector3f new_pos);
 void    big_door(my_game_t *game, enemy_t *cible, int value,
 sfVector3f new_pos);
 float   get_intencity_of_face(sfVector3f a, sfVector3f b, sfVector3f c);
+void    put_rotate_camera_point(my_game_t *game, float *rot);
 
 #define WM 480.0
 //#define WM 1920.0

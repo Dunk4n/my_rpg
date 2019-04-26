@@ -1,8 +1,8 @@
 /*
-1;4804;0c** EPITECH PROJECT, 2019
-** dialogue.c
+** EPITECH PROJECT, 2018
+** src/dialogue
 ** File description:
-** dialogue for rpg
+** don't forget to free at the end
 */
 
 #include <SFML/Graphics.h>
