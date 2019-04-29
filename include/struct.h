@@ -38,7 +38,38 @@ typedef struct credit_s {
 
 typedef struct option_s {
     sfMusic *music;
+    sfSound *button;
+    sfSoundBuffer *s_button;
     sfEvent event;
+    sfSprite *s_vol;
     sfSprite *s_opt;
+    sfSprite *s_touch_two;
+    sfSprite *s_touch_one;
+    sfSprite *sf_clavier;
+    sfSprite *ss_clavier;
     sfTexture *t_opt;
+    sfTexture *t_vol;
+    sfTexture *tf_clavier;
+    sfTexture *ts_clavier;
+    sfTexture *t_touch_two;
+    sfTexture *t_touch_one;
+    int vol_ac;
+    int ctrl[1];
 }opt_t;
+
+typedef struct gameplay_s {
+    sfSprite *s_hud;
+    sfSprite *s_fist;
+    sfSprite *s_magie;
+    sfSprite *s_book;
+    sfSprite *s_beer;
+    sfSprite *s_bag;
+    sfTexture *t_hud;
+    sfTexture *t_fist;
+    sfTexture *t_magie;
+    sfTexture *t_book;
+    sfTexture *t_beer;
+    sfTexture *t_bag;
+    sfIntRect rect;
+    sfEvent event;
+}play_t;

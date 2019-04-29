@@ -6,6 +6,7 @@
 */
 
 #include "world.h"
+#include "my.h"
 
 void    clear_buff(my_framebuff_t *buff, double *z_buff)
 {
@@ -22,12 +23,12 @@ void    clear_buff(my_framebuff_t *buff, double *z_buff)
     }
 }
 
-void    update(my_game_t *game)
+void    update(my_game_t *game, play_t *play)
 {
     sfRenderWindow_clear(game->win->window, sfBlack);
     sfTexture_updateFromPixels(game->win->texture, game->win->framebuff->pixels,
 WM, HM, 0, 0);
     sfRenderWindow_drawSprite(game->win->window, game->win->sprite, NULL);
-    //function_draw_hub
+    users_interaction(play, game);
     sfRenderWindow_display(game->win->window);
 }
