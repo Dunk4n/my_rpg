@@ -46,6 +46,11 @@ game->win->event.mouseMove.y - game->win->mouse.y != 0)
                 sfMouse_setPositionRenderWindow(game->win->mouse,
 game->win->window);
         }
+        if (sfKeyboard_isKeyPressed(sfKeyB))
+            printf("x= %f, y= %f, z= %f\n",
+game->camera->move.x, game->camera->move.y, game->camera->move.z);
+    }
+}
         /*if (sfKeyboard_isKeyPressed(sfKeyJ))
             rotate_up(game, 1);
         if (sfKeyboard_isKeyPressed(sfKeyU))
@@ -59,8 +64,3 @@ game->win->window);
         if (sfKeyboard_isKeyPressed(sfKeyO))
             rotate_camera(game, 0, 0, -1);
             */
-        if (sfKeyboard_isKeyPressed(sfKeyB))
-            printf("x= %f, y= %f, z= %f\n",
-game->camera->move.x, game->camera->move.y, game->camera->move.z);
-    }
-}

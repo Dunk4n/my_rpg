@@ -10,8 +10,6 @@
 #include <time.h>
 #include "world.h"
 
-
-
 float   get_intencity_of_face(sfVector3f a, sfVector3f b, sfVector3f c)
 {
     float       res;

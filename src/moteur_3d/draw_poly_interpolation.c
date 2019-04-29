@@ -23,17 +23,7 @@ arg_interpolation_t *arg, double *tab)
     sfVector3f cord;
     int x12[2] = {arg->xa, arg->xb};
 
-    tab[3] = 1 - (arg->xa - x12[0]);
-    tab[4] = arg->iza + tab[3] * arg->dizdx;
-    tab[5] = arg->uiza + tab[3] * arg->duizdx;
-    tab[6] = arg->viza + tab[3] * arg->dvizdx;
-    if (x12[0] < 0) {
-        tab[4] += arg->dizdx * -x12[0];
-        tab[5] += arg->duizdx * -x12[0];
-        tab[6] += arg->dvizdx * -x12[0];
-        x12[0] = 0;
-    }
-    (x12[1] > WM) ? x12[1] = WM : 0;
+    raster_cliping_x(arg, tab, x12);
     while (x12[0]++ < x12[1]) {
         tab[0] = 1 / tab[4];
         tab[1] = tab[5] * tab[0];
@@ -54,17 +44,9 @@ void    draw_poly_interpolation(my_game_t *game, triangle_t *tri,
 arg_interpolation_t *arg)
 {
     double tab[7];
-    int tmp;
 
-    if (arg->y1 < 0) {
-        tmp = (arg->y2 < 0) ? arg->y2 - arg->y1 : -arg->y1;
-        arg->xa += arg->dxdya * tmp;
-        arg->xb += arg->dxdyb * tmp;
-        arg->iza += arg->dizdya * tmp;
-        arg->uiza += arg->duizdya * tmp;
-        arg->viza += arg->dvizdya * tmp;
-        arg->y1 = 0;
-    }
+    if (arg->y1 < 0)
+        raster_cliping_y(arg);
     (arg->y2 > HM) ? arg->y2 = HM : 0;
     (arg->y2 <= 0) ? arg->y2 = 0 : 0;
     while (arg->y1 < arg->y2) {
