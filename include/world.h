@@ -91,6 +91,7 @@ typedef struct  triangle_s
 typedef struct  my_window_s
 {
     sfRenderWindow      *window;
+    sfView              *view;
     sfEvent             event;
     sfTexture           *texture;
     sfSprite            *sprite;
@@ -283,11 +284,11 @@ void    inv_matrix(float *res, float *rot);
 void    raster_cliping_y(arg_interpolation_t *arg);
 void    raster_cliping_x(arg_interpolation_t *arg, double *tab, int *x12);
 
-#define WM 480.0
-//#define WM 1920.0
+//#define WM 480.0
+#define WM 1920.0
 //1920  1280  960  480
-#define HM 270.0
-//#define HM 1080.0
+//#define HM 270.0
+#define HM 1080.0
 //1080  720   540  270
 
 #endif

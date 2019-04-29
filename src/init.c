@@ -93,5 +93,7 @@ my_game_t        *set_game(void)
         return (NULL);
     if (!init_game(game))
         return (NULL);
+    game->win->view = sfRenderWindow_getDefaultView(game->win->window);
+    sfView_zoom(game->win->view, 0.25);
     return (game);
 }
