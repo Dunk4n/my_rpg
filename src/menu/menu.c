@@ -12,10 +12,10 @@
 #include "my.h"
 #include "struct.h"
 
-static void move_menu(menu_t *menu, size_t opt)
+static void move_menu(menu_t *menu, size_t val, opt_t *opt)
 {
-    (opt == 0) ? menu->opt++ : 0;
-    (opt == 1) ? menu->opt-- : 0;
+    (val == 0) ? menu->opt++ : 0;
+    (val == 1) ? menu->opt-- : 0;
     (menu->opt < 1) ? menu->opt = 1 : 0;
     if (menu->opt == 1) {
         menu->p_select.y = 420;
@@ -33,6 +33,7 @@ static void move_menu(menu_t *menu, size_t opt)
         menu->p_select.y = 790;
         menu->p_anim.y = menu->p_select.y + 50;
     }
+    sfSound_play(opt->button);
     (menu->opt > 4) ? menu->opt = 4 : 0;
     sfSprite_setPosition(menu->s_sel, menu->p_select);
     sfSprite_setPosition(menu->s_anim, menu->p_anim);
@@ -43,10 +44,10 @@ static void rectchoose(menu_t *menu, opt_t *opt, my_game_t *game)
     if (menu->opt == 1) {
         sfRenderWindow_close(menu->window);
         sfMusic_destroy(opt->music);
-        ft_game(game);
+        ft_game(game, opt);
     }
     if (menu->opt == 2)
-        option(menu);
+        option(menu, opt);
     if (menu->opt == 3)
         credit(menu);
     if (menu->opt == 4)
@@ -59,16 +60,23 @@ static void click(menu_t *menu, my_game_t *game, opt_t *opt)
     int clic_y = menu->event.mouseButton.y;
 
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 480 && clic_y <= 570) {
+        sfSound_play(opt->button);
         sfRenderWindow_close(menu->window);
         sfMusic_destroy(opt->music);
-        ft_game(game);
+        ft_game(game, opt);
     }
-    if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 600 && clic_y <= 690)
-        option(menu);
-    if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 723 && clic_y <= 808)
+    if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 600 && clic_y <= 690) {
+        sfSound_play(opt->button);
+        option(menu, opt);
+    }
+    if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 723 && clic_y <= 808) {
+        sfSound_play(opt->button);
         credit(menu);
-    if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 845 && clic_y <= 930)
+    }
+    if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 845 && clic_y <= 930) {
+        sfSound_play(opt->button);
         sfRenderWindow_close(menu->window);
+    }
 }
 
 static void menu_opt_clic(menu_t *menu, my_game_t *game, opt_t *opt)
@@ -78,8 +86,8 @@ static void menu_opt_clic(menu_t *menu, my_game_t *game, opt_t *opt)
     click(menu, game, opt);
     if (button == 0 && menu->event.type == sfEvtKeyPressed) {
         button = 1;
-        (menu->event.key.code == sfKeyUp) ?  move_menu(menu, 1): 0;
-        (menu->event.key.code == sfKeyDown) ? move_menu(menu, 0) : 0;
+        (menu->event.key.code == sfKeyUp) ?  move_menu(menu, 1, opt): 0;
+        (menu->event.key.code == sfKeyDown) ? move_menu(menu, 0, opt) : 0;
     }
     else if (menu->event.type == sfEvtKeyReleased)
         button = 0;

@@ -12,6 +12,7 @@ D_INC	=	./include/
 D_LIB	=	./lib/my/
 
 SRC	=	$(D_SRC)main.c					\
+		$(D_SRC)game.c					\
 		$(D_SRC)check.c					\
 		$(D_SRC)init.c					\
 		$(D_SRC)init_game.c				\
@@ -27,12 +28,18 @@ SRC	=	$(D_SRC)main.c					\
 		$(D_SRC)beat.c					\
 		$(D_SRC)turn.c					\
 		$(D_SRC)talk.c					\
+		$(D_SRC)init_play.c				\
 		$(D_SRC)dialogue.c				\
 		$(D_SRC)condition.c				\
 		$(D_SRC)move_rect.c				\
 		$(D_SRC)reward.c				\
+		$(D_SRC)gameplay.c				\
 		$(D_SRC)credit/credit.c				\
+		$(D_SRC)menu/clic_opt.c				\
+		$(D_SRC)menu/delete.c				\
 		$(D_SRC)menu/option.c				\
+		$(D_SRC)menu/init_opt.c				\
+		$(D_SRC)menu/print_opt.c			\
 		$(D_SRC)menu/button_font.c			\
 		$(D_SRC)menu/menu.c				\
 		$(D_SRC)menu/menu_ft.c				\

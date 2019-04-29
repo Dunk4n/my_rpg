@@ -7,11 +7,6 @@
 
 #include "my.h"
 
-void init_default_option(opt_t *opt)
-{
-    opt->music =  sfMusic_createFromFile(MENU_MUSIC);
-}
-
 static void init_menu_hard(menu_t *menu)
 {
     menu->t_menu = sfTexture_createFromFile(MENU, NULL);

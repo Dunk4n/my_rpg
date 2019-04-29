@@ -14,6 +14,7 @@
 #include <SFML/System/Export.h>
 #include <SFML/System/Time.h>
 #include <SFML/System/Types.h>
+#include "struct.h"
 
 const char      *img_name[14];
 const char      *img_button[13];
@@ -208,8 +209,8 @@ void    transform_lower(my_game_t *game, obj_t *obj);
 void    rotation(obj_t *obj, float yaw);
 void    display(my_game_t *game, obj_t *obj);
 my_game_t        *set_game(void);
-void    update(my_game_t *game);
-void    check(my_game_t *game);
+void    update(my_game_t *game, play_t *play);
+void    check(my_game_t *game, opt_t *opt);
 void horz_line(my_game_t *game, sfVector3f pos, vector4f_t nor, sfColor color);
 void    draw_triangle(my_game_t *game, sfVector3f *pos, sfColor color);
 void    draw_poly(my_game_t *game, triangle_t *tri);
