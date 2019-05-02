@@ -195,6 +195,7 @@ typedef struct  my_game_s
     int             nb_col_max;
     int             in_game;
     int             my_turn;
+    int             value_talk;
 }               my_game_t;
 
 int     window(void);
@@ -212,7 +213,7 @@ void    transform_lower(my_game_t *game, obj_t *obj);
 void    rotation(obj_t *obj, float yaw);
 void    display(my_game_t *game, obj_t *obj);
 my_game_t        *set_game(void);
-void    update(my_game_t *game, play_t *play);
+void    update(my_game_t *game, play_t *play, png_t *png);
 void    check(my_game_t *game, opt_t *opt, play_t *play);
 void horz_line(my_game_t *game, sfVector3f pos, vector4f_t nor, sfColor color);
 void    draw_triangle(my_game_t *game, sfVector3f *pos, sfColor color);

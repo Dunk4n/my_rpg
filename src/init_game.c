@@ -23,6 +23,7 @@ int     init_game(my_game_t *game)
     if (!(game->player = malloc(sizeof(player_t))))
         return (0);
     init_player(game);
-    game->my_turn = 1;;
+    game->value_talk = 0;
+    game->my_turn = 1;
     return (1);
 }

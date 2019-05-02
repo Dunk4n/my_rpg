@@ -42,6 +42,7 @@ int     talk_pnj(my_game_t *game, enemy_t *cible)
     if (cible->nb_dialog > 0 && ft_cond[d_indice_ft[cible->dialog]](game,
 d_cond_room[cible->dialog], d_cond_arg[cible->dialog]))
         cible->dialog = to_dialog[cible->dialog];
+    game->value_talk = cible->dialog;
     if (ft_reward[d_indice_ftr[cible->dialog]])
         ft_reward[d_indice_ftr[cible->dialog]](game, cible,
 d_rwd_arg[cible->dialog], d_rwd_arg2[cible->dialog]);
