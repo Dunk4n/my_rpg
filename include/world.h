@@ -101,6 +101,7 @@ typedef struct  my_window_s
     sfVector2u          pos;
     sfVector2i          mouse;
     sfVector2f          ang_per_pixel;
+    sfContextSettings   *context_set;
 }               my_window_t;
 
 typedef struct  obj_s
@@ -211,7 +212,7 @@ void    rotation(obj_t *obj, float yaw);
 void    display(my_game_t *game, obj_t *obj);
 my_game_t        *set_game(void);
 void    update(my_game_t *game, play_t *play);
-void    check(my_game_t *game, opt_t *opt);
+void    check(my_game_t *game, opt_t *opt, play_t *play);
 void horz_line(my_game_t *game, sfVector3f pos, vector4f_t nor, sfColor color);
 void    draw_triangle(my_game_t *game, sfVector3f *pos, sfColor color);
 void    draw_poly(my_game_t *game, triangle_t *tri);
@@ -284,11 +285,11 @@ void    inv_matrix(float *res, float *rot);
 void    raster_cliping_y(arg_interpolation_t *arg);
 void    raster_cliping_x(arg_interpolation_t *arg, double *tab, int *x12);
 
-//#define WM 480.0
-#define WM 1920.0
+#define WM 480.0
+//#define WM 1920.0
 //1920  1280  960  480
-//#define HM 270.0
-#define HM 1080.0
+#define HM 270.0
+//#define HM 1080.0
 //1080  720   540  270
 
 #endif

@@ -56,6 +56,7 @@ static void rectchoose(menu_t *menu, opt_t *opt, my_game_t *game)
 
 static void click(menu_t *menu, my_game_t *game, opt_t *opt)
 {
+
     int clic_x = menu->event.mouseButton.x;
     int clic_y = menu->event.mouseButton.y;
 
@@ -86,7 +87,7 @@ static void menu_opt_clic(menu_t *menu, my_game_t *game, opt_t *opt)
     click(menu, game, opt);
     if (button == 0 && menu->event.type == sfEvtKeyPressed) {
         button = 1;
-        (menu->event.key.code == sfKeyUp) ?  move_menu(menu, 1, opt): 0;
+        (menu->event.key.code == sfKeyUp) ?  move_menu(menu, 1, opt) : 0;
         (menu->event.key.code == sfKeyDown) ? move_menu(menu, 0, opt) : 0;
     }
     else if (menu->event.type == sfEvtKeyReleased)

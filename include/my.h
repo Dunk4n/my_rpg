@@ -107,15 +107,15 @@ void event_function(menu_t *menu);
 void print_all_menu(menu_t *menu);
 void ft_game(my_game_t *game, opt_t *opt);
 void credit(menu_t *menu);
-void dialogue(sfSprite *sprite, sfTexture *Texture, sfRenderWindow *window,
-char *discuttion);
+void dialogue(png_t *png, sfRenderWindow *window, char *name,char *discuttion);
 void init_default_option(opt_t *opt);
 void move_rect(sfIntRect *rect, int offset, int max_value);
 void option(menu_t *menu, opt_t *opt);
 void display_font(menu_t *menu, opt_t *opt);
 void delete(opt_t *new_opt);
-void clic_option(menu_t *menu, opt_t *new_opt, opt_t *opt);
+void clic_option(menu_t *menu, opt_t *opt);
 void users_interaction(play_t *play, my_game_t *game);
 play_t init_play(void);
+void action_game(play_t *play, my_game_t *game);
 
 #endif

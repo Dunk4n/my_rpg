@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <stdbool.h>
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
 
@@ -57,19 +58,38 @@ typedef struct option_s {
     int ctrl[1];
 }opt_t;
 
+typedef struct png_s {
+    sfTexture *t_png;
+    sfSprite *s_png;
+}png_t;
+
 typedef struct gameplay_s {
+    sfMusic *music;
+    sfSound *magic;
+    sfSound *m_punch;
+    sfSoundBuffer *s_magic;
+    sfSoundBuffer *s_hit;
+    size_t   action;
     sfSprite *s_hud;
     sfSprite *s_fist;
     sfSprite *s_magie;
     sfSprite *s_book;
     sfSprite *s_beer;
     sfSprite *s_bag;
+    sfSprite *s_att_magic;
+    sfSprite *s_history;
+    sfSprite *s_punch;
     sfTexture *t_hud;
     sfTexture *t_fist;
     sfTexture *t_magie;
     sfTexture *t_book;
     sfTexture *t_beer;
     sfTexture *t_bag;
-    sfIntRect rect;
+    sfTexture *att_magic;
+    sfTexture *t_history;
+    sfTexture *t_punch;
+    sfIntRect anim_rect;
+    sfIntRect item_rect;
     sfEvent event;
+    bool history;
 }play_t;

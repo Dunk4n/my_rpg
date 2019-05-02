@@ -38,7 +38,7 @@ sfSprite_setColor(new_opt->sf_clavier, sfWhite);
 sfSprite_setColor(new_opt->s_touch_one, sfWhite);
     (opt->ctrl[1] == 1) ? sfSprite_setColor(new_opt->s_touch_two, sfRed):
 sfSprite_setColor(new_opt->s_touch_two, sfWhite);
-    clic_option(menu, new_opt, opt);
+    clic_option(menu, opt);
 }
 
 static void display_opt(menu_t *menu, opt_t *new_opt)
@@ -80,14 +80,12 @@ void option(menu_t *menu, opt_t *opt)
 {
     opt_t new_opt = init_new_opt();
 
-    sfRenderWindow_setFramerateLimit(menu->window, 60);
     while (sfRenderWindow_isOpen(menu->window)) {
         if (echap(&new_opt, menu))
             break;
         display_opt(menu, &new_opt);
         display_font(menu, opt);
         color_opt_choose(menu, &new_opt, opt);
-        printf("[%d]\n", opt->vol_ac);
         sfRenderWindow_display(menu->window);
     }
 }

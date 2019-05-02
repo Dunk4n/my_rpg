@@ -30,5 +30,5 @@ void    update(my_game_t *game, play_t *play)
 WM, HM, 0, 0);
     sfRenderWindow_drawSprite(game->win->window, game->win->sprite, NULL);
     users_interaction(play, game);
-    sfRenderWindow_display(game->win->window);
+    action_game(play, game);
 }

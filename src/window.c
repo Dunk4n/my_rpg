@@ -13,7 +13,6 @@
 int     window(void)
 {
     my_game_t    *game = NULL;
-    win_t win;
 
     menu_window(game);
     return (0);

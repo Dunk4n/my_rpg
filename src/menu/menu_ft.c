@@ -32,6 +32,8 @@ void init_menu(menu_t *menu, opt_t *opt)
     menu->p_select.x = 680;
     menu->p_select.y = 420;
     menu->opt = 1;
+    menu->event.mouseButton.x = 0;
+    menu->event.mouseButton.y = 0;
     sfMusic_play(opt->music);
     sfMusic_setLoop(opt->music, sfTrue);
     menu->window = sfRenderWindow_create(video, n, sfFullscreen, NULL);
