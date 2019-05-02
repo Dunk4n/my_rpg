@@ -33,7 +33,7 @@ void    update(my_game_t *game, play_t *play, png_t *png)
 WM, HM, 0, 0);
     sfRenderWindow_drawSprite(game->win->window, game->win->sprite, NULL);
     users_interaction(play, game);
-    action_game(play, game);
+    action_game(play);
     if (game->value_talk == 0)
         dialogue(&png[game->value_talk], game->win->window, "", "");
     else
