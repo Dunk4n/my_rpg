@@ -34,7 +34,7 @@ static void display_hud(play_t *play, my_game_t *game)
     square(game->win->framebuff, (sfVector2f){100, 230},
 (sfVector2i){20, 10}, sfRed);
     square(game->win->framebuff, (sfVector2f){110, 230},
-           (sfVector2i){20, 10}, sfGreen);
+(sfVector2i){20, 10}, sfGreen);
     square(game->win->framebuff, (sfVector2f){120, 230},
 (sfVector2i){20, 10}, sfBlue);
 }

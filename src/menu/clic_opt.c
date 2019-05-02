@@ -1,8 +1,8 @@
 /*
-1;4804;0c** EPITECH PROJECT, 2019
-** clickopt
+** EPITECH PROJECT, 2018
+** clic_opt
 ** File description:
-** clic for opt
+** clic_opt
 */
 
 #include "my.h"

@@ -109,15 +109,15 @@ game->win->window);
 
 /*
 if (sfKeyboard_isKeyPressed(sfKeyJ))
-  rotate_up(game, 1);
-  if (sfKeyboard_isKeyPressed(sfKeyU))
-  rotate_up(game, -1);
-  if (sfKeyboard_isKeyPressed(sfKeyK))
-  rotate_right(game, 1);
-  if (sfKeyboard_isKeyPressed(sfKeyI))
-  rotate_right(game, -1);
-  if (sfKeyboard_isKeyPressed(sfKeyL))
-  rotate_camera(game, 0, 0, 1);
-  if (sfKeyboard_isKeyPressed(sfKeyO))
-  rotate_camera(game, 0, 0, -1);
+rotate_up(game, 1);
+if (sfKeyboard_isKeyPressed(sfKeyU))
+rotate_up(game, -1);
+if (sfKeyboard_isKeyPressed(sfKeyK))
+rotate_right(game, 1);
+if (sfKeyboard_isKeyPressed(sfKeyI))
+rotate_right(game, -1);
+if (sfKeyboard_isKeyPressed(sfKeyL))
+rotate_camera(game, 0, 0, 1);
+if (sfKeyboard_isKeyPressed(sfKeyO))
+rotate_camera(game, 0, 0, -1);
 */

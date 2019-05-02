@@ -10,8 +10,8 @@
 #include "my.h"
 
 const char      *dialog[6] = {"Hello.", "To complete your training you must kil\
-l all shadow on the lower floor.", "Well you finish your task.\nYou are now a\
- true warrior and you can leave the fortress.", "Goodbye.", "small door",
+l all shadow on the lower floor.", "Well you finish your task.\nYou are now a \
+true warrior and you can leave the fortress.", "Goodbye.", "small door",
 "You go to room ONE!!!!"};
 const int       d_cond_room[6] = {-1, 0, -1, -1, -1, -1};
 const int       d_indice_ft[] = {0, 0, 0, 0, 0, 0};
@@ -23,14 +23,13 @@ const sfVector3f    d_rwd_arg2[] = {(sfVector3f){0, 0, 0},
 (sfVector3f){0, 0, 0}, (sfVector3f){1.5, 3.8, 8.5}};
 const int       to_dialog[] = {1, 2, 3, 3, 4, 5};
 
-//=======================================================
-int     (*const ft_cond[])(my_game_t *game, int nb_room, int nb) =
-{kill_all_monster, vie_superior_of};
+int     (*const ft_cond[])(my_game_t *game, int nb_room, int nb) = {
+kill_all_monster, vie_superior_of};
+
 void    (*const ft_reward[])(my_game_t *game, enemy_t *cible, int value,
 sfVector3f new_pos) = {NULL, small_door, big_door};
-//=======================================================
 
-    //printf("%s: %s\n\n", name[cible->name], dialog[cible->dialog]);
+//printf("%s: %s\n\n", name[cible->name], dialog[cible->dialog]);
 int     talk_pnj(my_game_t *game, enemy_t *cible)
 {
     if (cible->dialog < 0)
