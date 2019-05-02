@@ -16,7 +16,7 @@ sfColor get_real_z(my_game_t *game, sfVector3f cord, sfColor color)
     double y = (cord.y - HM / 2) / (HM / 2);
     double dis = sqrt(pow(x, 2) + pow(y, 2) + pow(cord.z, 2));
 
-    res *= (4 / ((-0.8 * -0.8) * dis + 0 * dis + 1.0));
+    res *= (4.0 / ((-0.8 * -0.8) * dis + 0 * dis + 1.0));
     if (res > 1)
         res = 1;
     color.r *= res;

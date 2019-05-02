@@ -80,7 +80,6 @@ void credit(menu_t *menu)
 {
     credit_t credit = init_credit();
 
-    sfRenderWindow_setFramerateLimit(menu->window, 60);
     while (sfRenderWindow_isOpen(menu->window)) {
         if (echap(&credit, menu))
             break;

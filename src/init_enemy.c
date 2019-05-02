@@ -17,6 +17,10 @@ const int       start_dialog[] = {-1, -1, -1, 0, 4};
 const char      *name[21] = {"Balin", "Bifur", "Bofur", "Borin", "Dori",
 "Dwalin", "Dain", "Farin", "Floi", "Frar", "Gloin", "Gror", "Kili", "Ibum",
 "Mim", "Nain", "Nori", "Oin", "Telchar", "Thrain", "Thror"};
+/*const char      *avatar[21] = {"./img/avatar/", "./img/avatar/", "./img/avatar/", "./img/avatar/", "./img/avatar/",
+"./img/avatar/", "./img/avatar/", "./img/avatar/", "./img/avatar/", "./img/avatar/", "./img/avatar/", "./img/avatar/", "./img/avatar", "./img/avatar/",
+"./img/avatar/", "", "Nori", "Oin", "Telchar", "Thrain", "Thror"};*/
+
 
 int     get_nb_enemy(room_t *room)
 {

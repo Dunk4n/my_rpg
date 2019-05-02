@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "world.h"
+#include "my.h"
 
 void            delete_framebuff(my_framebuff_t *framebuff)
 {
@@ -32,11 +33,14 @@ my_framebuff_t  *my_framebuff_create(int width, int height)
 
 my_window_t     *set_window(my_window_t *win)
 {
+    win->view = sfView_createFromRect((sfFloatRect){0, 0, WM, HM});
     win->texture = sfTexture_create(WM, HM);
     win->sprite = sfSprite_create();
     win->window = sfRenderWindow_create((sfVideoMode){WM, HM, 32}, "my_rpg",
-sfFullscreen, NULL);
+sfFullscreen, &(sfContextSettings){0, 0, 8, 0, 0, 0});
+    sfRenderWindow_setView(win->window, win->view);
     sfSprite_setTexture(win->sprite, win->texture, sfTrue);
+    sfTexture_setSmooth(win->texture, sfTrue);
     sfRenderWindow_setFramerateLimit(win->window, 60);
     if ((win->framebuff = my_framebuff_create(WM, HM)) == NULL)
         return (NULL);
@@ -93,7 +97,6 @@ my_game_t        *set_game(void)
         return (NULL);
     if (!init_game(game))
         return (NULL);
-    game->win->view = sfRenderWindow_getDefaultView(game->win->window);
     sfView_zoom(game->win->view, 0.25);
     return (game);
 }
