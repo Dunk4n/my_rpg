@@ -56,7 +56,7 @@ void event_function(menu_t *menu)
 
 void display_menu(menu_t *menu)
 {
-    make_particle(menu->buff);
+    make_particle(menu->buff, menu);
     sfTexture_updateFromPixels(menu->t_particle, menu->buff->pixels, 1920, 1080,
 0, 0);
     sfSprite_setTexture(menu->s_menu, menu->t_menu, sfTrue);
@@ -67,5 +67,4 @@ void display_menu(menu_t *menu)
     move_rect(&(menu->r_anim), 110, 880);
     sfSprite_setTextureRect(menu->s_anim, menu->r_anim);
     sfRenderWindow_drawSprite(menu->window, menu->s_anim, NULL);
-    sfRenderWindow_drawSprite(menu->window, menu->s_particle, NULL);
 }

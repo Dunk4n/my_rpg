@@ -11,6 +11,8 @@
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
 
+#define NB_PARTICLE 200
+
 typedef struct  particle_s
 {
     int         life;
@@ -42,7 +44,7 @@ typedef struct menu_interface_s {
     sfSprite *s_particle;
     sfTexture *t_particle;
     my_framebuff_t      *buff;
-    particle_t  particle[50];
+    particle_t  particle[NB_PARTICLE];
     size_t opt;
 }menu_t;
 

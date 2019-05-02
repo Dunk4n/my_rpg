@@ -285,7 +285,11 @@ void    put_rotate_camera_point(my_game_t *game, float *rot);
 void    inv_matrix(float *res, float *rot);
 void    raster_cliping_y(arg_interpolation_t *arg);
 void    raster_cliping_x(arg_interpolation_t *arg, double *tab, int *x12);
-void    make_particle(my_framebuff_t *buff);
+void    make_particle(my_framebuff_t *buff, menu_t *menu);
+void    display_particle(my_framebuff_t *buff, particle_t *particle,
+int nb_particle, sfVector2i pos);
+void    draw_simple_circle(my_framebuff_t *buff, sfVector2f pos, int size,
+sfColor color);
 
 #define WM 480.0
 //#define WM 1920.0

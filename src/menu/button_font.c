@@ -108,4 +108,5 @@ void print_all_menu(menu_t *menu)
     sfRenderWindow_drawText(menu->window, texte, NULL);
     sfText_destroy(texte);
     sfFont_destroy(font);
+    sfRenderWindow_drawSprite(menu->window, menu->s_particle, NULL);
 }

@@ -72,15 +72,35 @@ void    make_fire(my_framebuff_t *buff)
             buff->pixels[(buff->width * i + j) * 4 + 1] = tmp.g;
             buff->pixels[(buff->width * i + j) * 4 + 2] = tmp.b;
             buff->pixels[(buff->width * i + j) * 4 + 3] = 255;
-            //(tmp.r > tmp.g) ? tmp.r : tmp.g;
             j++;
         }
         i++;
     }
 }
 
-void    make_particle(my_framebuff_t *buff)
+void    clear_framebuff(my_framebuff_t *buff)
 {
+    int i = 0;
+    int j;
+
+    while (i < buff->height - 100) {
+        j = 0;
+        while (j < buff->width) {
+            buff->pixels[(buff->width * i + j) * 4] = 0;
+            buff->pixels[(buff->width * i + j) * 4 + 1] = 0;
+            buff->pixels[(buff->width * i + j) * 4 + 2] = 0;
+            buff->pixels[(buff->width * i + j) * 4 + 3] = 0;
+            j++;
+        }
+        i++;
+    }
+}
+
+void    make_particle(my_framebuff_t *buff, menu_t *menu)
+{
+    clear_framebuff(buff);
     rand_bottom(buff);
     make_fire(buff);
+    display_particle(buff, menu->particle, NB_PARTICLE,
+sfMouse_getPositionRenderWindow(menu->window));
 }
