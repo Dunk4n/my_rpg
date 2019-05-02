@@ -23,11 +23,16 @@ const sfVector3f    d_rwd_arg2[] = {(sfVector3f){0, 0, 0},
 (sfVector3f){0, 0, 0}, (sfVector3f){1.5, 3.8, 8.5}};
 const int       to_dialog[] = {1, 2, 3, 3, 4, 5};
 
-int     (*const ft_cond[])(my_game_t *game, int nb_room, int nb) = {
-kill_all_monster, vie_superior_of};
+int     (*const ft_cond[])(my_game_t *game, int nb_room, int nb) =
+{
+kill_all_monster, vie_superior_of
+};
 
 void    (*const ft_reward[])(my_game_t *game, enemy_t *cible, int value,
-sfVector3f new_pos) = {NULL, small_door, big_door};
+sfVector3f new_pos) =
+{
+NULL, small_door, big_door
+};
 
 //printf("%s: %s\n\n", name[cible->name], dialog[cible->dialog]);
 int     talk_pnj(my_game_t *game, enemy_t *cible)

@@ -29,14 +29,14 @@ void clic_option(menu_t *menu, opt_t *opt)
 
     if (clic_x >= 610 && clic_x <= 833 && clic_y >= 420 && clic_y <= 560)
         button_action(opt, 1);
-    else if (clic_x >= 1100 && clic_x <= 1350 && clic_y >= 420 && clic_y <= 560)
+    if (clic_x >= 1100 && clic_x <= 1350 && clic_y >= 420 && clic_y <= 560)
         button_action(opt, 2);
-    else if (clic_x >= 490 && clic_x <= 800 && clic_y >= 585 && clic_y <= 715)
+    if (clic_x >= 490 && clic_x <= 800 && clic_y >= 585 && clic_y <= 715)
         button_action(opt, 3);
-    else if (clic_x >= 950 && clic_x <= 1280 && clic_y >= 585 && clic_y <= 715)
+    if (clic_x >= 950 && clic_x <= 1280 && clic_y >= 585 && clic_y <= 715)
         button_action(opt, 4);
-    else if (clic_x >= 660 && clic_x <= 760 && clic_y >= 760 && clic_y <= 820)
+    if (clic_x >= 660 && clic_x <= 760 && clic_y >= 760 && clic_y <= 820)
         button_action(opt, 5);
-    else if (clic_x >= 800 && clic_x <= 900 && clic_y >= 760 && clic_y <= 820)
+    if (clic_x >= 800 && clic_x <= 900 && clic_y >= 760 && clic_y <= 820)
         button_action(opt, 6);
 }

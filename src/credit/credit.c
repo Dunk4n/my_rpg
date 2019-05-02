@@ -13,7 +13,7 @@
 const char *s = "Projet realiser dans le cadre du module graphique d'Epitech";
 const char *s2 = "Createur: Nicolas Duchesne-Alexandre Wagner-Victor Rouxel";
 
-static credit_t init_credit()
+static credit_t init_credit(void)
 {
     credit_t credit;
 
