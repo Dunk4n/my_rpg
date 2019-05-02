@@ -14,6 +14,7 @@ int     window(void)
 {
     my_game_t    *game = NULL;
 
-    menu_window(game);
+    if (!menu_window(game))
+        return (84);
     return (0);
 }

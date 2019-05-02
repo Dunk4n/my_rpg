@@ -11,10 +11,21 @@
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
 
+typedef struct  particle_s
+{
+    int         life;
+    int         size;
+    sfVector2f  speed;
+    sfVector2f  pos;
+    sfColor     color;
+}               particle_t;
+
 typedef struct window_t {
     sfRenderWindow *window;
     sfEvent event;
 }win_t;
+
+typedef struct  my_framebuff_s  my_framebuff_t;
 
 typedef struct menu_interface_s {
     sfRenderWindow *window;
@@ -28,6 +39,10 @@ typedef struct menu_interface_s {
     sfVector2f p_select;
     sfVector2f p_anim;
     sfEvent event;
+    sfSprite *s_particle;
+    sfTexture *t_particle;
+    my_framebuff_t      *buff;
+    particle_t  particle[50];
     size_t opt;
 }menu_t;
 

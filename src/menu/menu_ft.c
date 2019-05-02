@@ -15,6 +15,9 @@ static void init_menu_hard(menu_t *menu)
     menu->s_sel = sfSprite_create();
     menu->t_anim = sfTexture_createFromFile(ANIM, NULL);
     menu->s_anim = sfSprite_create();
+    menu->t_particle = sfTexture_create(1920, 1080);
+    menu->s_particle = sfSprite_create();
+    sfSprite_setTexture(menu->s_particle, menu->t_particle, sfTrue);
 }
 
 void init_menu(menu_t *menu, opt_t *opt)
@@ -53,6 +56,9 @@ void event_function(menu_t *menu)
 
 void display_menu(menu_t *menu)
 {
+    make_particle(menu->buff);
+    sfTexture_updateFromPixels(menu->t_particle, menu->buff->pixels, 1920, 1080,
+0, 0);
     sfSprite_setTexture(menu->s_menu, menu->t_menu, sfTrue);
     sfSprite_setTexture(menu->s_sel, menu->t_select, sfTrue);
     sfSprite_setTexture(menu->s_anim, menu->t_anim, sfTrue);
@@ -61,4 +67,5 @@ void display_menu(menu_t *menu)
     move_rect(&(menu->r_anim), 110, 880);
     sfSprite_setTextureRect(menu->s_anim, menu->r_anim);
     sfRenderWindow_drawSprite(menu->window, menu->s_anim, NULL);
+    sfRenderWindow_drawSprite(menu->window, menu->s_particle, NULL);
 }

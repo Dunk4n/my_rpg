@@ -6,9 +6,12 @@
 */
 
 #include "my.h"
+#include "world.h"
 
-void init_default_option(opt_t *opt)
+int     init_default_option(opt_t *opt, menu_t *menu)
 {
+    if (!(menu->buff = my_framebuff_create(1920, 1080)))
+        return (0);
     opt->vol_ac = 100;
     opt->ctrl[0] = 0;
     opt->ctrl[1] = 0;
@@ -17,4 +20,5 @@ void init_default_option(opt_t *opt)
     opt->button = sfSound_create();
     sfSound_setBuffer(opt->button, opt->s_button);
     sfMusic_setVolume(opt->music, opt->vol_ac);
+    return (1);
 }

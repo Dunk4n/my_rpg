@@ -100,7 +100,8 @@ int menu_window(my_game_t *game)
     menu_t menu;
     opt_t opt;
 
-    init_default_option(&opt);
+    if (!init_default_option(&opt, &menu))
+        return (0);
     init_menu(&menu, &opt);
     sfRenderWindow_setFramerateLimit(menu.window, 60);
     while (sfRenderWindow_isOpen(menu.window)) {

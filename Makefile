@@ -35,6 +35,7 @@ SRC	=	$(D_SRC)main.c					\
 		$(D_SRC)move_rect.c				\
 		$(D_SRC)reward.c				\
 		$(D_SRC)gameplay.c				\
+		$(D_SRC)particle.c				\
 		$(D_SRC)credit/credit.c				\
 		$(D_SRC)menu/clic_opt.c				\
 		$(D_SRC)menu/delete.c				\

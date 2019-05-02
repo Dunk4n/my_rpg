@@ -198,6 +198,7 @@ typedef struct  my_game_s
 }               my_game_t;
 
 int     window(void);
+my_framebuff_t  *my_framebuff_create(int width, int height);
 int     init_all_3d(my_game_t *game);
 void    put_pixel(my_framebuff_t *framebuff, int x, int y, sfColor color);
 void    put_pixel3d(my_game_t *game, sfVector3f cord, sfColor color);
@@ -284,6 +285,7 @@ void    put_rotate_camera_point(my_game_t *game, float *rot);
 void    inv_matrix(float *res, float *rot);
 void    raster_cliping_y(arg_interpolation_t *arg);
 void    raster_cliping_x(arg_interpolation_t *arg, double *tab, int *x12);
+void    make_particle(my_framebuff_t *buff);
 
 #define WM 480.0
 //#define WM 1920.0

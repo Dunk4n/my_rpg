@@ -108,7 +108,7 @@ void print_all_menu(menu_t *menu);
 void ft_game(my_game_t *game, opt_t *opt);
 void credit(menu_t *menu);
 void dialogue(png_t *png, sfRenderWindow *window, char *name,char *discuttion);
-void init_default_option(opt_t *opt);
+int   init_default_option(opt_t *opt, menu_t *menu);
 void move_rect(sfIntRect *rect, int offset, int max_value);
 void option(menu_t *menu, opt_t *opt);
 void display_font(menu_t *menu, opt_t *opt);

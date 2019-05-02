@@ -36,8 +36,8 @@ void    enemy_attack(my_game_t *game, enemy_t *enemy, int choix)
     game->player->vie -= enemy->degat;
     if (game->player->vie < 0)
         game->player->vie = 0;
-    printf("vie: %d\n", game->player->vie);
 }
+    //printf("vie: %d\n", game->player->vie);
 
 void    end_movement(my_game_t *game, enemy_t *enemy, int choix)
 {

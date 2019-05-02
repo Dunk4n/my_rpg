@@ -30,6 +30,7 @@ void    (*const ft_reward[])(my_game_t *game, enemy_t *cible, int value,
 sfVector3f new_pos) = {NULL, small_door, big_door};
 //=======================================================
 
+    //printf("%s: %s\n\n", name[cible->name], dialog[cible->dialog]);
 int     talk_pnj(my_game_t *game, enemy_t *cible)
 {
     if (cible->dialog < 0)
@@ -37,7 +38,6 @@ int     talk_pnj(my_game_t *game, enemy_t *cible)
     if (cible->nb_dialog > 0 && ft_cond[d_indice_ft[cible->dialog]](game,
 d_cond_room[cible->dialog], d_cond_arg[cible->dialog]))
         cible->dialog = to_dialog[cible->dialog];
-    printf("%s: %s\n\n", name[cible->name], dialog[cible->dialog]);
     if (ft_reward[d_indice_ftr[cible->dialog]])
         ft_reward[d_indice_ftr[cible->dialog]](game, cible,
 d_rwd_arg[cible->dialog], d_rwd_arg2[cible->dialog]);
