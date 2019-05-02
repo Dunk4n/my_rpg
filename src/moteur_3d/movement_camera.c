@@ -21,7 +21,7 @@ int     move_to_slab(my_game_t *game, char ***room, int z, int x)
     int y = (int)game->camera->move.y;
 
     if (y + 1 < game->room[game->actual_room]->y_max && room[y + 1][(int)game->
-camera->move.z][(int)game->camera->move.x] == '.' && room[y][z][x] == 'V' && 
+camera->move.z][(int)game->camera->move.x] == '.' && room[y][z][x] == 'V' &&
 room[y + 1][z][x] == '.') {
         game->camera->move.y += 0.5;
         return (1);

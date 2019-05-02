@@ -71,7 +71,8 @@ void    make_fire(my_framebuff_t *buff)
             buff->pixels[(buff->width * i + j) * 4] = tmp.r;
             buff->pixels[(buff->width * i + j) * 4 + 1] = tmp.g;
             buff->pixels[(buff->width * i + j) * 4 + 2] = tmp.b;
-            buff->pixels[(buff->width * i + j) * 4 + 3] = 255;//(tmp.r > tmp.g) ? tmp.r : tmp.g;
+            buff->pixels[(buff->width * i + j) * 4 + 3] = 255;
+            //(tmp.r > tmp.g) ? tmp.r : tmp.g;
             j++;
         }
         i++;
