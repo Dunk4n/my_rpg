@@ -9,7 +9,6 @@
 #include "world.h"
 #include "my.h"
 
-/*(sfColor){rand() % 255, rand() % 255, rand() % 255, 255}*/
 void horz_line(my_game_t *game, sfVector3f pos, vector4f_t nor, sfColor color)
 {
     int x = pos.x;
@@ -19,7 +18,8 @@ void horz_line(my_game_t *game, sfVector3f pos, vector4f_t nor, sfColor color)
         x = pos.y;
     while (x <= pos.y) {
         put_pixel3d(game, (sfVector3f){x, y, (nor.t - (nor.x * (double)x) -
-(nor.y * (double)y)) / ((nor.z == 0) ? 1 : nor.z)}, color);
+(nor.y * (double)y)) / ((nor.z == 0) ? 1 : nor.z)}, (color.a == 0) ?
+(sfColor){rand() % 255, rand() % 255, rand() % 255, 255} : color);
         x++;
     }
 }

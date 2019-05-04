@@ -10,12 +10,12 @@
 #include "world.h"
 #include "my.h"
 
-const sfColor   color[10] =
+const sfColor   color[11] =
 {(sfColor){255, 255, 255, 255}, (sfColor){0, 0, 0, 255},
 (sfColor){255, 0, 0, 255}, (sfColor){0, 255, 0, 255}, (sfColor){0, 0, 255, 255},
 (sfColor){255, 255, 0, 255}, (sfColor){0, 255, 255, 255},
 (sfColor){255, 0, 255, 255}, (sfColor){96, 64, 32, 255},
-(sfColor){51, 102, 0, 255}};
+(sfColor){51, 102, 0, 255}, (sfColor){0, 0, 0, 0}};
 
 static void     set_triangle_camera(obj_t *obj, char **array, int i)
 {
