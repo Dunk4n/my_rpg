@@ -51,6 +51,10 @@ tri->point_tx[2] == NULL)
         draw_triangle(game, pos, tri->color);
         return ;
     }
+    if (game->fg_color && tri->texture == 6)
+        tri->texture = 7;
+    if (!game->fg_color && tri->texture == 7)
+        tri->texture = 6;
     draw_poly(game, tri);
 }
 

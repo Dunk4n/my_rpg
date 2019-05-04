@@ -11,7 +11,7 @@
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
 
-#define NB_PARTICLE 200
+#define NB_PARTICLE 500
 
 typedef struct  particle_s
 {

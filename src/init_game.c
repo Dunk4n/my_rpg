@@ -25,5 +25,6 @@ int     init_game(my_game_t *game)
     init_player(game);
     game->value_talk = 0;
     game->my_turn = 1;
+    game->fg_color = 0;
     return (1);
 }
