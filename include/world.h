@@ -16,7 +16,7 @@
 #include <SFML/System/Types.h>
 #include "struct.h"
 
-const char      *img_name[9];
+const char      *img_name[3];
 const char      *img_button[13];
 const sfColor   color[11];
 const char      char_obj[3];
