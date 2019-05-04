@@ -12,7 +12,7 @@ static void replay(my_game_t *game, play_t *play)
 {
     sfText *texte = sfText_create();
     sfFont *font = sfFont_createFromFile(GOT);
-    char const *string = "Continue";
+    char const *string = "Continue the game";
     sfVector2i mouse = sfMouse_getPositionRenderWindow(game->win->window);
 
     sfText_setFont(texte, font);
@@ -33,11 +33,11 @@ static void replay(my_game_t *game, play_t *play)
     sfFont_destroy(font);
 }
 
-static void quit(my_game_t *game, play_t *play)
+static void quit(my_game_t *game)
 {
     sfText *texte = sfText_create();
     sfFont *font = sfFont_createFromFile(GOT);
-    char const *string = "Quit";
+    char const *string = "Quit the game";
     sfVector2i mouse = sfMouse_getPositionRenderWindow(game->win->window);
 
     sfText_setFont(texte, font);
@@ -46,9 +46,7 @@ static void quit(my_game_t *game, play_t *play)
     if (mouse.x >= 714 && mouse.x <= 1204 && mouse.y >= 510 && mouse.y <= 610) {
         sfText_setColor(texte, sfRed);
         if (sfMouse_isButtonPressed(sfMouseLeft)) {
-            free(game);
             sfRenderWindow_close(game->win->window);
-            menu_window(game);
         }
     }
     else
@@ -62,7 +60,7 @@ static void quit(my_game_t *game, play_t *play)
 static int text_pause(my_game_t *game, play_t *play)
 {
     replay(game, play);
-    quit(game, play);
+    quit(game);
     return 0;
 }
 

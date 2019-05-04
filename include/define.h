@@ -30,7 +30,7 @@
 
 #define PAUSE "./img/interface/pause.png"
 #define PUNCH "./img/interface/poing.png"
-#define HISTORY "./img/interface/history.png"
+#define HISTORY "./img/interface/histoiry.png"
 #define ATT_MAGIC "./img/interface/boule_magique.png"
 #define BAG "./img/icone/Bag.png"
 #define FIST "./img/icone/fist.png"

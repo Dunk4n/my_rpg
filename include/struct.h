@@ -39,6 +39,9 @@ typedef struct  my_framebuff_s  my_framebuff_t;
 
 typedef struct menu_interface_s {
     sfRenderWindow *window;
+    sfTime time;
+    sfClock *clock;
+    float seconds;
     sfSprite *s_menu;
     sfSprite *s_sel;
     sfSprite *s_anim;
