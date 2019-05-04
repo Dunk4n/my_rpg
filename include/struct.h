@@ -81,6 +81,7 @@ typedef struct png_s {
 }png_t;
 
 typedef struct gameplay_s {
+    bool    pause;
     sfMusic *music;
     sfSound *magic;
     sfSound *m_punch;
