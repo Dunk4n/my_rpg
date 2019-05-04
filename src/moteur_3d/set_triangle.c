@@ -28,11 +28,11 @@ static sfColor  indice_color(char *str)
 {
     int i = 0;
     char *ref[] = {"WHITE", "BLACK", "RED", "GREEN", "BLUE", "YELLOW",
-"CYAN", "MAGENTA", "BROWN", "PINEGREEN"};
+"CYAN", "MAGENTA", "BROWN", "PINEGREEN", "VOID"};
 
     if (!str)
         return (color[rand() % 10]);
-    while (i < 10) {
+    while (i < 11) {
         if (!my_strcmp(ref[i], str))
             return (color[i]);
         i++;

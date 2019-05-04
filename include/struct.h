@@ -13,6 +13,14 @@
 
 #define NB_PARTICLE 500
 
+typedef struct item_s {
+    char *name;
+    char *description;
+    sfSprite *sprite;
+    sfTexture *texture;
+    int buff;
+} item_t;
+
 typedef struct  particle_s
 {
     int         life;

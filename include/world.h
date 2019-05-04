@@ -18,7 +18,7 @@
 
 const char      *img_name[9];
 const char      *img_button[13];
-const sfColor   color[10];
+const sfColor   color[11];
 const char      char_obj[3];
 const char      *name[21];
 const char      type_enemy[4];
