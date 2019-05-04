@@ -16,7 +16,7 @@
 #include <SFML/System/Types.h>
 #include "struct.h"
 
-const char      *img_name[14];
+const char      *img_name[9];
 const char      *img_button[13];
 const sfColor   color[10];
 const char      char_obj[3];
@@ -196,6 +196,7 @@ typedef struct  my_game_s
     int             in_game;
     int             my_turn;
     int             value_talk;
+    int             fg_color;
 }               my_game_t;
 
 int     window(void);

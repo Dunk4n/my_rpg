@@ -19,14 +19,14 @@ void    init_particle(menu_t *menu, sfVector2i pos)
     while (i < NB_PARTICLE) {
         angl = rand() % 360;
         speed = (10.0 + (float)(rand() % 30)) / 10.0;
-        menu->particle[i].life = 25 + rand() % 50;
+        menu->particle[i].life = 50 + rand() % 100;
         menu->particle[i].size = 10 + rand() % 20;
         menu->particle[i].pos.x = pos.x;
         menu->particle[i].pos.y = pos.y;
         menu->particle[i].speed.x = speed * cos(angl * M_PI / 180.0);
         menu->particle[i].speed.y = -speed * sin(angl * M_PI / 180.0);
         menu->particle[i].color = (sfColor){150 + 100 *
-menu->particle[i].life / 75, 20, 20, 255};
+menu->particle[i].life / 150, 20, 20, 255};
         i++;
     }
 }
