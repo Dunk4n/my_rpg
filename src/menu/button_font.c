@@ -95,7 +95,6 @@ void print_all_menu(menu_t *menu)
     sfFont *font = sfFont_createFromFile(RUNES);
     char const *string = "The Dwarf Prophecy.";
 
-
     print_start_button(menu);
     print_option_button(menu);
     print_credit_button(menu);

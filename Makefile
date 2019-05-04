@@ -28,6 +28,7 @@ SRC	=	$(D_SRC)main.c					\
 		$(D_SRC)movement.c				\
 		$(D_SRC)init_enemy.c				\
 		$(D_SRC)beat.c					\
+		$(D_SRC)pause.c					\
 		$(D_SRC)turn.c					\
 		$(D_SRC)talk.c					\
 		$(D_SRC)init_play.c				\

@@ -52,6 +52,7 @@ play_t init_play(void)
     texture_play(&play);
     music_play(&play);
     play.history = false;
+    play.pause = false;
     play.action = 0;
     return play;
 }

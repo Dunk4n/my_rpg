@@ -28,6 +28,7 @@
 #define CHATBOX "./img/interface/speakbox.png"
 #define HUD "./img/interface/HUB.png"
 
+#define PAUSE "./img/interface/pause.png"
 #define PUNCH "./img/interface/poing.png"
 #define HISTORY "./img/interface/history.png"
 #define ATT_MAGIC "./img/interface/boule_magique.png"

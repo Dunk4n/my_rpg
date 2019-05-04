@@ -24,19 +24,22 @@ static void button_action(opt_t *opt, size_t action)
 
 void clic_option(menu_t *menu, opt_t *opt)
 {
-    int clic_x = menu->event.mouseButton.x;
-    int clic_y = menu->event.mouseButton.y;
-
-    if (clic_x >= 610 && clic_x <= 833 && clic_y >= 420 && clic_y <= 560)
+    if (menu->event.mouseButton.x >= 610 && menu->event.mouseButton.x <= 833 &&
+menu->event.mouseButton.y >= 420 && menu->event.mouseButton.y <= 560)
         button_action(opt, 1);
-    if (clic_x >= 1100 && clic_x <= 1350 && clic_y >= 420 && clic_y <= 560)
+    if (menu->event.mouseButton.x >= 1100 && menu->event.mouseButton.x <= 1350 &&
+menu->event.mouseButton.y >= 420 && menu->event.mouseButton.y <= 560)
         button_action(opt, 2);
-    if (clic_x >= 490 && clic_x <= 800 && clic_y >= 585 && clic_y <= 715)
+    if (menu->event.mouseButton.x >= 490 && menu->event.mouseButton.x <= 800 &&
+menu->event.mouseButton.y >= 585 && menu->event.mouseButton.y <= 715)
         button_action(opt, 3);
-    if (clic_x >= 950 && clic_x <= 1280 && clic_y >= 585 && clic_y <= 715)
+    if (menu->event.mouseButton.x >= 950 && menu->event.mouseButton.x <= 1280 &&
+menu->event.mouseButton.y >= 585 && menu->event.mouseButton.y <= 715)
         button_action(opt, 4);
-    if (clic_x >= 660 && clic_x <= 760 && clic_y >= 760 && clic_y <= 820)
+    if (menu->event.mouseButton.x >= 660 && menu->event.mouseButton.x <= 760 &&
+menu->event.mouseButton.y >= 760 && menu->event.mouseButton.y <= 820)
         button_action(opt, 5);
-    if (clic_x >= 800 && clic_x <= 900 && clic_y >= 760 && clic_y <= 820)
+    if (menu->event.mouseButton.x >= 800 && menu->event.mouseButton.x <= 900 &&
+menu->event.mouseButton.y >= 760 && menu->event.mouseButton.y <= 820)
         button_action(opt, 6);
 }

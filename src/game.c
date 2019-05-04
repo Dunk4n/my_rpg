@@ -38,12 +38,16 @@ void    ft_game(my_game_t *game, opt_t *opt)
     sfMusic_play(play.music);
     sfMusic_setLoop(play.music, sfTrue);
     while (sfRenderWindow_isOpen(game->win->window)) {
-        display_room(game);
-        update(game, &play, png);
-        history(&play, game);
-        check(game, opt, &play);
-        if (!game->my_turn)
-            enemy_turn(game);
-        sfRenderWindow_display(game->win->window);
+        if (play.pause == false) {
+            display_room(game);
+            update(game, &play, png);
+            history(&play, game);
+            check(game, opt, &play);
+            if (!game->my_turn)
+                enemy_turn(game);
+            sfRenderWindow_display(game->win->window);
+        }
+        if (play.pause == true)
+            pause_game(&play, game);
     }
 }

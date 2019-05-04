@@ -89,9 +89,10 @@ static void    movement_input(my_game_t *game, opt_t *opt, play_t *play)
 void    check(my_game_t *game, opt_t *opt, play_t *play)
 {
     while (sfRenderWindow_pollEvent(game->win->window, &(game->win->event))) {
-        if (((game->win->event).type == sfEvtClosed) ||
-sfKeyboard_isKeyPressed(sfKeyEscape))
-            sfRenderWindow_close(game->win->window);
+        ((game->win->event).type == sfEvtClosed) ?
+sfRenderWindow_close(game->win->window): 0;
+        if (sfKeyboard_isKeyPressed(sfKeyEscape))
+            play->pause = true;
         if (game->my_turn)
             movement_input(game, opt, play);
         if (game->in_game == 1 && game->win->event.type == sfEvtMouseMoved) {

@@ -119,5 +119,6 @@ void users_interaction(play_t *play, my_game_t *game);
 play_t init_play(void);
 void action_game(play_t *play);
 png_t *init_png(void);
+void pause_game(play_t *play, my_game_t *game);
 
 #endif
