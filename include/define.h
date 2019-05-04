@@ -36,6 +36,8 @@
 #define MAGIE "./img/icone/mana.png"
 #define BEER "./img/icone/beer.png"
 #define BOOK "./img/icone/book.png"
+#define POPO "./img/icone/popo.png"
+#define APPLE "./img/icone/apple.png"
 //font
 #define RUNES "./fonts/dwarf.ttf"
 #define GOT "./fonts/gothicum.ttf"
