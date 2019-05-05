@@ -34,17 +34,23 @@ static  void use_item(play_t *play, my_game_t *game, sfVector2i mouse)
 static void show_items(play_t *play, my_game_t *game, sfVector2i mouse)
 {
     sfSprite_setPosition(play->items[0].sprite, (sfVector2f) 
-    {1715.0 / 4 , 185.0 / 4});
+{1715.0 / 4 , 185.0 / 4});
     sfSprite_setPosition(play->items[1].sprite, (sfVector2f)
-    {1775.0 / 4 , 185.0 / 4});
+{1775.0 / 4 , 185.0 / 4});
     sfSprite_setPosition(play->items[2].sprite, (sfVector2f)
-    {1835.0 / 4 , 185.0 / 4});
-    sfSprite_setScale(play->items[0].sprite, (sfVector2f) {10.0 / 20 , 10.0 / 20});
-    sfSprite_setScale(play->items[1].sprite, (sfVector2f) {10.0 / 20 , 10.0 / 20});
-    sfSprite_setScale(play->items[2].sprite, (sfVector2f) {10.0 / 20 , 10.0 / 20});
-    (play->items[0].active) ? sfRenderWindow_drawSprite(game->win->window, play->items[0].sprite, NULL) : 0;
-    (play->items[1].active) ? sfRenderWindow_drawSprite(game->win->window, play->items[1].sprite, NULL) : 0;
-    (play->items[2].active) ? sfRenderWindow_drawSprite(game->win->window, play->items[2].sprite, NULL) : 0;
+{1835.0 / 4 , 185.0 / 4});
+    sfSprite_setScale(play->items[0].sprite, (sfVector2f)
+{10.0 / 20 , 10.0 / 20});
+    sfSprite_setScale(play->items[1].sprite, (sfVector2f)
+{10.0 / 20 , 10.0 / 20});
+    sfSprite_setScale(play->items[2].sprite, (sfVector2f)
+{10.0 / 20 , 10.0 / 20});
+    (play->items[0].active) ? sfRenderWindow_drawSprite(game->win->window,
+play->items[0].sprite, NULL) : 0;
+    (play->items[1].active) ? sfRenderWindow_drawSprite(game->win->window,
+play->items[1].sprite, NULL) : 0;
+    (play->items[2].active) ? sfRenderWindow_drawSprite(game->win->window,
+play->items[2].sprite, NULL) : 0;
     use_item(play, game, mouse);
 }
 
