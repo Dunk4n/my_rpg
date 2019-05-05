@@ -37,6 +37,7 @@ void    ft_game(my_game_t *game, opt_t *opt)
     start_game(game);
     sfMusic_play(play.music);
     sfMusic_setLoop(play.music, sfTrue);
+    sfMusic_setVolume(play.music, opt->vol_ac);
     while (sfRenderWindow_isOpen(game->win->window)) {
         if (play.pause == false) {
             display_room(game);
@@ -47,7 +48,6 @@ void    ft_game(my_game_t *game, opt_t *opt)
                 enemy_turn(game);
             sfRenderWindow_display(game->win->window);
         }
-        if (play.pause == true)
-            pause_game(&play, game);
+        (play.pause == true) ? pause_game(&play, game) : 0;
     }
 }

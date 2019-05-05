@@ -10,6 +10,8 @@
 #include <stdbool.h>
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
+#include <SFML/Window.h>
+#include <SFML/Config.h>
 
 #define NB_PARTICLE 500
 
@@ -128,4 +130,10 @@ typedef struct gameplay_s {
     item_t *items;
     bool history;
     bool inventory;
+    char name[11];
+    char last_input;
+    int  nb_name;
+    sfText *name_text;
+    sfFont *name_font;
 }play_t;
+

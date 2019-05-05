@@ -9,10 +9,10 @@
 #include "world.h"
 #include "my.h"
 
-const char      *dialog[6] = {"Hello.", "To complete your training you must kil\
-l all shadow on the lower floor.", "Well you finish your task.\nYou are now a \
-true warrior and you can leave the fortress.", "Goodbye.", "small door",
-"You go to room ONE!!!!"};
+const char      *dialog[6] = {"Bonjour.", "Tu doit tuer les chauve-souri de \
+cette sale.", "Bien vous avez termine, vous pouvez partir.", "Aurevoir.",
+"Door", "You go to room ONE!!!!"};
+
 const int       d_cond_room[6] = {-1, 0, -1, -1, -1, -1};
 const int       d_indice_ft[] = {0, 0, 0, 0, 0, 0};
 const int       d_indice_ftr[] = {0, 0, 0, 2, 1, 2};
@@ -46,6 +46,7 @@ d_cond_room[cible->dialog], d_cond_arg[cible->dialog]))
     if (ft_reward[d_indice_ftr[cible->dialog]])
         ft_reward[d_indice_ftr[cible->dialog]](game, cible,
 d_rwd_arg[cible->dialog], d_rwd_arg2[cible->dialog]);
+    game->value_name = cible->name;
     cible->nb_dialog++;
     return (1);
 }

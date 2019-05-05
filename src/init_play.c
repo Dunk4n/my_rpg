@@ -50,6 +50,19 @@ static void texture_play(play_t *play)
     play->t_punch = sfTexture_createFromFile(PUNCH, NULL);
 }
 
+static  void    init_name(play_t *play)
+{
+    size_t i = 0;
+
+    while (i < 11)
+        play->name[i++] = '\0';
+    play->last_input = '\0';
+    play->nb_name = 0;
+    play->name_text = sfText_create();
+    play->name_font = sfFont_createFromFile(GOT);
+    sfText_setString(play->name_text, "insert name");
+}
+
 play_t init_play(void)
 {
     play_t play;
@@ -58,6 +71,7 @@ play_t init_play(void)
     sprite_play(&play);
     texture_play(&play);
     music_play(&play);
+    init_name(&play);
     play.history = false;
     play.pause = false;
     play.inventory = false;

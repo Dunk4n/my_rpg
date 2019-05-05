@@ -19,8 +19,8 @@ static void update_stat(my_game_t *game)
            (sfVector2i){game->player->stamina, 12}, sfGreen);
     square(game->win->framebuff, (sfVector2f){122, 202},
            (sfVector2i){game->player->mana, 12}, sfBlue);
-    square(game->win->framebuff, (sfVector2f){150, 225},
-           (sfVector2i){10, game->player->mana}, sfMagenta);
+    square(game->win->framebuff, (sfVector2f){148, 225},
+           (sfVector2i){12, game->player->exp}, sfMagenta);
     sfTexture_updateFromPixels(game->win->texture, game->win->framebuff->pixels,
                                WM, HM, 0, 0);
 }
@@ -47,9 +47,13 @@ void    update(my_game_t *game, play_t *play, png_t *png)
     sfRenderWindow_drawSprite(game->win->window, game->win->sprite, NULL);
     users_interaction(play, game);
     action_game(play, game);
+    if (game->player->exp >= 100) {
+        game->player->lvl++;
+        game->player->exp = 0;
+    }
     if (game->value_talk == 0)
-        dialogue(&png[game->value_talk], game->win->window, "", "");
+        dialogue(&png[game->value_name], game->win->window, "", "");
     else
-        dialogue(&png[game->value_talk], game->win->window,
-                 name[game->value_talk], dialog[game->value_talk]);
+        dialogue(&png[game->value_name], game->win->window,
+name[game->value_name], dialog[game->value_talk]);
 }

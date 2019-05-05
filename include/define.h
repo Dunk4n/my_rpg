@@ -27,6 +27,7 @@
 #define BAG_S "./music/bag.ogg"
 #define BURP "./music/Burp.ogg"
 
+#define DEAD "./img/interface/dead.png"
 #define CHATBOX "./img/interface/speakbox.png"
 #define HUD "./img/interface/HUB.png"
 #define INV "./img/interface/inventaire.png"

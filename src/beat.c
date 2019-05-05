@@ -37,11 +37,12 @@ enemy_t *get_cible(my_game_t *game, int z, int x)
 int     beat_monster(my_game_t *game, enemy_t *cible)
 {
     cible->vie -= game->player->value_hit;
-    if (cible->vie < 0)
+    if (cible->vie <= 0) {
+        game->player->exp += 55;
         cible->vie = 0;
-    if (cible->vie <= 0)
         game->room[game->actual_room]->room[(int)cible->pos.y]
 [(int)cible->pos.z][(int)cible->pos.x] = '.';
+    }
     return (1);
 }
 

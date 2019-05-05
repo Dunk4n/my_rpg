@@ -20,7 +20,7 @@ static void print_action(play_t *play, my_game_t *game)
         sfSprite_setTexture(play->s_punch, play->t_punch, sfTrue);
         sfRenderWindow_drawSprite(game->win->window, play->s_punch, NULL);
     }
-    if (play->action == 2 && game->player->mana > 0) {
+    if (play->action == 2 && game->player->mana > 0 && game->player->lvl > 1) {
         game->player->mana -= 5;
         (beat(game)) ? game->my_turn = 0 : 0;
         sfSound_play(play->magic);

@@ -123,5 +123,6 @@ png_t *init_png(void);
 void pause_game(play_t *play, my_game_t *game);
 void inventory(play_t *play, my_game_t *game);
 item_t *get_items(void);
+void dead(my_game_t *game);
 
 #endif

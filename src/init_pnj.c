@@ -19,7 +19,8 @@ const char      *avatar[24] = {"./img/avatar/Avatar1.png",
 "./img/avatar/Avatar16.png", "./img/avatar/Avatar17.png",
 "./img/avatar/Avatar18.png", "./img/avatar/Avatar19.png",
 "./img/avatar/Avatar20.png", "./img/avatar/Avatar21.png",
-"./img/avatar/Avatar22.png","./img/avatar/Avatar23.png", "./img/avatar/Avatar24.png"};
+"./img/avatar/Avatar22.png","./img/avatar/Avatar23.png",
+"./img/avatar/Avatar24.png"};
 
 png_t *init_png(void)
 {
