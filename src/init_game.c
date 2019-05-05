@@ -19,6 +19,7 @@ static  void    init_name(my_game_t *game)
     game->last_input = '\0';
     game->nb_name = 0;
     game->name_text = sfText_create();
+    game->name_lvl = sfText_create();
     game->name_font = sfFont_createFromFile(GOT);
     sfText_setString(game->name_text, "insert name");
     sfText_setFont(game->name_text, game->name_font);

@@ -41,7 +41,7 @@ int     beat_monster(my_game_t *game, enemy_t *cible, play_t *play)
     if (cible->vie <= 0) {
         if (rand() % 100 < 70)
             play->items[rand() % 3].active = true;
-        game->player->exp += 55;
+        game->player->exp += 115;
         cible->vie = 0;
         game->room[game->actual_room]->room[(int)cible->pos.y]
 [(int)cible->pos.z][(int)cible->pos.x] = '.';

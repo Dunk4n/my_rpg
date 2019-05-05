@@ -207,6 +207,7 @@ typedef struct  my_game_s
     char            last_input;
     int             nb_name;
     sfText          *name_text;
+    sfText          *name_lvl;
     sfFont          *name_font;
 }               my_game_t;
 

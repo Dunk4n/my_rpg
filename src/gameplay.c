@@ -5,7 +5,18 @@
 ** game and interface for play
 */
 
+#include "world.h"
 #include "my.h"
+
+static void print_lvl(my_game_t *game)
+{
+    sfText_setFont(game->name_lvl, game->name_font);
+    sfText_setPosition(game->name_lvl, (sfVector2f){60, 205});
+    sfText_setCharacterSize(game->name_lvl, 10);
+    sfText_setCharacterSize(game->name_lvl, 10);
+    sfText_setColor(game->name_lvl, sfMagenta);
+    sfText_setString(game->name_lvl, my_itoa(game->player->lvl));
+}
 
 static void print_name(my_game_t *game)
 {
@@ -53,6 +64,7 @@ static void display_hud(play_t *play, my_game_t *game)
     square(game->win->framebuff, (sfVector2f){120, 230},
 (sfVector2i){20, 10}, sfBlue);
     print_name(game);
+    print_lvl(game);
 }
 
 void users_interaction(play_t *play, my_game_t *game)
@@ -64,5 +76,6 @@ void users_interaction(play_t *play, my_game_t *game)
     sfRenderWindow_drawSprite(game->win->window, play->s_beer, NULL);
     sfRenderWindow_drawSprite(game->win->window, play->s_book, NULL);
     sfRenderWindow_drawText(game->win->window, game->name_text, NULL);
+    sfRenderWindow_drawText(game->win->window, game->name_lvl, NULL);
     display_hud(play, game);
 }
