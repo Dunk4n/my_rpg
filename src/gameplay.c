@@ -10,9 +10,9 @@
 static void print_name(my_game_t *game)
 {
     sfText_setFont(game->name_text, game->name_font);
-    sfText_setPosition(game->name_text, (sfVector2f){270, 130});
-    sfText_setCharacterSize(game->name_text, 12);
-    sfText_setCharacterSize(game->name_text, 12);
+    sfText_setPosition(game->name_text, (sfVector2f){5, 205});
+    sfText_setCharacterSize(game->name_text, 10);
+    sfText_setCharacterSize(game->name_text, 10);
     sfText_setColor(game->name_text, sfWhite);
     sfText_setString(game->name_text, game->name);
 }
@@ -39,6 +39,7 @@ static void scale_sprite(play_t *play)
 
 static void display_hud(play_t *play, my_game_t *game)
 {
+
     scale_sprite(play);
     sfSprite_setPosition(play->s_fist, (sfVector2f){141, 230});
     sfSprite_setPosition(play->s_magie, (sfVector2f){186, 230});
@@ -51,6 +52,7 @@ static void display_hud(play_t *play, my_game_t *game)
 (sfVector2i){20, 10}, sfGreen);
     square(game->win->framebuff, (sfVector2f){120, 230},
 (sfVector2i){20, 10}, sfBlue);
+    print_name(game);
 }
 
 void users_interaction(play_t *play, my_game_t *game)
@@ -61,5 +63,6 @@ void users_interaction(play_t *play, my_game_t *game)
     sfRenderWindow_drawSprite(game->win->window, play->s_bag, NULL);
     sfRenderWindow_drawSprite(game->win->window, play->s_beer, NULL);
     sfRenderWindow_drawSprite(game->win->window, play->s_book, NULL);
+    sfRenderWindow_drawText(game->win->window, game->name_text, NULL);
     display_hud(play, game);
 }
