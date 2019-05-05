@@ -29,5 +29,5 @@ void choose_name(opt_t *opt)
         }
         sfRenderWindow_drawText(game->win->window, game->name_text, NULL);
         sfRenderWindow_display(game->win->window);
-     }
+    }
 }
