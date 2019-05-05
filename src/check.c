@@ -14,7 +14,7 @@ static void print_action(play_t *play, my_game_t *game)
 {
     if (play->action == 1 && game->player->stamina > 0) {
         game->player->stamina -= 1;
-        (beat(game)) ? game->my_turn = 0 : 0;
+        (beat(game, play)) ? game->my_turn = 0 : 0;
         sfSound_play(play->m_punch);
         sfSprite_setPosition(play->s_punch, (sfVector2f){90, 10});
         sfSprite_setTexture(play->s_punch, play->t_punch, sfTrue);
@@ -22,7 +22,7 @@ static void print_action(play_t *play, my_game_t *game)
     }
     if (play->action == 2 && game->player->mana > 0 && game->player->lvl > 1) {
         game->player->mana -= 5;
-        (beat(game)) ? game->my_turn = 0 : 0;
+        (beat(game, play)) ? game->my_turn = 0 : 0;
         sfSound_play(play->magic);
         sfSprite_setPosition(play->s_att_magic, (sfVector2f){90, 10});
         sfSprite_setTexture(play->s_att_magic, play->att_magic, sfTrue);
@@ -66,12 +66,12 @@ static void touche_opt_two(my_game_t *game, opt_t *opt, play_t *play, int n)
         if (sfKeyboard_isKeyPressed(sfKeySpace) && opt->ctrl[1] == 0
 && play->action != 0) {
             print_action(play, game);
-            (beat(game)) ? game->my_turn = 0 : 0;
+            (beat(game, play)) ? game->my_turn = 0 : 0;
         }
         if (sfMouse_isButtonPressed(sfMouseLeft) && opt->ctrl[1] == 1
 && play->action != 0) {
             print_action(play, game);
-            (beat(game)) ? game->my_turn = 0 : 0;
+            (beat(game, play)) ? game->my_turn = 0 : 0;
         }
         game->time_fg = sfClock_getElapsedTime(game->clock).microseconds;
     }

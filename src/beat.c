@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "world.h"
+#include "struct.h"
 #include "my.h"
 
 int     if_hit_posible(my_game_t *game, int z, int x)
@@ -34,10 +35,12 @@ enemy_t *get_cible(my_game_t *game, int z, int x)
     return (NULL);
 }
 
-int     beat_monster(my_game_t *game, enemy_t *cible)
+int     beat_monster(my_game_t *game, enemy_t *cible, play_t *play)
 {
     cible->vie -= game->player->value_hit;
     if (cible->vie <= 0) {
+        if (rand() % 100 < 70)
+            play->items[rand() % 3].active = true;
         game->player->exp += 55;
         cible->vie = 0;
         game->room[game->actual_room]->room[(int)cible->pos.y]
@@ -46,7 +49,7 @@ int     beat_monster(my_game_t *game, enemy_t *cible)
     return (1);
 }
 
-int     beat(my_game_t *game)
+int     beat(my_game_t *game, play_t *play)
 {
     enemy_t     *cible;
     int cord[4][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
@@ -60,7 +63,7 @@ int     beat(my_game_t *game)
 (int)game->camera->move.x + dir_x)))
         return 0;
     if (cible->pnj == 0)
-        return (beat_monster(game, cible));
+        return (beat_monster(game, cible, play));
     if (cible->pnj == 1)
         return (talk_pnj(game, cible));
     return (0);

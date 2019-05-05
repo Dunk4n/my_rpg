@@ -284,7 +284,7 @@ int     init_enemy(my_game_t *game);
 void    to_2d_enemy(room_t *room);
 float   round_angle(float angle);
 void    enemy_turn(my_game_t *game);
-int     beat(my_game_t *game);
+int     beat(my_game_t *game, play_t *play);
 int     talk_pnj(my_game_t *game, enemy_t *cible);
 size_t  nb_monster_in_room(room_t *room);
 int     kill_all_monster(my_game_t *game, int nb_room, int nb);
