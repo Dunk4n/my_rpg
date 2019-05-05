@@ -11,6 +11,18 @@
 extern const char *dialog[];
 extern const char *name[];
 
+static void update_stat(my_game_t *game)
+{
+    square(game->win->framebuff, (sfVector2f){78, 202},
+           (sfVector2i){game->player->vie, 12}, sfRed);
+    square(game->win->framebuff, (sfVector2f){100, 202},
+           (sfVector2i){game->player->stamina, 12}, sfGreen);
+    square(game->win->framebuff, (sfVector2f){122, 202},
+           (sfVector2i){game->player->mana, 12}, sfBlue);
+    sfTexture_updateFromPixels(game->win->texture, game->win->framebuff->pixels,
+                               WM, HM, 0, 0);
+}
+
 void    clear_buff(my_framebuff_t *buff, double *z_buff)
 {
     int i = 0;
@@ -29,8 +41,7 @@ void    clear_buff(my_framebuff_t *buff, double *z_buff)
 void    update(my_game_t *game, play_t *play, png_t *png)
 {
     sfRenderWindow_clear(game->win->window, sfBlack);
-    sfTexture_updateFromPixels(game->win->texture, game->win->framebuff->pixels,
-WM, HM, 0, 0);
+    update_stat(game);
     sfRenderWindow_drawSprite(game->win->window, game->win->sprite, NULL);
     users_interaction(play, game);
     action_game(play);

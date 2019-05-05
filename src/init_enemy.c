@@ -11,7 +11,7 @@
 const char      type_enemy[4] = "abcd";
 const int       pnj[5] = {0, 0, 0, 1, 1};
 const int       enemy_vie[] = {50, 50, 100, 100, 100};
-const int       enemy_deg[] = {25, 25, 50, 100, 0};
+const int       enemy_deg[] = {5, 5, 10, 50, 0};
 const int       to_copy[] = {2, 2, 3, 4, 5};
 const int       start_dialog[] = {-1, -1, -1, 0, 4};
 const char      *name[21] = {"Balin", "Bifur", "Bofur", "Borin", "Dori",

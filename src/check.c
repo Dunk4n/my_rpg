@@ -12,13 +12,15 @@
 
 static void print_action(play_t *play, my_game_t *game)
 {
-    if (play->action == 1) {
+    if (play->action == 1 && game->player->stamina > 0) {
+        game->player->stamina -= 1;
         sfSound_play(play->m_punch);
         sfSprite_setPosition(play->s_punch, (sfVector2f){90, 10});
         sfSprite_setTexture(play->s_punch, play->t_punch, sfTrue);
         sfRenderWindow_drawSprite(game->win->window, play->s_punch, NULL);
     }
-    if (play->action == 2) {
+    if (play->action == 2 && game->player->mana > 0) {
+        game->player->mana -= 5;
         sfSound_play(play->magic);
         sfSprite_setPosition(play->s_att_magic, (sfVector2f){90, 10});
         sfSprite_setTexture(play->s_att_magic, play->att_magic, sfTrue);

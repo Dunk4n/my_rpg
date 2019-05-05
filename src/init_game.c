@@ -10,7 +10,9 @@
 
 void    init_player(my_game_t *game)
 {
-    game->player->vie = 100;
+    game->player->vie = 50;
+    game->player->mana = 50;
+    game->player->stamina = 50;
     game->player->value_hit = 25;
 }
 
