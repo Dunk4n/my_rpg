@@ -19,8 +19,8 @@ static void show_items(play_t *play, my_game_t *game, item_t *items)
     sfSprite_setScale((items[1]).sprite, (sfVector2f) {10.0 / 20 , 10.0 / 20});
     sfSprite_setScale((items[2]).sprite, (sfVector2f) {10.0 / 20 , 10.0 / 20});
     (play->items[0].active) ? sfRenderWindow_drawSprite(game->win->window, (items[0]).sprite, NULL) : 0;
-    (play->items[0].active) ? sfRenderWindow_drawSprite(game->win->window, (items[1]).sprite, NULL) : 0;
-    (play->items[0].active) ? sfRenderWindow_drawSprite(game->win->window, (items[2]).sprite, NULL) : 0;
+    (play->items[1].active) ? sfRenderWindow_drawSprite(game->win->window, (items[1]).sprite, NULL) : 0;
+    (play->items[2].active) ? sfRenderWindow_drawSprite(game->win->window, (items[2]).sprite, NULL) : 0;
 }
 
 static void inv_loop(play_t *play, my_game_t *game)
