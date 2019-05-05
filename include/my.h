@@ -120,5 +120,6 @@ play_t init_play(void);
 void action_game(play_t *play, my_game_t *game);
 png_t *init_png(void);
 void pause_game(play_t *play, my_game_t *game);
+void dead(my_game_t *game);
 
 #endif
