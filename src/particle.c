@@ -78,24 +78,6 @@ void    make_fire(my_framebuff_t *buff)
     }
 }
 
-void    clear_framebuff(my_framebuff_t *buff)
-{
-    int i = 0;
-    int j;
-
-    while (i < buff->height - 100) {
-        j = 0;
-        while (j < buff->width) {
-            buff->pixels[(buff->width * i + j) * 4] = 0;
-            buff->pixels[(buff->width * i + j) * 4 + 1] = 0;
-            buff->pixels[(buff->width * i + j) * 4 + 2] = 0;
-            buff->pixels[(buff->width * i + j) * 4 + 3] = 0;
-            j++;
-        }
-        i++;
-    }
-}
-
 void    make_particle(my_framebuff_t *buff, menu_t *menu)
 {
     clear_framebuff(buff);

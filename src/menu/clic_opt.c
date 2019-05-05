@@ -27,7 +27,7 @@ void clic_option(menu_t *menu, opt_t *opt)
     sfVector2i mouse = sfMouse_getPositionRenderWindow(menu->window);
 
     if (mouse.x >= 610 && mouse.x <= 833 &&
- mouse.y >= 420 && mouse.y <= 560 && sfMouse_isButtonPressed(sfMouseLeft))
+mouse.y >= 420 && mouse.y <= 560 && sfMouse_isButtonPressed(sfMouseLeft))
         button_action(opt, 1);
     if (mouse.x >= 1100 && mouse.x <= 1350 &&
 mouse.y >= 420 && mouse.y <= 560 && sfMouse_isButtonPressed(sfMouseLeft))
@@ -39,9 +39,9 @@ mouse.y >= 585 && mouse.y <= 715 && sfMouse_isButtonPressed(sfMouseLeft))
 mouse.y >= 585 && mouse.y <= 715 && sfMouse_isButtonPressed(sfMouseLeft))
         button_action(opt, 4);
     if (mouse.x > 480 && mouse.x <= 570 &&
-        mouse.y >= 780 && mouse.y <= 870 && sfMouse_isButtonPressed(sfMouseLeft))
+mouse.y >= 780 && mouse.y <= 870 && sfMouse_isButtonPressed(sfMouseLeft))
         button_action(opt, 5);
     if (mouse.x >= 740 && mouse.x <= 810 &&
-        mouse.y >= 780 && mouse.y <= 870 && sfMouse_isButtonPressed(sfMouseLeft))
+mouse.y >= 780 && mouse.y <= 870 && sfMouse_isButtonPressed(sfMouseLeft))
         button_action(opt, 6);
 }

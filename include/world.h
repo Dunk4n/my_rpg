@@ -303,6 +303,7 @@ void    display_particle(my_framebuff_t *buff, particle_t *particle,
 int nb_particle, sfVector2i pos);
 void    draw_simple_circle(my_framebuff_t *buff, sfVector2f pos, int size,
 sfColor color);
+void    clear_framebuff(my_framebuff_t *buff);
 
 #define WM 480.0
 //#define WM 1920.0

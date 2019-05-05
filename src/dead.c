@@ -13,7 +13,8 @@ static void option_dead(my_game_t *game, sfText *t_quit)
 {
     sfVector2i mouse = sfMouse_getPositionRenderWindow(game->win->window);
 
-    if (mouse.x >= 1160  && mouse.x <= 1560 && mouse.y >= 770 && mouse.y <= 970)  {
+    if (mouse.x >= 1160  && mouse.x <= 1560 && mouse.y >= 770 && mouse.y
+<= 970) {
         sfText_setColor(t_quit, sfRed);
         if (sfMouse_isButtonPressed(sfMouseLeft))
             sfRenderWindow_close(game->win->window);

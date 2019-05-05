@@ -50,7 +50,7 @@ item_t *get_items(void)
 {
     item_t *items = malloc(sizeof(item_t) * 3);
     if (!items)
-        return NULL;    
+        return NULL;
     set_beer(items);
     set_popo(items);
     set_apple(items);
