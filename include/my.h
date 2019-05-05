@@ -13,6 +13,7 @@
 #include "world.h"
 #include "define.h"
 #include "struct.h"
+#include <stdlib.h>
 
 # define cmp(x, y, z) my_strncmp(x, y, z)
 # define ABS(x) (((x) < 0) ? -(x) : (x))
@@ -120,5 +121,7 @@ play_t init_play(void);
 void action_game(play_t *play, my_game_t *game);
 png_t *init_png(void);
 void pause_game(play_t *play, my_game_t *game);
+void inventory(play_t *play, my_game_t *game);
+item_t *get_items(void);
 
 #endif

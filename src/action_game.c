@@ -23,8 +23,9 @@ static void drink(play_t *play, my_game_t *game)
 
 void action_game(play_t *play, my_game_t *game)
 {
-        (sfKeyboard_isKeyPressed(sfKeyNum2)) ? play->action = (size_t)2 : 0;
-        (sfKeyboard_isKeyPressed(sfKeyNum1)) ? play->action = (size_t)1 : 0;
-        (sfKeyboard_isKeyPressed(sfKeyNum5)) ? play->history = true : 0;
-        (sfKeyboard_isKeyPressed(sfKeyNum4)) ? drink(play, game): 0;
+    (sfKeyboard_isKeyPressed(sfKeyNum3)) ? inventory(play, game) : 0;
+    (sfKeyboard_isKeyPressed(sfKeyNum2)) ? play->action = (size_t)2 : 0;
+    (sfKeyboard_isKeyPressed(sfKeyNum1)) ? play->action = (size_t)1 : 0;
+    (sfKeyboard_isKeyPressed(sfKeyNum5)) ? play->history = true : 0;
+    (sfKeyboard_isKeyPressed(sfKeyNum4)) ? drink(play, game): 0;
 }

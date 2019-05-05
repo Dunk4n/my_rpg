@@ -103,6 +103,7 @@ typedef struct gameplay_s {
     sfSoundBuffer *s_hit;
     size_t   action;
     sfSprite *s_hud;
+    sfSprite *s_inv;
     sfSprite *s_fist;
     sfSprite *s_magie;
     sfSprite *s_book;
@@ -112,6 +113,7 @@ typedef struct gameplay_s {
     sfSprite *s_history;
     sfSprite *s_punch;
     sfTexture *t_hud;
+    sfTexture *t_inv;
     sfTexture *t_fist;
     sfTexture *t_magie;
     sfTexture *t_book;
@@ -123,5 +125,7 @@ typedef struct gameplay_s {
     sfIntRect anim_rect;
     sfIntRect item_rect;
     sfEvent event;
+    item_t *items;
     bool history;
+    bool inventory;
 }play_t;

@@ -29,6 +29,7 @@
 
 #define CHATBOX "./img/interface/speakbox.png"
 #define HUD "./img/interface/HUB.png"
+#define INV "./img/interface/inventaire.png"
 
 #define PAUSE "./img/interface/pause.png"
 #define PUNCH "./img/interface/poing.png"
@@ -38,8 +39,9 @@
 #define FIST "./img/icone/fist.png"
 #define MAGIE "./img/icone/mana.png"
 #define BEER "./img/icone/beer.png"
+#define CHAMP "./img/icone/champipi.png"
 #define BOOK "./img/icone/book.png"
-#define POPO "./img/icone/popo.png"
+#define POPO "./img/icone/potion.png"
 #define APPLE "./img/icone/apple.png"
 //font
 #define RUNES "./fonts/dwarf.ttf"
