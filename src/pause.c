@@ -26,7 +26,7 @@ static void replay(my_game_t *game, play_t *play)
         }
     }
     else
-        sfText_setColor(texte, sfBlack);
+        sfText_setColor(texte, sfWhite);
     sfText_setString(texte, string);
     sfRenderWindow_drawText(game->win->window, texte, NULL);
     sfText_destroy(texte);
@@ -50,7 +50,7 @@ static void quit(my_game_t *game)
         }
     }
     else
-        sfText_setColor(texte, sfBlack);
+        sfText_setColor(texte, sfWhite);
     sfText_setString(texte, string);
     sfRenderWindow_drawText(game->win->window, texte, NULL);
     sfText_destroy(texte);
