@@ -45,6 +45,7 @@
 #define BOOK "./img/icone/book.png"
 #define POPO "./img/icone/potion.png"
 #define APPLE "./img/icone/apple.png"
+#define ZIP "./music/bag.ogg"
 //font
 #define RUNES "./fonts/dwarf.ttf"
 #define GOT "./fonts/gothicum.ttf"

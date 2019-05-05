@@ -103,6 +103,8 @@ typedef struct gameplay_s {
     sfSound *m_punch;
     sfMusic *tekno;
     sfSound *brup;
+    sfSound *bag;
+    sfSoundBuffer *so_bag;
     sfSoundBuffer *s_brup;
     sfSoundBuffer *s_magic;
     sfSoundBuffer *s_hit;

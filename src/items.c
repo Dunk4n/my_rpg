@@ -7,9 +7,9 @@
 
 #include "my.h"
 
-void set_beer(item_t *items)
+void set_champ(item_t *items)
 {
-    (items[0]).name = "Pinte de Chouffe";
+    (items[0]).name = "Amanite tue mouche";
     (items[0]).description = "Un petit remontant!";
     (items[0]).sprite = sfSprite_create();
     (items[0]).texture = sfTexture_createFromFile(CHAMP, NULL);
@@ -51,7 +51,7 @@ item_t *get_items(void)
     item_t *items = malloc(sizeof(item_t) * 3);
     if (!items)
         return NULL;
-    set_beer(items);
+    set_champ(items);
     set_popo(items);
     set_apple(items);
 

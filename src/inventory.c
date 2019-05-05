@@ -70,6 +70,8 @@ static void inv_loop(play_t *play, my_game_t *game)
 void inventory(play_t *play, my_game_t *game)
 {
     play->inventory = !play->inventory;
+    
+    sfSound_play(play->bag);
     if (play->inventory == false)
         return;
     inv_loop(play, game);
