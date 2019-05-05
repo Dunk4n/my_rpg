@@ -23,6 +23,9 @@ static void update_stat(my_game_t *game)
 (sfVector2i){12, game->player->exp}, sfMagenta);
     sfTexture_updateFromPixels(game->win->texture, game->win->framebuff->pixels,
 WM, HM, 0, 0);
+    (game->player->vie >= 50) ? game->player->vie = 50 : 0;
+    (game->player->mana >= 50) ? game->player->mana = 50 : 0;
+    (game->player->stamina >= 50) ? game->player->stamina = 50 : 0;
 }
 
 void    clear_buff(my_framebuff_t *buff, double *z_buff)
@@ -47,8 +50,8 @@ void    update(my_game_t *game, play_t *play, png_t *png)
     sfRenderWindow_drawSprite(game->win->window, game->win->sprite, NULL);
     users_interaction(play, game);
     action_game(play, game);
-    if (game->player->vie <= 0)
-        dead(game);
+    (game->player->vie <= 0) ? dead(game) : 0;
+    (kill_all_monster(game, 1, 0) == 1) ? win(game) : 0;
     if (game->player->exp >= 230) {
         game->player->lvl++;
         game->player->exp = 0;

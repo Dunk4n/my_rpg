@@ -124,6 +124,7 @@ void pause_game(play_t *play, my_game_t *game);
 void inventory(play_t *play, my_game_t *game);
 item_t *get_items(void);
 void dead(my_game_t *game);
+void win(my_game_t *game);
 void choose_name(opt_t *opt);
 int get_name(my_game_t *game);
 void safety_menu(menu_t *menu, opt_t *opt);

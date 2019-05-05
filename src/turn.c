@@ -22,7 +22,7 @@ game->room[game->actual_room]->y_max && (int)enemy->pos.z + pos[i][0] >= 0 &&
 game->room[game->actual_room]->x_max && game->room[game->actual_room]->room
 [(int)enemy->pos.y][(int)enemy->pos.z + pos[i][0]][(int)enemy->pos.x +
 pos[i][1]] == '.' && game->room[game->actual_room]->room[(int)enemy->pos.y - 1]
-[(int)enemy->pos.z + pos[i][0]][(int)enemy->pos.x + pos[i][1]] == 'O' &&
+[(int)enemy->pos.z + pos[i][0]][(int)enemy->pos.x + pos[i][1]] != '.' &&
 pow((int)enemy->pos.z + pos[i][0] - (int)game->camera->move.z, 2) +
 pow((int)enemy->pos.x + pos[i][1] - (int)game->camera->move.x, 2) < tmp);
 }

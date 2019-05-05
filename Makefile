@@ -15,6 +15,7 @@ SRC	=	$(D_SRC)main.c					\
 		$(D_SRC)game.c					\
 		$(D_SRC)check.c					\
 		$(D_SRC)dead.c					\
+		$(D_SRC)win.c					\
 		$(D_SRC)init.c					\
 		$(D_SRC)init_game.c				\
 		$(D_SRC)init_pnj.c				\

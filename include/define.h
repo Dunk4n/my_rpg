@@ -26,6 +26,7 @@
 #define PUNCH_S "./music/hit.ogg"
 #define BAG_S "./music/bag.ogg"
 #define BURP "./music/Burp.ogg"
+#define WIN "./img/interface/win.png"
 
 #define DEAD "./img/interface/dead.png"
 #define CHATBOX "./img/interface/speakbox.png"
