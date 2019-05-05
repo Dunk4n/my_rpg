@@ -17,10 +17,8 @@ static void move_menu(menu_t *menu, size_t val, opt_t *opt)
     (val == 0) ? menu->opt++ : 0;
     (val == 1) ? menu->opt-- : 0;
     (menu->opt < 1) ? menu->opt = 1 : 0;
-    if (menu->opt == 1) {
-        menu->p_select.y = 420;
-        menu->p_anim.y = menu->p_select.y + 50;
-    }
+    (menu->opt == 1) ? menu->p_select.y = 420 : 0;
+    (menu->opt == 1) ? menu->p_anim.y = menu->p_select.y + 50 : 0;
     if (menu->opt == 2) {
         menu->p_select.y = 540;
         menu->p_anim.y = menu->p_select.y + 50;
@@ -56,7 +54,6 @@ static void rectchoose(menu_t *menu, opt_t *opt)
 
 static void click(menu_t *menu, opt_t *opt)
 {
-
     int clic_x = menu->event.mouseButton.x;
     int clic_y = menu->event.mouseButton.y;
 

@@ -14,15 +14,15 @@ extern const char *name[];
 static void update_stat(my_game_t *game)
 {
     square(game->win->framebuff, (sfVector2f){78, 202},
-           (sfVector2i){game->player->vie, 12}, sfRed);
+(sfVector2i){game->player->vie, 12}, sfRed);
     square(game->win->framebuff, (sfVector2f){100, 202},
-           (sfVector2i){game->player->stamina, 12}, sfGreen);
+(sfVector2i){game->player->stamina, 12}, sfGreen);
     square(game->win->framebuff, (sfVector2f){122, 202},
-           (sfVector2i){game->player->mana, 12}, sfBlue);
+(sfVector2i){game->player->mana, 12}, sfBlue);
     square(game->win->framebuff, (sfVector2f){148, 225},
-           (sfVector2i){12, game->player->exp}, sfMagenta);
+(sfVector2i){12, game->player->exp}, sfMagenta);
     sfTexture_updateFromPixels(game->win->texture, game->win->framebuff->pixels,
-                               WM, HM, 0, 0);
+WM, HM, 0, 0);
 }
 
 void    clear_buff(my_framebuff_t *buff, double *z_buff)

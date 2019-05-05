@@ -7,9 +7,9 @@
 
 #include "my.h"
 
-static void show_items(play_t *play, my_game_t *game, item_t *items)
+static void show_items(my_game_t *game, item_t *items)
 {
-    sfSprite_setPosition((items[0]).sprite, (sfVector2f) 
+    sfSprite_setPosition((items[0]).sprite, (sfVector2f)
     {1710.0 / 4 , 230.0 / 4});
     sfSprite_setPosition((items[1]).sprite, (sfVector2f)
     {1760.0 / 4 , 230.0 / 4});
@@ -28,7 +28,7 @@ static void inv_loop(play_t *play, my_game_t *game)
     while (sfRenderWindow_isOpen(game->win->window)) {
         mouse = sfMouse_getPositionRenderWindow(game->win->window);
         sfRenderWindow_drawSprite(game->win->window, play->s_inv, NULL);
-        show_items(play, game, play->items);
+        show_items(game, play->items);
         if (mouse.x >= 1370 && mouse.x <= 1480 && mouse.y >= 80 &&
             mouse.y <= 160 && sfMouse_isButtonPressed(sfMouseLeft)) {
             play->inventory = false;
@@ -42,7 +42,6 @@ static void inv_loop(play_t *play, my_game_t *game)
 void inventory(play_t *play, my_game_t *game)
 {
     play->inventory = !play->inventory;
-    
     if (play->inventory == false)
         return;
     inv_loop(play, game);

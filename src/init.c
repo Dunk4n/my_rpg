@@ -36,7 +36,7 @@ my_window_t     *set_window(my_window_t *win)
     win->view = sfView_createFromRect((sfFloatRect){0, 0, WM, HM});
     win->texture = sfTexture_create(WM, HM);
     win->sprite = sfSprite_create();
-    win->window = sfRenderWindow_create((sfVideoMode){1920/*WM*/,1080 /*HM*/, 32}, "my_rpg",
+    win->window = sfRenderWindow_create((sfVideoMode){1920, 1080, 32}, "my_rpg",
 sfFullscreen, NULL);
     sfRenderWindow_setView(win->window, win->view);
     sfSprite_setTexture(win->sprite, win->texture, sfTrue);

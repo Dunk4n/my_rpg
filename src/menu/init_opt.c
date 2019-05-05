@@ -42,6 +42,8 @@ int     init_default_option(opt_t *opt, menu_t *menu)
     opt->music = sfMusic_createFromFile(MENU_MUSIC);
     opt->s_button = sfSoundBuffer_createFromFile(BUTTON);
     opt->button = sfSound_create();
+    if (!opt->music || !opt->s_button || !opt->button)
+        return (0);
     sfSound_setBuffer(opt->button, opt->s_button);
     sfMusic_setVolume(opt->music, opt->vol_ac);
     return (1);

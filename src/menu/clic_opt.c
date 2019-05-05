@@ -39,9 +39,9 @@ mouse.y >= 585 && mouse.y <= 715 && sfMouse_isButtonPressed(sfMouseLeft))
 mouse.y >= 585 && mouse.y <= 715 && sfMouse_isButtonPressed(sfMouseLeft))
         button_action(opt, 4);
     if (mouse.x > 480 && mouse.x <= 570 &&
-        mouse.y >= 780 && mouse.y <= 870 && sfMouse_isButtonPressed(sfMouseLeft))
+mouse.y >= 780 && mouse.y <= 870 && sfMouse_isButtonPressed(sfMouseLeft))
         button_action(opt, 5);
     if (mouse.x >= 740 && mouse.x <= 810 &&
-        mouse.y >= 780 && mouse.y <= 870 && sfMouse_isButtonPressed(sfMouseLeft))
+mouse.y >= 780 && mouse.y <= 870 && sfMouse_isButtonPressed(sfMouseLeft))
         button_action(opt, 6);
 }
