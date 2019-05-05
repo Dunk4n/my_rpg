@@ -25,6 +25,7 @@ static void music_play(play_t *play)
 static void sprite_play(play_t *play)
 {
     play->s_hud = sfSprite_create();
+    play->s_inv = sfSprite_create();
     play->s_fist = sfSprite_create();
     play->s_magie = sfSprite_create();
     play->s_book = sfSprite_create();
@@ -38,6 +39,7 @@ static void sprite_play(play_t *play)
 static void texture_play(play_t *play)
 {
     play->t_hud = sfTexture_createFromFile(HUD, NULL);
+    play->t_inv = sfTexture_createFromFile(INV, NULL);
     play->t_fist = sfTexture_createFromFile(FIST , NULL);
     play->t_magie = sfTexture_createFromFile(MAGIE , NULL);
     play->t_book = sfTexture_createFromFile(BOOK , NULL);
@@ -52,11 +54,13 @@ play_t init_play(void)
 {
     play_t play;
 
+    play.items = get_items();
     sprite_play(&play);
     texture_play(&play);
     music_play(&play);
     play.history = false;
     play.pause = false;
+    play.inventory = false;
     play.action = 0;
     return play;
 }

@@ -33,12 +33,14 @@ SRC	=	$(D_SRC)main.c					\
 		$(D_SRC)beat.c					\
 		$(D_SRC)pause.c					\
 		$(D_SRC)turn.c					\
+		$(D_SRC)items.c					\
 		$(D_SRC)talk.c					\
 		$(D_SRC)init_play.c				\
 		$(D_SRC)dialogue.c				\
 		$(D_SRC)condition.c				\
 		$(D_SRC)move_rect.c				\
 		$(D_SRC)reward.c				\
+		$(D_SRC)inventory.c				\
 		$(D_SRC)gameplay.c				\
 		$(D_SRC)particle.c				\
 		$(D_SRC)particle_water.c			\
