@@ -20,9 +20,9 @@ static void print_name(my_game_t *game)
 static void scale_sprite(play_t *play)
 {
     sfSprite_setScale(play->s_hud, (sfVector2f){480.0 / 1920.0,
-270.0 / 1080.0});
+    270.0 / 1080.0});
     sfSprite_setScale(play->s_inv, (sfVector2f) {480.0 / 1920.0 ,
-270.0 / 1080.0});
+    270.0 / 1080.0});
     sfSprite_setScale(play->s_magie, (sfVector2f){52.5 / 150.0, 85.0 / 280.0});
     sfSprite_setScale(play->s_bag, (sfVector2f){45.5 / 150.0, 75.0 / 280.0});
     sfSprite_setScale(play->s_book, (sfVector2f){52.5 / 150.0, 85.0 / 280.0});

@@ -20,7 +20,10 @@ typedef struct item_s {
     char *description;
     sfSprite *sprite;
     sfTexture *texture;
-    int buff;
+    int life;
+    int stamina;
+    int mana;
+    bool active;
 } item_t;
 
 typedef struct  particle_s
