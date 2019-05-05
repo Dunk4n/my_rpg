@@ -47,16 +47,6 @@ void init_menu(menu_t *menu, opt_t *opt)
     sfSprite_setPosition(menu->s_anim, menu->p_anim);
 }
 
-void event_function(menu_t *menu)
-{
-    while (sfRenderWindow_pollEvent(menu->window, &menu->event)) {
-        if (menu->event.type == sfEvtClosed)
-            sfRenderWindow_close(menu->window);
-        if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
-            sfRenderWindow_close(menu->window);
-    }
-}
-
 void display_menu(menu_t *menu)
 {
     make_particle(menu->buff, menu);

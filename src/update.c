@@ -47,7 +47,7 @@ void    update(my_game_t *game, play_t *play, png_t *png)
     sfRenderWindow_drawSprite(game->win->window, game->win->sprite, NULL);
     users_interaction(play, game);
     action_game(play, game);
-    if (game->player->exp >= 100) {
+    if (game->player->exp >= 230) {
         game->player->lvl++;
         game->player->exp = 0;
     }

@@ -40,16 +40,18 @@ static void move_menu(menu_t *menu, size_t val, opt_t *opt)
 static void rectchoose(menu_t *menu, opt_t *opt)
 {
     if (menu->opt == 1) {
-        sfRenderWindow_close(menu->window);
         sfMusic_destroy(opt->music);
+        sfRenderWindow_close(menu->window);
         choose_name(opt);
     }
     if (menu->opt == 2)
         option(menu, opt);
     if (menu->opt == 3)
         credit(menu);
-    if (menu->opt == 4)
+    if (menu->opt == 4) {
+        sfMusic_destroy(opt->music);
         sfRenderWindow_close(menu->window);
+    }
 }
 
 static void click(menu_t *menu, opt_t *opt)
@@ -59,8 +61,8 @@ static void click(menu_t *menu, opt_t *opt)
 
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 480 && clic_y <= 570) {
         sfSound_play(opt->button);
-        sfRenderWindow_close(menu->window);
         sfMusic_destroy(opt->music);
+        sfRenderWindow_close(menu->window);
         choose_name(opt);
     }
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 600 && clic_y <= 690) {
@@ -72,7 +74,7 @@ static void click(menu_t *menu, opt_t *opt)
         credit(menu);
     }
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 845 && clic_y <= 930) {
-        sfSound_play(opt->button);
+        sfMusic_destroy(opt->music);
         sfRenderWindow_close(menu->window);
     }
 }
@@ -104,10 +106,10 @@ int menu_window(void)
     while (sfRenderWindow_isOpen(menu.window)) {
         while (sfRenderWindow_pollEvent(menu.window, &menu.event)) {
             (menu.event.type == sfEvtClosed) ?
-sfRenderWindow_close(menu.window) : 0;
+sfMusic_destroy(opt.music), sfRenderWindow_close(menu.window) : 0;
             (menu.event.type == sfEvtKeyPressed &&
 menu.event.key.code == sfKeyEscape) ?
-sfRenderWindow_close(menu.window) : 0;
+sfMusic_destroy(opt.music), sfRenderWindow_close(menu.window) : 0;
         }
         display_menu(&menu);
         print_all_menu(&menu);
