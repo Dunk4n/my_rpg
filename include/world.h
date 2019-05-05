@@ -201,6 +201,7 @@ typedef struct  my_game_s
     int             in_game;
     int             my_turn;
     int             value_talk;
+    int             value_name;
     int             fg_color;
 }               my_game_t;
 

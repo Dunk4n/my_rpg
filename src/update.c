@@ -48,8 +48,8 @@ void    update(my_game_t *game, play_t *play, png_t *png)
     users_interaction(play, game);
     action_game(play, game);
     if (game->value_talk == 0)
-        dialogue(&png[game->value_talk], game->win->window, "", "");
+        dialogue(&png[game->value_name], game->win->window, "", "");
     else
-        dialogue(&png[game->value_talk], game->win->window,
-                 name[game->value_talk], dialog[game->value_talk]);
+        dialogue(&png[game->value_name], game->win->window,
+name[game->value_name], dialog[game->value_talk]);
 }
