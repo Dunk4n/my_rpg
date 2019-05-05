@@ -117,7 +117,7 @@ void delete(opt_t *new_opt);
 void clic_option(menu_t *menu, opt_t *opt);
 void users_interaction(play_t *play, my_game_t *game);
 play_t init_play(void);
-void action_game(play_t *play);
+void action_game(play_t *play, my_game_t *game);
 png_t *init_png(void);
 void pause_game(play_t *play, my_game_t *game);
 

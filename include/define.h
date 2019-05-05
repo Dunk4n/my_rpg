@@ -21,9 +21,11 @@
 #define VOL "./img/interface/arrow.png"
 //game
 #define G_MUSIC "./music/game_music.ogg"
+#define TEKNO "./music/techno.ogg"
 #define MAGIC_S "./music/magic.ogg"
 #define PUNCH_S "./music/hit.ogg"
 #define BAG_S "./music/bag.ogg"
+#define BURP "./music/Burp.ogg"
 
 #define CHATBOX "./img/interface/speakbox.png"
 #define HUD "./img/interface/HUB.png"

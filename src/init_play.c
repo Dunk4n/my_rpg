@@ -10,10 +10,14 @@
 static void music_play(play_t *play)
 {
     play->music = sfMusic_createFromFile(G_MUSIC);
+    play->tekno = sfMusic_createFromFile(TEKNO);
     play->s_magic = sfSoundBuffer_createFromFile(MAGIC_S);
     play->s_hit = sfSoundBuffer_createFromFile(PUNCH_S);
     play->magic = sfSound_create();
     play->m_punch = sfSound_create();
+    play->brup = sfSound_create();
+    play->s_brup = sfSoundBuffer_createFromFile(BURP);
+    sfSound_setBuffer(play->brup, play->s_brup);
     sfSound_setBuffer(play->magic, play->s_magic);
     sfSound_setBuffer(play->m_punch, play->s_hit);
 }

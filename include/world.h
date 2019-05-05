@@ -130,10 +130,11 @@ typedef struct  camera_s
 typedef struct  player_s
 {
     int         vie;
-    int       stamina;
+    int         stamina;
     int         mana;
     int         exp;
     int         lvl;
+    int         alcool;
     int         value_hit;
 }               player_t;
 

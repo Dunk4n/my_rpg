@@ -24,22 +24,24 @@ static void button_action(opt_t *opt, size_t action)
 
 void clic_option(menu_t *menu, opt_t *opt)
 {
-    if (menu->event.mouseButton.x >= 610 && menu->event.mouseButton.x <= 833 &&
-menu->event.mouseButton.y >= 420 && menu->event.mouseButton.y <= 560)
+    sfVector2i mouse = sfMouse_getPositionRenderWindow(menu->window);
+
+    if (mouse.x >= 610 && mouse.x <= 833 &&
+ mouse.y >= 420 && mouse.y <= 560 && sfMouse_isButtonPressed(sfMouseLeft))
         button_action(opt, 1);
-    if (menu->event.mouseButton.x >= 1100 && menu->event.mouseButton.x <= 1350 &&
-menu->event.mouseButton.y >= 420 && menu->event.mouseButton.y <= 560)
+    if (mouse.x >= 1100 && mouse.x <= 1350 &&
+mouse.y >= 420 && mouse.y <= 560 && sfMouse_isButtonPressed(sfMouseLeft))
         button_action(opt, 2);
-    if (menu->event.mouseButton.x >= 490 && menu->event.mouseButton.x <= 800 &&
-menu->event.mouseButton.y >= 585 && menu->event.mouseButton.y <= 715)
+    if (mouse.x >= 490 && mouse.x <= 800 &&
+mouse.y >= 585 && mouse.y <= 715 && sfMouse_isButtonPressed(sfMouseLeft))
         button_action(opt, 3);
-    if (menu->event.mouseButton.x >= 950 && menu->event.mouseButton.x <= 1280 &&
-menu->event.mouseButton.y >= 585 && menu->event.mouseButton.y <= 715)
+    if (mouse.x >= 950 && mouse.x <= 1280 &&
+mouse.y >= 585 && mouse.y <= 715 && sfMouse_isButtonPressed(sfMouseLeft))
         button_action(opt, 4);
-    if (menu->event.mouseButton.x >= 660 && menu->event.mouseButton.x <= 760 &&
-menu->event.mouseButton.y >= 760 && menu->event.mouseButton.y <= 820)
+    if (mouse.x > 480 && mouse.x <= 570 &&
+        mouse.y >= 780 && mouse.y <= 870 && sfMouse_isButtonPressed(sfMouseLeft))
         button_action(opt, 5);
-    if (menu->event.mouseButton.x >= 800 && menu->event.mouseButton.x <= 900 &&
-menu->event.mouseButton.y >= 760 && menu->event.mouseButton.y <= 820)
+    if (mouse.x >= 740 && mouse.x <= 810 &&
+        mouse.y >= 780 && mouse.y <= 870 && sfMouse_isButtonPressed(sfMouseLeft))
         button_action(opt, 6);
 }
