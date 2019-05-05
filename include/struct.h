@@ -124,4 +124,9 @@ typedef struct gameplay_s {
     sfIntRect item_rect;
     sfEvent event;
     bool history;
+    char name[11];
+    char last_input;
+    int  nb_name;
+    sfText name_text;
+    sfFont name_font;
 }play_t;
