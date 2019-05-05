@@ -33,7 +33,7 @@ static  void use_item(play_t *play, my_game_t *game, sfVector2i mouse)
 
 static void show_items(play_t *play, my_game_t *game, sfVector2i mouse)
 {
-    sfSprite_setPosition(play->items[0].sprite, (sfVector2f) 
+    sfSprite_setPosition(play->items[0].sprite, (sfVector2f)
 {1715.0 / 4 , 185.0 / 4});
     sfSprite_setPosition(play->items[1].sprite, (sfVector2f)
 {1775.0 / 4 , 185.0 / 4});
