@@ -32,8 +32,6 @@ void    ft_game(my_game_t *game, opt_t *opt)
     play_t play = init_play();
     png_t *png = init_png();
 
-    if (!(game = set_game()))
-        return;
     start_game(game);
     sfMusic_play(play.music);
     sfMusic_setLoop(play.music, sfTrue);

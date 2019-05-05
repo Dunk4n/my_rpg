@@ -7,8 +7,28 @@
 
 #include <stdlib.h>
 #include "world.h"
+#include "my.h"
+#include "struct.h"
 
-void    init_player(my_game_t *game)
+static  void    init_name(my_game_t *game)
+{
+     size_t i = 0;
+
+     while (i < 11)
+         game->name[i++] = '\0';
+     game->last_input = '\0';
+     game->nb_name = 0;
+     game->name_text = sfText_create();
+     game->name_font = sfFont_createFromFile(GOT);
+     sfText_setString(game->name_text, "insert name");
+     sfText_setFont(game->name_text, game->name_font);
+     sfText_setPosition(game->name_text, (sfVector2f){160, 130});
+     sfText_setCharacterSize(game->name_text, 20);
+     sfText_setCharacterSize(game->name_text, 20);
+     sfText_setColor(game->name_text, sfRed);
+}
+
+static void    init_player(my_game_t *game)
 {
     game->player->vie = 50;
     game->player->mana = 50;
@@ -28,6 +48,7 @@ int     init_game(my_game_t *game)
     if (!(game->player = malloc(sizeof(player_t))))
         return (0);
     init_player(game);
+    init_name(game);
     game->value_talk = 0;
     game->value_name = 0;
     game->my_turn = 1;

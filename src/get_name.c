@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.h>
 #include "struct.h"
+#include "world.h"
 
 const   int letter[40] = {sfKeyA, sfKeyB, sfKeyC, sfKeyD, sfKeyE, sfKeyF,
 sfKeyG, sfKeyH, sfKeyI, sfKeyJ, sfKeyK, sfKeyL, sfKeyM, sfKeyN, sfKeyO, sfKeyP,
@@ -16,37 +17,42 @@ sfKeyNum3, sfKeyNum4, sfKeyNum5, sfKeyNum6, sfKeyNum7, sfKeyNum8, sfKeyNum9};
 
 const char *list_letters = "abcdefghijklmnopqrstuvwxyz/.0123456789";
 
-void    write_on_txt(play_t *play)
+static void    write_on_txt(my_game_t *game)
 {
     int i = 0;
 
     while (list_letters[i]) {
         if (sfKeyboard_isKeyPressed(letter[i]) &&
-(play->last_input != list_letters[i])) {
-            play->name[play->nb_name] = list_letters[i];
-            play->nb_name++;
-            play->name[play->nb_name] = '\0';
+(game->last_input != list_letters[i])) {
+            game->name[game->nb_name] = list_letters[i];
+            game->nb_name++;
+            game->name[game->nb_name] = '\0';
         }
         if (sfKeyboard_isKeyPressed(letter[i]))
-            play->last_input =
-(play->last_input != list_letters[i]) ? list_letters[i] : '\0';
+            game->last_input =
+(game->last_input != list_letters[i]) ? list_letters[i] : '\0';
         i++;
     }
 }
 
-int     get_name(play_t *play)
+int     get_name(my_game_t *game)
 {
-    if (play->nb_name > 9 || (sfKeyboard_isKeyPressed(sfKeyReturn) &&
-play->nb_name)) {
-        text_nb = 0;
+    if (game->nb_name > 9 || (sfKeyboard_isKeyPressed(sfKeyReturn) &&
+game->nb_name)) {
+        game->nb_name = 0;
         return (1);
     }
-    if (play->nb_name > 0 && sfKeyboard_isKeyPressed(sfKeyBack)) {
-        play->nb_name--;
-        play->name[play->nb_name] = '\0';
+    if (game->nb_name > 0 && sfKeyboard_isKeyPressed(sfKeyBack)) {
+        game->nb_name--;
+        game->name[game->nb_name] = '\0';
         return (0);
     }
-    write_on_text(play);
-    sfText_setString(play->name_text, play->name);
+    write_on_txt(game);
+    sfText_setFont(game->name_text, game->name_font);
+    sfText_setPosition(game->name_text, (sfVector2f){160, 130});
+    sfText_setCharacterSize(game->name_text, 20);
+    sfText_setCharacterSize(game->name_text, 20);
+    sfText_setColor(game->name_text, sfRed);
+    sfText_setString(game->name_text, game->name);
     return (0);
 }

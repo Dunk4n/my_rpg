@@ -101,7 +101,7 @@ void    put_color(char cd, int bold, int sortie);
 void init_w(win_t *win);
 int clic_menu(menu_t *menu);
 void init_menu(menu_t *menu, opt_t *opt);
-int menu_window(my_game_t *game);
+int menu_window(void);
 void display_menu(menu_t *menu);
 void event_function(menu_t *menu);
 void print_all_menu(menu_t *menu);
@@ -121,5 +121,6 @@ void action_game(play_t *play, my_game_t *game);
 png_t *init_png(void);
 void pause_game(play_t *play, my_game_t *game);
 void dead(my_game_t *game);
-
+void choose_name(opt_t *opt);
+int get_name(my_game_t *game);
 #endif

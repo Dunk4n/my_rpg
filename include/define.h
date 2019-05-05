@@ -30,6 +30,7 @@
 #define DEAD "./img/interface/dead.png"
 #define CHATBOX "./img/interface/speakbox.png"
 #define HUD "./img/interface/HUB.png"
+#define NAME "./img/interface/name.png"
 
 #define PAUSE "./img/interface/pause.png"
 #define PUNCH "./img/interface/poing.png"

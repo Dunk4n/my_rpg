@@ -12,9 +12,7 @@
 
 int     window(void)
 {
-    my_game_t    *game = NULL;
-
-    if (!menu_window(game))
+    if (!menu_window())
         return (84);
     return (0);
 }

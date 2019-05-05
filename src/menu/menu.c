@@ -39,12 +39,12 @@ static void move_menu(menu_t *menu, size_t val, opt_t *opt)
     sfSprite_setPosition(menu->s_anim, menu->p_anim);
 }
 
-static void rectchoose(menu_t *menu, opt_t *opt, my_game_t *game)
+static void rectchoose(menu_t *menu, opt_t *opt)
 {
     if (menu->opt == 1) {
         sfRenderWindow_close(menu->window);
         sfMusic_destroy(opt->music);
-        ft_game(game, opt);
+        choose_name(opt);
     }
     if (menu->opt == 2)
         option(menu, opt);
@@ -54,7 +54,7 @@ static void rectchoose(menu_t *menu, opt_t *opt, my_game_t *game)
         sfRenderWindow_close(menu->window);
 }
 
-static void click(menu_t *menu, my_game_t *game, opt_t *opt)
+static void click(menu_t *menu, opt_t *opt)
 {
 
     int clic_x = menu->event.mouseButton.x;
@@ -64,7 +64,7 @@ static void click(menu_t *menu, my_game_t *game, opt_t *opt)
         sfSound_play(opt->button);
         sfRenderWindow_close(menu->window);
         sfMusic_destroy(opt->music);
-        ft_game(game, opt);
+        choose_name(opt);
     }
     if (clic_x >= 714 && clic_x <= 1204 && clic_y >= 600 && clic_y <= 690) {
         sfSound_play(opt->button);
@@ -80,11 +80,11 @@ static void click(menu_t *menu, my_game_t *game, opt_t *opt)
     }
 }
 
-static void menu_opt_clic(menu_t *menu, my_game_t *game, opt_t *opt)
+static void menu_opt_clic(menu_t *menu, opt_t *opt)
 {
     static size_t button = 0;
 
-    click(menu, game, opt);
+    click(menu, opt);
     if (button == 0 && menu->event.type == sfEvtKeyPressed) {
         button = 1;
         (menu->event.key.code == sfKeyUp) ?  move_menu(menu, 1, opt) : 0;
@@ -92,10 +92,10 @@ static void menu_opt_clic(menu_t *menu, my_game_t *game, opt_t *opt)
     }
     else if (menu->event.type == sfEvtKeyReleased)
         button = 0;
-    (sfKeyboard_isKeyPressed(sfKeyReturn)) ? rectchoose(menu, opt, game) : 0;
+    (sfKeyboard_isKeyPressed(sfKeyReturn)) ? rectchoose(menu, opt) : 0;
 }
 
-int menu_window(my_game_t *game)
+int menu_window(void)
 {
     menu_t menu;
     opt_t opt;
@@ -114,7 +114,7 @@ sfRenderWindow_close(menu.window) : 0;
         }
         display_menu(&menu);
         print_all_menu(&menu);
-        menu_opt_clic(&menu, game, &opt);
+        menu_opt_clic(&menu, &opt);
         sfRenderWindow_display(menu.window);
     }
     return (1);

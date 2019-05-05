@@ -76,6 +76,6 @@ void display_menu(menu_t *menu)
         }
         sfClock_restart(menu->clock);
     }
-            sfSprite_setTextureRect(menu->s_anim, menu->r_anim);
+    sfSprite_setTextureRect(menu->s_anim, menu->r_anim);
     sfRenderWindow_drawSprite(menu->window, menu->s_anim, NULL);
 }

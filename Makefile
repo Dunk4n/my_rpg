@@ -18,6 +18,8 @@ SRC	=	$(D_SRC)main.c					\
 		$(D_SRC)init.c					\
 		$(D_SRC)init_game.c				\
 		$(D_SRC)init_pnj.c				\
+		$(D_SRC)perso.c					\
+		$(D_SRC)get_name.c				\
 		$(D_SRC)update.c				\
 		$(D_SRC)action_game.c				\
 		$(D_SRC)window.c				\

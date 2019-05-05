@@ -7,6 +7,16 @@
 
 #include "my.h"
 
+static void print_name(my_game_t *game)
+{
+    sfText_setFont(game->name_text, game->name_font);                                            
+  52 │     sfText_setPosition(game->name_text, (sfVector2f){160, 130});                                 
+  53 │     sfText_setCharacterSize(game->name_text, 20);                                                
+  54 │     sfText_setCharacterSize(game->name_text, 20);                                                
+  55 │     sfText_setColor(game->name_text, sfRed);                                                     
+  56 │     sfText_setString(game->name_text, game->name);
+}
+
 static void scale_sprite(play_t *play)
 {
     sfSprite_setScale(play->s_hud, (sfVector2f){480.0 / 1920.0,

@@ -203,6 +203,11 @@ typedef struct  my_game_s
     int             value_talk;
     int             value_name;
     int             fg_color;
+    char            name[11];
+    char            last_input;
+    int             nb_name;
+    sfText          *name_text;
+    sfFont          *name_font;
 }               my_game_t;
 
 int     window(void);
