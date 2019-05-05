@@ -32,8 +32,8 @@ static void print_action(play_t *play, my_game_t *game)
 
 static void touche_opt_one(my_game_t *game, opt_t *opt, play_t *play)
 {
-    if (sfClock_getElapsedTime(game->clock).microseconds >=
-game->time_fg + 128000) {
+    if (sfClock_getElapsedTime(game->clock).microseconds >= game->time_fg +
+128000) {
         if (sfKeyboard_isKeyPressed(sfKeyZ))
             (move_forward(game, 1)) ? game->my_turn = 0 : 0;
         if (sfKeyboard_isKeyPressed(sfKeyS))
@@ -52,10 +52,9 @@ game->time_fg + 128000) {
     }
 }
 
-static void touche_opt_two(my_game_t *game, opt_t *opt, play_t *play)
+static void touche_opt_two(my_game_t *game, opt_t *opt, play_t *play, int n)
 {
-    if (sfClock_getElapsedTime(game->clock).microseconds >=
-game->time_fg + 128000) {
+    if (sfClock_getElapsedTime(game->clock).microseconds >= game->time_fg + n) {
         if (sfKeyboard_isKeyPressed(sfKeyUp))
             (move_forward(game, 1)) ? game->my_turn = 0 : 0;
         if (sfKeyboard_isKeyPressed(sfKeyDown))
@@ -83,7 +82,7 @@ static void    movement_input(my_game_t *game, opt_t *opt, play_t *play)
     if (opt->ctrl[0] == 0)
         touche_opt_one(game, opt, play);
     if (opt->ctrl[0] == 1)
-        touche_opt_two(game, opt, play);
+        touche_opt_two(game, opt, play, 128000);
 }
 
 void    check(my_game_t *game, opt_t *opt, play_t *play)
