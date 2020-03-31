@@ -9,9 +9,9 @@
 #include "world.h"
 #include "my.h"
 
-const char      *dialog[6] = {"Bonjour.", "Tu doit tuer les chauve-souri de \
-cette sale.", "Bien vous avez termine, vous pouvez partir.", "Aurevoir.",
-"Door", "You go to room ONE!!!!"};
+const char      *dialog[6] = {"Bonjour.", "Tu dois tuer les chauve-souri de \
+cette salle.", "Bien vous avez terminé, vous pouvez partir.", "Aurevoir.",
+"Porte", "Allez dans la premiere salle!!!!"};
 
 const int       d_cond_room[6] = {-1, 0, -1, -1, -1, -1};
 const int       d_indice_ft[] = {0, 0, 0, 0, 0, 0};
@@ -34,7 +34,6 @@ sfVector3f new_pos) =
 NULL, small_door, big_door
 };
 
-//printf("%s: %s\n\n", name[cible->name], dialog[cible->dialog]);
 int     talk_pnj(my_game_t *game, enemy_t *cible)
 {
     if (cible->dialog < 0)

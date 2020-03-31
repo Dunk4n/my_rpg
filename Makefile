@@ -83,7 +83,7 @@ OBJ	=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 
 NAME	=	my_rpg
 
-CFLAGS	=	-W -Wall -Wextra -I$(D_INC) -g
+CFLAGS	=	-W -Wall -Wextra -I$(D_INC)
 
 LDFLAGS	=	-L$(D_LIB) -lmy -l csfml-graphics -l csfml-system  -l csfml-window -l csfml-audio -lm
 LDFLAGS_WAGNER += -L $(D_LIB) -lmy -lm -lc_graph_prog
