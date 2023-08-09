@@ -34,13 +34,13 @@ static void touche_opt_one(my_game_t *game, opt_t *opt, play_t *play)
 {
     if (sfClock_getElapsedTime(game->clock).microseconds >= game->time_fg +
 128000) {
-        if (sfKeyboard_isKeyPressed(sfKeyZ))
+        if (sfKeyboard_isKeyPressed(sfKeyW))
             (move_forward(game, 1)) ? game->my_turn = 0 : 0;
         if (sfKeyboard_isKeyPressed(sfKeyS))
             (move_forward(game, -1)) ? game->my_turn = 0 : 0;
         if (sfKeyboard_isKeyPressed(sfKeyD))
             (move_right(game, 1)) ? game->my_turn = 0 : 0;
-        if (sfKeyboard_isKeyPressed(sfKeyQ))
+        if (sfKeyboard_isKeyPressed(sfKeyA))
             (move_right(game, -1)) ? game->my_turn = 0 : 0;
         if (sfKeyboard_isKeyPressed(sfKeySpace) && opt->ctrl[1] == 0
 && play->action != 0)

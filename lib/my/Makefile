@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-CC	=	gcc
+CC	=	gcc-9
 
 SRC	=	my_showmem.c			\
 		my_str_isprintable.c		\

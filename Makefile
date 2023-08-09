@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-CC	=	cc
+CC	=	gcc-9
 
 D_SRC	=	./src/
 D_INC	=	./include/
